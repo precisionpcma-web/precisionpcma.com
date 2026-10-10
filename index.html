@@ -183,10 +183,11 @@ footer a{color:var(--text3);text-decoration:none}footer a:hover{color:var(--text
           </select>
         </div>
         <div class="form-group"><label>Details (optional)</label><textarea id="f-msg" placeholder="e.g. my PC crashes when gaming, my laptop runs really hot..."></textarea></div>
+        <p style="font-size:11px;color:var(--text2);margin:-4px 0 12px">Please don't include passwords or payment details in your message.</p>
         <input type="text" id="f-bot" tabindex="-1" autocomplete="off" style="display:none" />
         <button class="btn-primary form-submit" id="f-btn" onclick="submitForm()">Send it over <i class="ti ti-arrow-right"></i></button>
         <p id="f-err" style="display:none;font-size:12px;color:#e07a7a;text-align:center;margin-top:10px"></p>
-        <p class="form-note"><i class="ti ti-lock"></i> Never shared · No spam</p>
+        <p class="form-note"><i class="ti ti-lock"></i> Used only to reply to you · <a href="#policies" style="color:inherit;text-decoration:underline">Privacy</a></p>
       </div>
       <div class="success-msg" id="success-msg">
         <i class="ti ti-circle-check"></i>
@@ -295,6 +296,22 @@ footer a{color:var(--text3);text-decoration:none}footer a:hover{color:var(--text
   </div>
 </section>
 
+<section id="policies" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Policies</div>
+      <h2 class="section-title">Policies &amp; privacy</h2>
+      <p class="section-sub">Plain-English expectations, so there are no surprises.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card"><h3>Estimates &amp; approval</h3><p>You're quoted before any work starts, and nothing proceeds without your approval. Parts are extra unless stated. No fix, no fee.</p></div>
+      <div class="price-card"><h3>Back up your data</h3><p>Please back up important files before drop-off. Every reasonable precaution is taken, but data loss can happen, especially with failing hardware, and Precision PC can't be responsible for lost data.</p></div>
+      <div class="price-card"><h3>Your device &amp; files</h3><p>Your device is accessed only to complete the requested work. Your files are not copied, shared, or kept.</p></div>
+      <div class="price-card"><h3>Contact form privacy</h3><p>The details you submit are used only to respond to your inquiry. They're sent through a third-party form service to Precision PC's email and are never sold. Please don't include passwords or payment details.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" style="background:var(--bg)">
   <div class="container">
     <div class="contact-bar">
@@ -308,7 +325,7 @@ footer a{color:var(--text3);text-decoration:none}footer a:hover{color:var(--text
 
 <footer>
   <div style="display:flex;align-items:center;gap:8px;opacity:.5"><img src="data:image/png;base64,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" alt="Precision PC logo" style="width:24px;height:24px;object-fit:contain" /><p>Precision PC &nbsp;·&nbsp; Greenfield, MA</p></div>
-  <p>© 2026 Precision PC. All rights reserved.</p>
+  <p><a href="#policies">Policies &amp; privacy</a> &nbsp;·&nbsp; © 2026 Precision PC. All rights reserved.</p>
 </footer>
 
 <script>
