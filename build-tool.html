@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Build sheet maker | Precision PC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#0a0a0a;--surface:#141414;--field:#1c1c1c;--line:rgba(255,255,255,.09);--line-strong:rgba(255,255,255,.18);--text:#f0ede8;--text-2:#b4b1ac;--text-3:#86837e;--orange:#ff5818;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.55 'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);padding:32px 24px 80px}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2{font-family:'Plus Jakarta Sans','Inter',sans-serif}
+h1{font-size:1.8rem;letter-spacing:-.02em;margin-bottom:4px}
+h2{font-size:1.1rem;margin:32px 0 12px}
+p{color:var(--text-2)}
+.hint{font-size:14px;color:var(--text-3)}
+textarea,input{width:100%;background:var(--field);border:1px solid var(--line);border-radius:6px;color:var(--text);font:400 14px/1.4 'Inter',sans-serif;padding:9px 10px}
+textarea{min-height:160px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+input:focus,textarea:focus{outline:none;border-color:var(--orange)}
+label{display:block;font-size:13px;font-weight:500;margin-bottom:5px;color:var(--text-2)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px 'Inter',sans-serif;border-radius:8px;padding:10px 16px;border:1px solid var(--line-strong);background:transparent;color:var(--text);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--orange)}
+.btn-primary{background:var(--text);color:#0a0a0a;border-color:var(--text)}
+.btn-primary:hover{background:var(--orange);border-color:var(--orange)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:12px;font-weight:600;color:var(--text-3);padding:6px 6px}
+td{padding:4px 6px;vertical-align:top}
+td.x{width:36px}
+.del{background:none;border:0;color:var(--text-3);font-size:18px;cursor:pointer;padding:6px}
+.del:hover{color:var(--orange)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;padding:6px}
+.addon{display:grid;grid-template-columns:24px minmax(0,1fr) 120px;gap:10px;align-items:center;margin-bottom:8px}
+.addon input[type=checkbox]{width:18px;height:18px;accent-color:var(--orange)}
+.out{margin-top:16px;padding:16px;border:1px solid var(--orange);border-radius:10px;display:none}
+.out input{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.msg{font-size:14px;color:var(--orange);margin-top:8px;min-height:1.2em}
+.total{font-size:14px;color:var(--text-2);margin-top:10px}
+@media (max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Build sheet maker</h1>
+  <p class="hint">For Ben only. Nothing here is saved anywhere: the build lives inside the link you create.</p>
+
+  <h2>1. Paste the PCPartPicker list</h2>
+  <p class="hint">In PCPartPicker, open the list, click <b>Markup</b>, choose <b>Reddit</b> (gives each part a live price link) or <b>Text</b>, copy it and paste below. To edit a sheet you already sent, paste its build link instead.</p>
+  <textarea id="paste" placeholder="[PCPartPicker Part List](https://pcpartpicker.com/list/...)&#10;&#10;Type|Item|Price&#10;:----|:----|:----&#10;**CPU** | [AMD Ryzen 7 7800X3D ...](https://pcpartpicker.com/product/...) | $449.00 @ Amazon"></textarea>
+  <div class="actions"><button class="btn btn-primary" id="parse">Read the list</button><button class="btn" id="clear">Start over</button></div>
+  <p class="msg" id="parse-msg"></p>
+
+  <h2>2. Check the parts</h2>
+  <div class="scroll"><table><thead><tr><th>Type</th><th>Part</th><th>Price ($)</th><th>Store</th><th>Live price link</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+  <div class="actions"><button class="btn" id="add">Add a part</button></div>
+  <p class="total" id="parts-total"></p>
+
+  <h2>3. Build details</h2>
+  <div class="grid">
+    <div><label for="title">Build name</label><input id="title" placeholder="1440p gaming build" /></div>
+    <div><label for="cname">Customer first name</label><input id="cname" placeholder="John" /></div>
+    <div><label for="list">PCPartPicker list link</label><input id="list" placeholder="https://pcpartpicker.com/list/..." /></div>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <div><label for="labor">Build labor ($)</label><input id="labor" type="number" min="0" step="1" value="100" /></div>
+  </div>
+
+  <h2>4. Add-ons</h2>
+  <div id="addons">
+    <div class="addon"><input type="checkbox" id="ad1" /><input value="Advanced tuning add-on" aria-label="Add-on name" /><input type="number" value="149" aria-label="Price" /></div>
+    <div class="addon"><input type="checkbox" id="ad2" /><input value="Sleeved or custom cables (install and routing)" aria-label="Add-on name" /><input type="number" value="15" aria-label="Price" /></div>
+    <div class="addon"><input type="checkbox" id="ad3" /><input value="" placeholder="Custom add-on" aria-label="Add-on name" /><input type="number" value="" aria-label="Price" /></div>
+  </div>
+
+  <h2>5. Notes for the customer <span class="hint">(optional)</span></h2>
+  <textarea id="notes" style="min-height:90px;font-family:Inter,sans-serif;font-size:14px" placeholder="Why these parts, upgrade path, anything to watch for"></textarea>
+
+  <div class="actions" style="margin-top:20px"><button class="btn btn-primary" id="make">Create build link</button></div>
+  <div class="out" id="out">
+    <label for="link">Send this link to the customer</label>
+    <input id="link" readonly />
+    <div class="actions"><button class="btn btn-primary" id="copy">Copy link</button><a class="btn" id="open" target="_blank" rel="noopener">Preview sheet</a></div>
+    <p class="msg" id="copy-msg"></p>
+  </div>
+</div>
+<script>
+/* Precision PC build sheet: shared encode/decode for build links.
+   The whole parts list lives in the link after "#", so nothing is stored on a server. */
+var PPC = (function () {
+  function b64urlFromBytes(bytes) {
+    var bin = '';
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function bytesFromB64url(s) {
+    s = s.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  async function pipe(bytes, stream) {
+    var res = new Response(new Blob([bytes]).stream().pipeThrough(stream));
+    return new Uint8Array(await res.arrayBuffer());
+  }
+  async function encode(obj) {
+    var bytes = new TextEncoder().encode(JSON.stringify(obj));
+    if (typeof CompressionStream === 'function') {
+      try { return 'z' + b64urlFromBytes(await pipe(bytes, new CompressionStream('deflate-raw'))); } catch (e) {}
+    }
+    return 'j' + b64urlFromBytes(bytes);
+  }
+  async function decode(str) {
+    var kind = str.charAt(0), bytes = bytesFromB64url(str.slice(1));
+    if (kind === 'z') bytes = await pipe(bytes, new DecompressionStream('deflate-raw'));
+    else if (kind !== 'j') throw new Error('Unknown link format');
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }
+  function money(n) {
+    var v = Number(n);
+    if (!isFinite(v)) return '';
+    return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  /* Parse PCPartPicker exports: the Markdown (Reddit) table or the plain Text format. */
+  function parsePcpp(text) {
+    var out = { list: '', parts: [] };
+    var listM = text.match(/https?:\/\/(?:[a-z]+\.)?pcpartpicker\.com\/(?:list|user\/[^\/\s]+\/saved)\/[A-Za-z0-9#\/_-]+/);
+    if (listM) out.list = listM[0].replace(/[)\]]+$/, '');
+    var priceRe = /\$\s?([\d,]+(?:\.\d{1,2})?)/;
+    text.split(/\r?\n/).forEach(function (raw) {
+      var line = raw.trim();
+      if (!line) return;
+      // Markdown table row: **Type** | [Name](url) | $123.45 @ Store
+      var md = line.match(/^\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|\s*(.*)$/);
+      if (md) {
+        var type = md[1].trim(), item = md[2].trim(), priceCell = md[3].trim();
+        if (/^total$/i.test(type)) return;
+        var link = item.match(/^\[(.+)\]\((https?:\/\/[^)\s]+)\)$/);
+        var name = link ? link[1] : item.replace(/\*/g, '');
+        var url = link ? link[2] : '';
+        var pm = priceCell.match(priceRe), sm = priceCell.match(/@\s*(.+)$/);
+        out.parts.push({ type: type, name: name, price: pm ? pm[1].replace(/,/g, '') : '', url: url, store: sm ? sm[1].replace(/\*/g, '').trim() : '' });
+        return;
+      }
+      // Text format: Type: Name  ($123.45 @ Store)
+      var tx = line.match(/^([A-Za-z][A-Za-z \/]+?):\s+(.+?)(?:\s+\((.*)\))?$/);
+      if (tx && !/^(PCPartPicker Part List|Total|Generated by|Prices include|Custom Part List)/i.test(line)) {
+        var info = tx[3] || '', p2 = info.match(priceRe), s2 = info.match(/@\s*(.+)$/);
+        out.parts.push({ type: tx[1].trim(), name: tx[2].trim(), price: p2 ? p2[1].replace(/,/g, '') : '', url: '', store: s2 ? s2[1].trim() : '' });
+      }
+    });
+    return out;
+  }
+  return { encode: encode, decode: decode, money: money, parsePcpp: parsePcpp };
+})();
+
+var rows=document.getElementById('rows');
+function addRow(p){
+  p=p||{};
+  var tr=document.createElement('tr');
+  var cell=function(v,w,ph){return '<td style="min-width:'+w+'px"><input value="'+String(v||'').replace(/"/g,'&quot;')+'" placeholder="'+(ph||'')+'" /></td>';};
+  tr.innerHTML=cell(p.type,110,'CPU')+cell(p.name,280,'Part name')+cell(p.price,90,'0.00')+cell(p.store,100,'Amazon')+cell(p.url,220,'https://pcpartpicker.com/product/...')+'<td class="x"><button class="del" title="Remove part" aria-label="Remove part">×</button></td>';
+  tr.querySelector('.del').onclick=function(){tr.remove();total();};
+  tr.querySelectorAll('input').forEach(function(i){i.oninput=total;});
+  rows.appendChild(tr);
+}
+function readRows(){
+  return Array.prototype.map.call(rows.children,function(tr){
+    var v=Array.prototype.map.call(tr.querySelectorAll('input'),function(i){return i.value.trim();});
+    return {type:v[0],name:v[1],price:v[2].replace(/[$,]/g,''),store:v[3],url:v[4]};
+  }).filter(function(p){return p.name;});
+}
+function total(){
+  var t=readRows().reduce(function(s,p){return s+(parseFloat(p.price)||0);},0);
+  document.getElementById('parts-total').textContent=rows.children.length?'Parts total: '+PPC.money(t):'';
+}
+document.getElementById('parse').onclick=async function(){
+  var txt=document.getElementById('paste').value, msg=document.getElementById('parse-msg');
+  var hm=txt.match(/#([zj][A-Za-z0-9_-]+)/);
+  if(hm && /precisionpcma|build/.test(txt)){
+    try{var d=await PPC.decode(hm[1]);load(d);msg.textContent='Loaded the existing sheet. Edit it and create a new link.';return;}catch(e){}
+  }
+  var r=PPC.parsePcpp(txt);
+  if(!r.parts.length){msg.textContent='No parts found. Copy the Reddit or Text markup from PCPartPicker and paste it again.';return;}
+  rows.innerHTML='';r.parts.forEach(addRow);
+  if(r.list)document.getElementById('list').value=r.list;
+  msg.textContent='Found '+r.parts.length+' parts. Check them below.';total();
+};
+function load(d){
+  rows.innerHTML='';(d.parts||[]).forEach(addRow);
+  document.getElementById('title').value=d.title||'';document.getElementById('cname').value=d.name||'';
+  document.getElementById('list').value=d.list||'';document.getElementById('labor').value=d.labor!=null?d.labor:100;
+  document.getElementById('notes').value=d.notes||'';
+  var boxes=document.querySelectorAll('#addons .addon');boxes.forEach(function(b){b.children[0].checked=false;});
+  (d.addons||[]).forEach(function(a,i){var b=boxes[Math.min(i,boxes.length-1)];var match=Array.prototype.find.call(boxes,function(x){return x.children[1].value===a.label;})||b;match.children[0].checked=true;match.children[1].value=a.label;match.children[2].value=a.price;});
+  total();
+}
+document.getElementById('add').onclick=function(){addRow();};
+document.getElementById('clear').onclick=function(){if(rows.children.length && !window.confirm('Clear everything and start over?'))return;location.reload();};
+document.getElementById('make').onclick=async function(){
+  var parts=readRows();
+  if(!parts.length){document.getElementById('parse-msg').textContent='Add at least one part first.';return;}
+  var addons=[];document.querySelectorAll('#addons .addon').forEach(function(a){var c=a.children;if(c[0].checked&&c[1].value.trim())addons.push({label:c[1].value.trim(),price:parseFloat(c[2].value)||0});});
+  var d={v:1,title:document.getElementById('title').value.trim(),name:document.getElementById('cname').value.trim(),
+    date:new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),list:document.getElementById('list').value.trim(),
+    parts:parts,labor:parseFloat(document.getElementById('labor').value)||0,addons:addons,notes:document.getElementById('notes').value.trim()};
+  var url=location.origin.replace(/\/$/,'')+'/build.html#'+(await PPC.encode(d));
+  if(location.protocol==='file:')url='https://precisionpcma.com/build.html#'+url.split('#')[1];
+  document.getElementById('link').value=url;document.getElementById('open').href=url;
+  document.getElementById('out').style.display='block';document.getElementById('copy-msg').textContent=url.length+' characters';
+};
+document.getElementById('copy').onclick=function(){
+  var i=document.getElementById('link'),m=document.getElementById('copy-msg');
+  navigator.clipboard.writeText(i.value).then(function(){m.textContent='Copied.';},function(){i.select();m.textContent='Press Ctrl+C (or Cmd+C) to copy.';});
+};
+</script>
+</body>
+</html>
