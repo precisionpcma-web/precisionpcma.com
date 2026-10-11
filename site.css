@@ -24,7 +24,7 @@ a{color:inherit}
 header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--orange),rgba(255,88,24,0) 40%) 1}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand img{width:36px;height:36px;display:block}
+.brand img{width:40px;height:40px;display:block}
 .wordmark{font-family:var(--brand);font-size:1.05rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
 .wordmark span{font-weight:500;color:var(--text-3)}
 .nav ul{display:flex;gap:28px;list-style:none}
@@ -191,7 +191,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-f
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:32px}
 .foot{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;font-size:14px;color:var(--text-3)}
-.foot .brand img{width:24px;height:24px}
+.foot .brand img{width:28px;height:28px}
 .foot .wordmark{font-size:.9rem}
 .foot nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 .foot a{color:var(--text-3);text-decoration:none}
