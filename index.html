@@ -18,334 +18,392 @@
 <meta property="og:image" content="https://precisionpcma.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ComputerStore","name":"Precision PC","url":"https://precisionpcma.com/","email":"precisionpcma@gmail.com","image":"https://precisionpcma.com/og-image.png","logo":"https://precisionpcma.com/favicon-192.png","description":"PC repair, custom builds, thermal repaste and virus removal in Greenfield, MA. Free diagnosis, with pickup and return across Franklin County.","address":{"@type":"PostalAddress","addressLocality":"Greenfield","addressRegion":"MA","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Greenfield, MA"},{"@type":"AdministrativeArea","name":"Franklin County, MA"}]}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Precision PC","url":"https://precisionpcma.com/","email":"precisionpcma@gmail.com","image":"https://precisionpcma.com/og-image.png","logo":"https://precisionpcma.com/favicon-192.png","description":"PC repair, custom builds, thermal repaste and virus removal in Greenfield, MA. Free diagnosis, with pickup and return across Franklin County.","address":{"@type":"PostalAddress","addressLocality":"Greenfield","addressRegion":"MA","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Greenfield, MA"},{"@type":"AdministrativeArea","name":"Franklin County, MA"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Cash or Venmo, when you get your machine back."}}, {"@type": "Question", "name": "Do you work on Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No, we only work on Windows desktops and laptops, plus custom PC builds."}}, {"@type": "Question", "name": "What if I don't go ahead after the diagnosis?", "acceptedAnswer": {"@type": "Answer", "text": "That's fine. The diagnosis is free and you'll get your machine back as is. If you're outside Greenfield, the travel fee we agreed on still applies, since it covers the trip."}}, {"@type": "Question", "name": "What should I have ready at pickup?", "acceptedAnswer": {"@type": "Answer", "text": "Your charger and anything else that goes with it, a backup of anything important, and your login if we'll need it to test. You give us your login in person, and we never store it."}}, {"@type": "Question", "name": "What if parts need to be ordered?", "acceptedAnswer": {"@type": "Answer", "text": "Parts are included in your quote. For special-order parts we may ask for a deposit first, and the job takes a little longer while they ship."}}, {"@type": "Question", "name": "How far do you travel?", "acceptedAnswer": {"@type": "Answer", "text": "Anywhere in Franklin County, and pickup is free in Greenfield. Farther than that, just ask."}}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
+/* Layout: one 1080px column; hero splits copy | quote form; everything else is full-width lists, not card grids.
+   Signature detail: the orange pin-1 corner from the logo marks every "included" item. */
+:root{
+  --bg:#0a0a0a;          /* page */
+  --surface:#141414;     /* form, alternating sections */
+  --field:#1c1c1c;       /* inputs */
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.18);
+  --text:#f0ede8;
+  --text-2:#b4b1ac;
+  --text-3:#86837e;
+  --orange:#ff5818;
+  --head:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --brand:'Syne','Plus Jakarta Sans',sans-serif;
+  --radius:8px;
+  color-scheme:dark;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0a0a;--bg2:#111;--bg3:#181818;--bg4:#222;--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);--text:#f0ede8;--text2:#b0b0b0;--text3:#7a7a7a;--orange:#ff5818;--accent:#fff;--accent2:#ccc;--accent-dim:rgba(255,255,255,.06);--radius:10px;--radius-sm:6px}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.section-title,.price-amount,.stat-num{font-family:'Plus Jakarta Sans','Inter',sans-serif}
-.logo-text{font-family:'Syne',sans-serif}
-header{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
-nav{max-width:1080px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-header{border-image:linear-gradient(90deg,var(--orange),rgba(255,88,24,0) 40%) 1}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-text{font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:.04em;text-transform:uppercase}
-.logo-text span{color:var(--text2);font-weight:500}
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:var(--text2);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--orange)}
-.nav-cta{background:var(--accent);color:#0a0a0a;padding:9px 20px;border-radius:var(--radius-sm);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .2s}
-.nav-cta:hover{background:var(--orange);color:#fff}
-.hero-section{background:var(--bg);border-bottom:1px solid var(--border)}
-.hero-wrap{max-width:1080px;margin:0 auto;padding:5rem 2rem 6rem;display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-bottom:1.5rem}
-.hero-eyebrow::before{content:'';display:block;width:1.5rem;height:2px;background:var(--orange)}
-.hero h1,.hero-left h1{font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:1.25rem}
-.hero-left h1 em{font-style:normal;color:var(--text2)}
-.hero-desc{font-size:1.05rem;color:var(--text2);max-width:440px;margin-bottom:.75rem;line-height:1.75}
-.hero-local{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--text3);margin-bottom:2rem;text-transform:uppercase}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0a0a0a;border:none;padding:13px 24px;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .15s,transform .1s;text-decoration:none}
-.btn-primary:hover{background:var(--orange);color:#fff}.btn-primary:active{transform:scale(.97)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--text2);border:1px solid var(--border2);padding:13px 24px;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;text-decoration:none;transition:border-color .2s,color .2s}
-.btn-ghost:hover{border-color:var(--orange);color:var(--text)}
-.trust-items{display:flex;gap:1.5rem;flex-wrap:wrap}
-.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;letter-spacing:.05em;color:var(--text2)}
-.trust-item i{font-size:15px;color:var(--orange)}
-.quote-card{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:2rem}
-.quote-card h3{font-size:1rem;font-weight:700;margin-bottom:.3rem}
-.quote-card>p{font-size:14px;color:var(--text2);margin-bottom:1.5rem}
-.form-group{margin-bottom:12px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-group label{display:block;font-size:11px;font-weight:700;color:var(--text2);margin-bottom:5px;text-transform:uppercase;letter-spacing:.1em}
-.form-group input,.form-group select,.form-group textarea{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);padding:10px 13px;font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;transition:border-color .2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange)}
-.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text3)}
-.form-group select option{background:var(--bg3)}
-.form-group textarea{resize:vertical;min-height:78px}
-.form-submit{width:100%;margin-top:4px;justify-content:center}
-.form-note{font-size:12px;color:var(--text3);text-align:center;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
-section{padding:5rem 2rem}
-.container{max-width:1080px;margin:0 auto}
-.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
-.section-title{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;letter-spacing:-.03em;margin-bottom:.75rem;line-height:1.15}
-.section-sub{font-size:15px;color:var(--text2);max-width:480px;line-height:1.7}
-.section-header{margin-bottom:3rem}
-.service-group-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin:2.5rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
-.service-group-label:first-of-type{margin-top:0}
-#services,#about{background:var(--bg2)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border)}
-.service-card{background:var(--bg2);padding:1.75rem 1.5rem;transition:background .2s}
-.service-card:hover{background:var(--bg3);box-shadow:inset 0 2px 0 var(--orange)}
-.service-card.featured-service{background:var(--bg3)}
-.service-tag,.popular-tag{display:inline-block;background:var(--accent);color:#0a0a0a;font-size:9px;font-weight:700;padding:3px 9px;border-radius:999px;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.1em}
-.service-icon{width:40px;height:40px;background:var(--accent-dim);border:1px solid var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--orange);font-size:20px}
-.service-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.service-card p{font-size:14px;color:var(--text2);line-height:1.65}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem}
-.step{display:flex;flex-direction:column;gap:12px}
-.step-num{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--orange)}
-.step h3{font-size:16px;font-weight:700}
-.step p{font-size:14px;color:var(--text2);line-height:1.65}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.about-grid p{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:1rem}
-.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
-.stat-card{background:var(--bg3);padding:1.5rem}
-.stat-num{font-size:2.2rem;font-weight:800;color:var(--orange);line-height:1;letter-spacing:-.04em;margin-bottom:4px}
-.stat-label{font-size:12px;color:var(--text2);line-height:1.4}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
-.price-card{background:var(--bg2);padding:2rem 1.75rem;transition:background .2s}
-.price-card:hover,.price-card.featured{background:var(--bg3);box-shadow:inset 0 2px 0 var(--orange)}
-.price-amount{font-size:2rem;font-weight:800;line-height:1;margin-bottom:3px;letter-spacing:-.04em}
-.price-amount span{font-size:13px;font-weight:400;color:var(--text2)}
-.price-label{font-size:12px;color:var(--text3);margin-bottom:1.25rem}
-.price-card h3{font-size:15px;font-weight:700;margin-bottom:6px}
-.price-card p{font-size:14px;color:var(--text2);line-height:1.65}
-#audience{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
-.audience-card{background:var(--bg2);padding:2.5rem 2rem}
-.audience-card h3{font-size:1.25rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.75rem}
-.audience-card p{font-size:14px;color:var(--text2);line-height:1.7}
-.contact-bar{background:var(--accent);border-radius:var(--radius);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.contact-bar h3{font-size:1.3rem;font-weight:800;color:#0a0a0a;letter-spacing:-.03em;margin-bottom:4px}
-.contact-bar p{font-size:13px;color:#555}
-.contact-btns{display:flex;gap:10px;flex-wrap:wrap}
-.contact-btn{display:inline-flex;align-items:center;gap:8px;background:#0a0a0a;color:var(--accent);padding:11px 20px;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s}
-.contact-btn:hover{background:#1a1a1a;color:#fff}
-.contact-btn i{font-size:18px}
-footer{border-top:1px solid var(--border);padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-footer p{font-size:13px;color:var(--text3)}
-footer a{color:var(--text3);text-decoration:none}footer a:hover{color:var(--text2)}
-.success-msg{display:none;text-align:center;padding:1.5rem 0}
-.success-msg i{font-size:36px;color:var(--orange);margin-bottom:10px;display:block}
-.success-msg h3{font-size:1rem;font-weight:700;margin-bottom:6px}
-.success-msg p{font-size:13px;color:var(--text2)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.hero-left>*{animation:fadeUp .5s ease both}
-.quote-card{animation:fadeUp .5s .18s ease both}
-@media(max-width:820px){.hero-wrap{grid-template-columns:1fr;padding:3rem 1.25rem 4rem;gap:3rem}.about-grid{grid-template-columns:1fr;gap:2.5rem}.audience-grid{grid-template-columns:1fr}.nav-links{display:none}section{padding:3.5rem 1.25rem}.contact-bar{padding:1.75rem 1.5rem}footer{flex-direction:column;align-items:flex-start}}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--body);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);color:var(--text);text-wrap:balance}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+p{color:var(--text-2)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.94);backdrop-filter:blur(12px);border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--orange),rgba(255,88,24,0) 40%) 1}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:36px;height:36px;display:block}
+.wordmark{font-family:var(--brand);font-size:1.05rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--text)}
+.wordmark span{font-weight:500;color:var(--text-3)}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav ul a{font-size:15px;font-weight:500;color:var(--text-2);text-decoration:none}
+.nav ul a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-size:15px;font-weight:600;border-radius:var(--radius);padding:12px 20px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s,border-color .15s,color .15s}
+.btn-primary{background:var(--text);color:#0a0a0a}
+.btn-primary:hover{background:var(--orange);color:#0a0a0a}
+.btn-quiet{color:var(--text);border-color:var(--line-strong);background:transparent}
+.btn-quiet:hover{border-color:var(--orange)}
+.nav .btn{padding:9px 16px;font-size:14px}
+
+/* hero */
+.hero{padding-block:72px 80px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:64px;align-items:center}
+.hero h1{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:24px}
+.hero-lede{font-size:1.15rem;max-width:30em;margin-bottom:32px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:14px;color:var(--text-3)}
+.hero-facts strong{color:var(--text);font-weight:600}
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy{animation:rise .6s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+
+/* form */
+.quote{background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;padding:28px}
+.quote h2{font-size:1.35rem;margin-bottom:4px}
+.quote-intro{font-size:15px;margin-bottom:22px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:14px;font-weight:500;color:var(--text);margin-bottom:6px}
+.field label small{font-size:13px;font-weight:400;color:var(--text-3)}
+.field input,.field select,.field textarea{width:100%;background:var(--field);border:1px solid var(--line);border-radius:6px;color:var(--text);font:400 15px/1.4 var(--body);padding:11px 12px;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--orange)}
+.field input::placeholder,.field textarea::placeholder{color:#8a8782}
+.field textarea{min-height:88px;resize:vertical}
+.quote .btn{width:100%;margin-top:4px}
+.fine{font-size:13px;color:var(--text-3);margin-top:12px}
+.fine a{color:var(--text-2)}
+.error{display:none;font-size:14px;color:#ff8a7a;margin-top:12px}
+.sent{display:none;padding:12px 0}
+.sent h2{margin-bottom:6px}
+
+/* included band */
+.included{background:var(--surface);border-block:1px solid var(--line);padding-block:56px}
+.included h2{font-size:1.35rem;margin-bottom:28px}
+.included ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
+.included li{position:relative;padding-top:22px}
+.included li::before{content:"";position:absolute;top:0;left:0;width:12px;height:12px;background:var(--orange);clip-path:polygon(0 0,100% 0,0 100%)}
+.included h3{margin-bottom:6px}
+.included p{font-size:15px}
+
+/* generic section */
+.section{padding-block:88px}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px;margin-bottom:40px;align-items:baseline}
+.section-head p{max-width:34em}
+
+/* services */
+.services{display:grid;grid-template-columns:1fr 1fr;column-gap:56px;border-top:1px solid var(--line)}
+.service{padding-block:24px;border-bottom:1px solid var(--line)}
+.service h3{margin-bottom:6px}
+.service p{font-size:15px}
+
+/* rate sheet */
+.rates{border-top:1px solid var(--line-strong)}
+.rate-group{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;padding-block:20px;border-bottom:1px solid var(--line)}
+.rate-group > h3{font-size:15px;color:var(--text-3);font-weight:600;padding-top:10px}
+.rate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:baseline;padding-block:10px}
+.rate + .rate{border-top:1px dashed var(--line)}
+.rate b{display:block;font-weight:600;color:var(--text)}
+.rate span{font-size:14px;color:var(--text-3)}
+.price{font-family:var(--head);font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.price small{font-family:var(--body);font-size:13px;font-weight:500;color:var(--text-3)}
+.rates-note{margin-top:20px;font-size:15px}
+
+/* steps */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;counter-reset:step}
+.steps li{counter-increment:step;border-top:2px solid var(--line-strong);padding-top:18px}
+.steps li:first-child{border-top-color:var(--orange)}
+.steps li::before{content:counter(step);display:block;font-family:var(--head);font-weight:800;font-size:1.6rem;color:var(--text-3);margin-bottom:10px}
+.steps h3{margin-bottom:6px}
+.steps p{font-size:15px}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:48px}
+.about-copy p + p{margin-top:16px}
+
+/* policies */
+.policies{display:grid;grid-template-columns:1fr 1fr;gap:28px 56px}
+.policies h3{font-size:1rem;margin-bottom:6px}
+.policies p{font-size:15px}
+.alt{background:var(--surface);border-top:1px solid var(--line)}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding-block:18px;font-family:var(--head);font-weight:700;font-size:1.05rem;color:var(--text)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--orange);font-weight:600;font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{padding-bottom:20px;max-width:42em;font-size:15px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:28px}
+.foot{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between;font-size:14px;color:var(--text-3)}
+.foot .brand img{width:24px;height:24px}
+.foot .wordmark{font-size:.9rem}
+.foot nav{display:flex;gap:24px}
+.foot a{color:var(--text-3);text-decoration:none}
+.foot a:hover{color:var(--text)}
+
+@media (max-width:900px){
+  .hero-grid,.section-head,.about{grid-template-columns:1fr;gap:32px}
+  .included ul,.steps{grid-template-columns:1fr 1fr}
+  .services,.policies{grid-template-columns:1fr}
+  .rate-group{grid-template-columns:1fr;gap:4px}
+  .rate-group > h3{padding-top:0}
+}
+@media (max-width:640px){
+  .nav{height:auto;flex-wrap:wrap;padding-block:10px;row-gap:6px}
+  .nav ul{order:3;width:100%;gap:20px;overflow-x:auto;padding-bottom:2px}
+  .nav ul a{font-size:14px;white-space:nowrap}
+  .hero{padding-block:44px 56px}
+  .section{padding-block:64px}
+  .included ul,.steps{grid-template-columns:1fr;gap:24px}
+  .row{grid-template-columns:1fr;gap:0}
+  .quote{padding:22px}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <nav>
-    <a href="#" class="logo"><img src="data:image/png;base64,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" alt="Precision PC logo" style="width:36px;height:36px;object-fit:contain" /><span class="logo-text">Precision <span>PC</span></span></a>
-    <ul class="nav-links">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Precision PC home"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
+    <ul>
       <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#quote" class="nav-cta">Free Quote</a>
-  </nav>
+    <a href="#quote" class="btn btn-primary">Free quote</a>
+  </div>
 </header>
 
-<div class="hero-section">
-  <div class="hero-wrap">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Greenfield, MA &nbsp;·&nbsp; Franklin County</div>
-      <h1>PC repair &amp; builds,<br><em>done right.</em></h1>
-      <p class="hero-desc">Custom builds, tune-ups, thermal repastes, virus removal, troubleshooting — handled by someone who actually knows what they're doing.</p>
-      <div class="hero-local"><i class="ti ti-map-pin"></i> Pickup &amp; return in the Greenfield area</div>
-      <div class="hero-btns">
-        <a href="#quote" class="btn-primary">Get a free quote <i class="ti ti-arrow-right"></i></a>
-        <a href="#services" class="btn-ghost">See services</a>
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>PC repair and custom builds in Greenfield, MA.</h1>
+      <p class="hero-lede">We'll pick up your computer, figure out what's wrong for free, and give you a price before doing any work. Every machine gets a free dust-out before it comes back, too.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn btn-primary">Get a free quote</a>
+        <a href="#pricing" class="btn btn-quiet">See pricing</a>
       </div>
-      <div class="trust-items">
-        <div class="trust-item"><i class="ti ti-check"></i> Free diagnostics</div>
-        <div class="trust-item"><i class="ti ti-check"></i> No fix, no fee</div>
-        <div class="trust-item"><i class="ti ti-check"></i> 1–3 day turnaround</div>
+      <div class="hero-facts">
+        <span><strong>1–3 days</strong> for most jobs</span>
+        <span><strong>24-hour</strong> replies</span>
+        <span><strong>Free</strong> pickup in Greenfield</span>
       </div>
     </div>
 
-    <div class="quote-card" id="quote">
-      <h3>Send a message</h3>
-      <p>Describe what's going on and you'll hear back within 24 hours.</p>
-      <div id="quote-form">
-        <div class="form-row">
-          <div class="form-group"><label>First name *</label><input type="text" id="f-first" placeholder="John" autocomplete="given-name" required /></div>
-          <div class="form-group"><label>Last name *</label><input type="text" id="f-last" placeholder="Smith" autocomplete="family-name" required /></div>
+    <div class="quote" id="quote">
+      <form id="quote-form" onsubmit="event.preventDefault();submitForm();" novalidate>
+        <h2>Get a free quote</h2>
+        <p class="quote-intro">Tell us what's going on and we'll get back to you within 24 hours.</p>
+        <div class="row">
+          <div class="field"><label for="f-first">First name</label><input type="text" id="f-first" placeholder="John" autocomplete="given-name" required /></div>
+          <div class="field"><label for="f-last">Last name</label><input type="text" id="f-last" placeholder="Smith" autocomplete="family-name" required /></div>
         </div>
-        <div class="form-group"><label>Phone number *</label><input type="tel" id="f-phone" placeholder="(555) 555-5555" autocomplete="tel" required /></div>
-        <div class="form-group"><label>Email *</label><input type="email" id="f-email" placeholder="you@example.com" autocomplete="email" required /></div>
-        <div class="form-group">
-          <label>Preferred contact method *</label>
+        <div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" placeholder="(413) 555-0123" autocomplete="tel" required /></div>
+        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" placeholder="you@example.com" autocomplete="email" required /></div>
+        <div class="field">
+          <label for="f-method">Best way to reach you</label>
           <select id="f-method" required>
-            <option value="">— Select one —</option>
-            <option>Email</option>
-            <option>Phone call</option>
+            <option value="">Choose one</option>
             <option>Text message</option>
+            <option>Phone call</option>
+            <option>Email</option>
           </select>
         </div>
-        
-        <div class="form-group">
-          <label>What do you need?</label>
+        <div class="field">
+          <label for="f-service">What do you need? <small>(optional)</small></label>
           <select id="f-service">
-            <option value="">— Pick the closest option —</option>
+            <option value="">Pick the closest match</option>
+            <option>Repair or troubleshooting</option>
             <option>Custom PC build</option>
-            <option>PC repair</option>
-            <option>PC running slow / troubleshooting</option>
-            <option>Laptop repair</option>
-            <option>Running hot / thermal repaste (PC, laptop, or GPU VRM)</option>
-            <option>Laptop troubleshooting</option>
-            <option>Virus / malware removal</option>
-            <option>Dust removal &amp; internal cleaning</option>
-            <option>Not sure — just need help</option>
+            <option>Thermal repaste (running hot)</option>
+            <option>Tune-up or virus removal</option>
+            <option>Data transfer or new computer setup</option>
+            <option>Not sure yet</option>
           </select>
         </div>
-        <div class="form-group"><label>Details (optional)</label><textarea id="f-msg" placeholder="e.g. my PC crashes when gaming, my laptop runs really hot..."></textarea></div>
-        <p style="font-size:11px;color:var(--text2);margin:-4px 0 12px">Please don't include passwords or payment details in your message.</p>
-        <input type="text" id="f-bot" tabindex="-1" autocomplete="off" style="display:none" />
-        <button class="btn-primary form-submit" id="f-btn" onclick="submitForm()">Send it over <i class="ti ti-arrow-right"></i></button>
-        <p id="f-err" style="display:none;font-size:12px;color:#e07a7a;text-align:center;margin-top:10px"></p>
-        <p class="form-note"><i class="ti ti-lock"></i> Used only to reply to you · <a href="#policies" style="color:inherit;text-decoration:underline">Privacy</a></p>
-      </div>
-      <div class="success-msg" id="success-msg">
-        <i class="ti ti-circle-check"></i>
-        <h3>Got it, thanks!</h3>
-        <p>Thanks for reaching out — you'll hear back within 24 hours.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section id="services">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Services</div>
-      <h2 class="section-title">What's covered</h2>
-      <p class="section-sub">Focused on doing a few things well. No upsells, no fluff — just solid work.</p>
-    </div>
-
-    <div class="service-group-label">Desktop &amp; PC</div>
-    <div class="services-grid">
-      <div class="service-card featured-service"><div class="service-tag">Specialty</div><div class="service-icon"><i class="ti ti-cpu"></i></div><h3>Custom PC builds</h3><p>Gaming rig, home workstation, or budget build — parts are specced, sourced, and assembled around your needs, built right the first time.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-tools"></i></div><h3>PC repair</h3><p>Won't boot, random crashes, hardware issues — Every issue is properly diagnosed and the actual problem fixed, not just the symptom.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-device-desktop-analytics"></i></div><h3>PC troubleshooting</h3><p>Slow, freezing, blue screens, weird behavior — The cause gets tracked down and your machine is back to running the way it should.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-rocket"></i></div><h3>PC tune-up</h3><p>Old machine feeling sluggish? Startup cleanup, software audit, and optimization — often makes a huge difference without spending a dime on hardware.</p></div>
-    </div>
-
-    <div class="service-group-label">Laptop</div>
-    <div class="services-grid">
-      <div class="service-card"><div class="service-icon"><i class="ti ti-device-laptop"></i></div><h3>Laptop repair</h3><p>Laptop acting up? You'll get a proper diagnosis and an honest assessment of what it'll take to fix it.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-device-laptop-off"></i></div><h3>Laptop troubleshooting</h3><p>Performance issues, software problems, battery draining fast — The problem gets identified and you get honest options.</p></div>
-    </div>
-
-    <div class="service-group-label">Maintenance &amp; Other</div>
-    <div class="services-grid">
-      <div class="service-card featured-service"><div class="service-tag">Popular</div><div class="service-icon"><i class="ti ti-temperature"></i></div><h3>Thermal repaste</h3><p>PC or laptop running hot and throttling? Fresh paste can drop temps significantly. Laptop repastes cover the CPU, GPU, and VRM thermal putty replacement in one price, no add-ons. Desktop GPU repastes include new thermal pads.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-wind"></i></div><h3>Dust removal &amp; cleaning</h3><p>Full disassembly, compressed air blowout of fans, heatsinks, vents, and filters. Pairs well with a thermal repaste for maximum cooling improvement.</p></div>
-      <div class="service-card"><div class="service-icon"><i class="ti ti-shield-check"></i></div><h3>Virus &amp; malware removal</h3><p>Infected, hijacked, or just acting strange? Full cleanup and protection setup so it doesn't happen again.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="audience">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Who it's for</div>
-      <h2 class="section-title">Everyone's welcome</h2>
-    </div>
-    <div class="audience-grid">
-      <div class="audience-card"><h3>Not tech savvy?<br>No problem.</h3><p>Everything is explained in plain English. No jargon, no upsells. Not sure what's wrong? Reach out and you'll get honest options before any work begins.</p></div>
-      <div class="audience-card"><h3>College student?<br>Quick and affordable.</h3><p>Laptop dying mid-semester or building your first gaming PC? Quick turnarounds and fair pricing. Most jobs done in 1–3 days so you can get back to what matters.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="how-it-works">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">How it works</div>
-      <h2 class="section-title">Simple process, honest results</h2>
-      <p class="section-sub">A mobile service: pickup and return come to you, or to a public meeting spot. No trips to a shop, no waiting rooms.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step"><div class="step-num">01 &mdash;</div><h3>Reach out</h3><p>Fill out the form and describe what's going on. You'll hear back as soon as possible — usually within 24 hours.</p></div>
-      <div class="step"><div class="step-num">02 &mdash;</div><h3>Pickup at your door</h3><p>A pickup time is arranged and your machine is collected from your address or an agreed public meeting spot. Based in Greenfield, and farther out is often possible, just ask. No appointment lines, no retail chaos.</p></div>
-      <div class="step"><div class="step-num">03 &mdash;</div><h3>Free diagnosis</h3><p>The issue is assessed and you get a straight quote. You decide if you want to move forward — no pressure, no charge to look.</p></div>
-      <div class="step"><div class="step-num">04 &mdash;</div><h3>Returned fixed</h3><p>Most jobs are done within 1–3 days of pickup. Everything is tested before it's returned to you. No fix, no fee — guaranteed.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div>
-        <div class="section-eyebrow">About</div>
-        <h2 class="section-title">Honest work,<br>fair prices</h2>
-        <p>Precision PC is solely owned and operated by Ben, who spent years being the go-to person when a computer breaks — building rigs, tracking down weird issues, and fixing things others gave up on. Now it's done professionally.</p>
-        <p>Based in Greenfield, MA and operating without a storefront — lower overhead means better prices, and you deal with one person start to finish.</p>
-        <p>If something is outside the scope of what's offered, you'll be told upfront instead of guessing with your machine.</p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years building &amp; fixing PCs</div></div>
-        <div class="stat-card"><div class="stat-num">1–3</div><div class="stat-label">Day typical turnaround</div></div>
-        <div class="stat-card"><div class="stat-num">$0</div><div class="stat-label">Charge for diagnostics</div></div>
-        <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">No fix, no fee guarantee</div></div>
+        <div class="field"><label for="f-msg">Details <small>(optional)</small></label><textarea id="f-msg" placeholder="For example: my PC shuts off when gaming, or my laptop gets very hot."></textarea></div>
+        <input type="text" id="f-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <button class="btn btn-primary" id="f-btn" type="submit">Send request</button>
+        <p class="error" id="f-err" role="alert"></p>
+        <p class="fine">We only use this to reply to you. Please don't send passwords or payment info. <a href="#policies">Privacy</a></p>
+      </form>
+      <div class="sent" id="success-msg" role="status">
+        <h2 id="sent-title" tabindex="-1">Request sent</h2>
+        <p>Thanks! We'll get back to you within 24 hours.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pricing">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Pricing</div>
-      <h2 class="section-title">Fair, upfront pricing</h2>
-      <p class="section-sub">You'll always get a quote before any work starts. No surprises.</p>
+<section class="included" aria-labelledby="included-title">
+  <div class="wrap">
+    <h2 id="included-title">Included with every job</h2>
+    <ul>
+      <li><h3>Free diagnosis</h3><p>We figure out what's wrong and what it'll cost before you commit to anything.</p></li>
+      <li><h3>Free dust-out and clean</h3><p>We blow out the fans, heatsinks, vents and filters on every machine we work on.</p></li>
+      <li><h3>No fix, no fee</h3><p>If we can't fix it, you don't pay for the repair.</p></li>
+      <li><h3>30 days of coverage</h3><p>If a repair we did fails within 30 days of getting your machine back, we'll make it right.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+      <p>Windows desktops, laptops and custom builds. We don't work on Macs. If something's outside what we do, we'll tell you right away.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card"><div class="price-amount">Free</div><div class="price-label">Always</div><h3>Diagnosis</h3><p>The problem is assessed and you're told what it is and what it'll cost. No charge to find out.</p></div>
-      <div class="price-card featured"><div class="popular-tag">Most common</div><div class="price-amount"><span>from</span> $60</div><div class="price-label">Labor, per job</div><h3>Repair &amp; troubleshooting</h3><p>Software issues, virus removal, tune-ups, and most standard repairs. Parts extra if needed.</p></div>
-      <div class="price-card"><div class="price-amount"><span>from</span> $45</div><div class="price-label">Desktop repaste</div><h3>Desktop thermal repaste</h3><p>CPU repaste $45. GPU repaste with new thermal pads $75.</p></div>
-      <div class="price-card"><div class="price-amount">$110 <span>flat</span></div><div class="price-label">Laptop repaste, all included</div><h3>Laptop thermal repaste</h3><p>Full teardown, fresh paste on the CPU and GPU, and VRM thermal putty replaced. No add-ons, no surprise extras.</p></div>
-      <div class="price-card"><div class="price-amount">$100 <span>flat</span></div><div class="price-label">Build labor, parts extra</div><h3>PC builds</h3><p>The right parts are chosen for your budget, then assembled, cable-managed, and tested. Free parts quote. Complex builds are quoted hourly.</p></div>
-      <div class="price-card"><div class="price-amount">Free <span>in Greenfield</span></div><div class="price-label">Outside Greenfield, from $15</div><h3>Travel</h3><p>Pickup and return are free in Greenfield. Elsewhere in Franklin County the travel fee starts at $15. It's higher the farther out, and the exact amount is quoted and agreed before pickup.</p></div>
-      <div class="price-card"><div class="price-amount">$60 <span>/ hour</span></div><div class="price-label">Larger or custom jobs</div><h3>Hourly work</h3><p>For open-ended jobs like complex builds, data transfers, and new-computer setup. Estimate and approval first, billed in 30-minute increments.</p></div>
+    <div class="services">
+      <div class="service"><h3>Repair and troubleshooting</h3><p>Won't turn on, keeps crashing, blue screens, or just painfully slow. We track down what's actually causing it and fix that.</p></div>
+      <div class="service"><h3>Custom PC builds</h3><p>Gaming, work or budget builds. We pick parts that fit your budget, put it together, tidy the cables and test it. The parts list is free.</p></div>
+      <div class="service"><h3>Thermal repaste</h3><p>Running hot or slowing down under load? Desktops get fresh paste on the CPU and new pads on the GPU. Laptops get the CPU, GPU and VRM putty redone for one flat price.</p></div>
+      <div class="service"><h3>Tune-ups and virus removal</h3><p>Slow startup, pop-ups or a computer acting weird. We clean it up, remove malware and set up protection so it stays that way.</p></div>
+      <div class="service"><h3>Data transfer and setup</h3><p>Getting a new computer? We'll move your files over and set it up how you like it. Billed hourly, with an estimate first.</p></div>
+      <div class="service"><h3>Not sure what's wrong?</h3><p>Just describe it in the form. The diagnosis is free, and we'll lay out your options before doing anything.</p></div>
     </div>
   </div>
 </section>
 
-<section id="policies" style="background:var(--bg2)">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow">Policies</div>
-      <h2 class="section-title">Policies &amp; privacy</h2>
-      <p class="section-sub">Plain-English expectations, so there are no surprises.</p>
+<section class="section alt" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pricing</h2>
+      <p>You'll always approve a price before we start. Parts are extra unless noted, and the dust-out is free on every job.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card"><h3>Estimates &amp; approval</h3><p>You're quoted before any work starts, and nothing proceeds without your approval. Parts are extra unless stated. No fix, no fee. Anything unexpected is communicated to you promptly.</p></div>
-      <div class="price-card"><h3>Back up your data</h3><p>Please back up important files before pickup. Every reasonable precaution is taken, but data loss can happen, especially with failing hardware, and Precision PC can't be responsible for lost data.</p></div>
-      <div class="price-card"><h3>Your device &amp; files</h3><p>Your device is accessed only to complete the requested work. Your files are not copied, shared, or kept.</p></div>
-      <div class="price-card"><h3>Return window</h3><p>You'll be notified when your device is ready to be returned. Devices not collected or accepted back within 90 days after notice are considered abandoned and may be recycled or sold to recover costs. Reasonable attempts to reach you will be made first.</p></div>
-      <div class="price-card"><h3>Contact form privacy</h3><p>The details you submit are used only to respond to your inquiry. They're sent through a third-party form service to Precision PC's email and are never sold. Please don't include passwords or payment details.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" style="background:var(--bg)">
-  <div class="container">
-    <div class="contact-bar">
-      <div><h3>Ready to get started?</h3><p>Send a message describing what's going on — you'll hear back within 24 hours.</p></div>
-      <div class="contact-btns">
-        <a class="contact-btn" href="#quote"><i class="ti ti-mail"></i> Send a message</a>
+    <div class="rates">
+      <div class="rate-group">
+        <h3>Diagnosis and repair</h3>
+        <div>
+          <div class="rate"><div><b>Diagnosis</b><span>Find the problem and get a quote</span></div><div class="price">Free</div></div>
+          <div class="rate"><div><b>Repair and troubleshooting</b><span>Software issues, virus removal, tune-ups and most standard repairs</span></div><div class="price"><small>from</small> $60</div></div>
+        </div>
+      </div>
+      <div class="rate-group">
+        <h3>Thermal repaste</h3>
+        <div>
+          <div class="rate"><div><b>Desktop CPU</b><span>Fresh thermal paste</span></div><div class="price">$45</div></div>
+          <div class="rate"><div><b>Desktop GPU</b><span>Fresh paste and new thermal pads</span></div><div class="price">$75</div></div>
+          <div class="rate"><div><b>Laptop</b><span>Flat rate. CPU, GPU and VRM thermal putty, all included</span></div><div class="price">$110</div></div>
+        </div>
+      </div>
+      <div class="rate-group">
+        <h3>Builds and larger jobs</h3>
+        <div>
+          <div class="rate"><div><b>PC build labor</b><span>Flat rate, parts extra. Assembly, cable management and testing, with a free parts list</span></div><div class="price">$100</div></div>
+          <div class="rate"><div><b>Hourly work</b><span>Complex builds, data transfer and setup. Billed in 30-minute increments</span></div><div class="price">$60 <small>/ hr</small></div></div>
+        </div>
+      </div>
+      <div class="rate-group">
+        <h3>Pickup and return</h3>
+        <div>
+          <div class="rate"><div><b>In Greenfield</b><span>At your door or an agreed public meeting spot</span></div><div class="price">Free</div></div>
+          <div class="rate"><div><b>Elsewhere in Franklin County</b><span>Goes up with distance and covers the trip, even if you pass on the repair. Agreed before pickup</span></div><div class="price"><small>from</small> $15</div></div>
+        </div>
       </div>
     </div>
+    <p class="rates-note">Most jobs get one flat price after the diagnosis. Hourly is only for open-ended work, and we'll give you an estimate first. You pay when you get your machine back, cash or Venmo.</p>
   </div>
 </section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>You don't have to go anywhere. We pick your computer up and bring it back.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Send a request</h3><p>Fill out the form and tell us what's going on. We'll get back to you within 24 hours.</p></li>
+      <li><h3>Pickup</h3><p>We'll set a time to grab it from your place or a public spot that works for you. Outside Franklin County? Just ask.</p></li>
+      <li><h3>Diagnosis and quote</h3><p>We figure out what's wrong for free, then send you a price. Nothing happens until you say yes.</p></li>
+      <li><h3>Return</h3><p>Most jobs take 1–3 days, longer if we need to order parts. We clean it, test it and bring it back.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section alt" id="about">
+  <div class="wrap about">
+    <h2>About Precision PC</h2>
+    <div class="about-copy">
+      <p>Precision PC is solely owned and operated by Ben Wheeler. He's been fixing computers since he was a kid and building them for people and local businesses since 2012.</p>
+      <p>We don't have a storefront, which keeps prices down, and you deal with the same person start to finish. Before you pay, you'll know exactly what was wrong and what we did about it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Common questions</h2>
+      <p>Quick answers to what people usually ask.</p>
+    </div>
+    <div class="faq">
+      <details><summary>How do I pay?</summary><p>Cash or Venmo, when you get your machine back.</p></details>
+      <details><summary>Do you work on Macs?</summary><p>No, we only work on Windows desktops and laptops, plus custom PC builds.</p></details>
+      <details><summary>What if I don&#x27;t go ahead after the diagnosis?</summary><p>That&#x27;s fine. The diagnosis is free and you&#x27;ll get your machine back as is. If you&#x27;re outside Greenfield, the travel fee we agreed on still applies, since it covers the trip.</p></details>
+      <details><summary>What should I have ready at pickup?</summary><p>Your charger and anything else that goes with it, a backup of anything important, and your login if we&#x27;ll need it to test. You give us your login in person, and we never store it.</p></details>
+      <details><summary>What if parts need to be ordered?</summary><p>Parts are included in your quote. For special-order parts we may ask for a deposit first, and the job takes a little longer while they ship.</p></details>
+      <details><summary>How far do you travel?</summary><p>Anywhere in Franklin County, and pickup is free in Greenfield. Farther than that, just ask.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="policies">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Policies and privacy</h2>
+      <p>The short version. The full terms are on the service agreement you'll sign at pickup.</p>
+    </div>
+    <div class="policies">
+      <div><h3>Estimates and approval</h3><p>We'll give you a price before starting, and nothing happens without your OK. If we find something unexpected, we'll let you know right away.</p></div>
+      <div><h3>Back up your data</h3><p>Backing up your files before pickup is your responsibility. We're careful, but data can be lost, especially on failing hardware, and we can't be responsible for it.</p></div>
+      <div><h3>Your device, files and messages</h3><p>We only access your computer to do the work you approved. We never share or keep your files, and only copy them if you ask for a data transfer. Messages from the form go through a third-party form service to our email, are only used to reply to you, and are never sold.</p></div>
+      <div><h3>Return window</h3><p>We'll let you know when your machine is ready. If it isn't picked up or accepted back within 90 days of that, it's considered abandoned and may be recycled or sold to cover costs. We'll try to reach you before that happens.</p></div>
+    </div>
+  </div>
+</section>
+</main>
 
 <footer>
-  <div style="display:flex;align-items:center;gap:8px"><img src="data:image/png;base64,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" alt="Precision PC logo" style="width:24px;height:24px;object-fit:contain" /><p><span style="font-family:'Syne',sans-serif;font-weight:800;letter-spacing:.04em;text-transform:uppercase">Precision PC</span> &nbsp;·&nbsp; Greenfield, MA</p></div>
-  <p><a href="#policies">Policies &amp; privacy</a> &nbsp;·&nbsp; © 2026 Precision PC. All rights reserved.</p>
+  <div class="wrap foot">
+    <a href="#top" class="brand"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
+    <span>Greenfield, Massachusetts</span>
+    <nav aria-label="Footer"><a href="#policies">Policies and privacy</a><a href="#quote">Free quote</a></nav>
+    <span>&copy; 2026 Precision PC</span>
+  </div>
 </footer>
 
 <script>
@@ -356,11 +414,11 @@ async function submitForm(){
   var err=document.getElementById('f-err'), btn=document.getElementById('f-btn');
   var show=function(m){err.textContent=m;err.style.display='block';};
   err.style.display='none';
-  if(!first||!last||!phone||!email||!method){show('Please fill out all required fields.');return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){show('Please enter a valid email address.');return;}
-  if(phone.replace(/\D/g,'').length<10){show('Please enter a valid phone number.');return;}
+  if(!first||!last||!phone||!email||!method){show('Fill in your name, phone, email and how you\'d like us to reach you.');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){show('That email address doesn\'t look right. Check it and try again.');return;}
+  if(phone.replace(/\D/g,'').length<10){show('Enter a 10-digit phone number, including area code.');return;}
   if(document.getElementById('f-bot').value){return;}
-  btn.disabled=true; btn.style.opacity='.6';
+  btn.disabled=true; btn.textContent='Sending…';
   try{
     var res=await fetch('https://api.web3forms.com/submit',{
       method:'POST',
@@ -383,10 +441,11 @@ async function submitForm(){
     if(data.success){
       document.getElementById('quote-form').style.display='none';
       document.getElementById('success-msg').style.display='block';
+      document.getElementById('sent-title').focus();
     }else{throw new Error(data.message||'failed');}
   }catch(e){
-    show('Something went wrong sending that. Please try again in a moment.');
-    btn.disabled=false; btn.style.opacity='1';
+    show('That didn\'t go through. Check your connection and try again, or email us at precisionpcma@gmail.com.');
+    btn.disabled=false; btn.textContent='Send request';
   }
 }
 </script>
