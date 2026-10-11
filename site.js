@@ -242,7 +242,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     board.querySelector('.s-ram small').textContent = tuning ? 'Tuned timings' : (ex.length ? 'XMP or EXPO' : '');
     board.querySelector('.s-psu').classList.toggle('lit', cables || ex.length > 0);
     board.querySelector('.s-psu small').textContent = cables ? 'Sleeved cables' : (ex.length ? 'Sized to the build' : '');
-    var total = 100, rows = '<div><span>Build labor</span><span>$100</span></div>';
+    var total = 150, rows = '<div><span>Build labor</span><span>$150</span></div>';
     if (tuning) { total += 149; rows += '<div><span>Advanced tuning</span><span>from $149</span></div>'; }
     if (cables) { total += 15; rows += '<div><span>Cable install</span><span>$15</span></div>'; }
     if (order) { total += 25; rows += '<div><span>We order the parts</span><span>$25</span></div>'; }

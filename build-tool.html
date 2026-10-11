@@ -67,7 +67,7 @@ td.x{width:36px}
     <div><label for="list">PCPartPicker list link</label><input id="list" placeholder="https://pcpartpicker.com/list/..." /></div>
   </div>
   <div class="grid" style="margin-top:12px">
-    <div><label for="labor">Build labor ($)</label><input id="labor" type="number" min="0" step="1" value="100" /></div>
+    <div><label for="labor">Build labor ($)</label><input id="labor" type="number" min="0" step="1" value="150" /></div>
   </div>
 
   <h2>4. Add-ons</h2>
@@ -194,7 +194,7 @@ document.getElementById('parse').onclick=async function(){
 function load(d){
   rows.innerHTML='';(d.parts||[]).forEach(addRow);
   document.getElementById('title').value=d.title||'';document.getElementById('cname').value=d.name||'';
-  document.getElementById('list').value=d.list||'';document.getElementById('labor').value=d.labor!=null?d.labor:100;
+  document.getElementById('list').value=d.list||'';document.getElementById('labor').value=d.labor!=null?d.labor:150;
   document.getElementById('notes').value=d.notes||'';
   var boxes=document.querySelectorAll('#addons .addon');boxes.forEach(function(b){b.children[0].checked=false;});
   (d.addons||[]).forEach(function(a,i){var b=boxes[Math.min(i,boxes.length-1)];var match=Array.prototype.find.call(boxes,function(x){return x.children[1].value===a.label;})||b;match.children[0].checked=true;match.children[1].value=a.label;match.children[2].value=a.price;});
