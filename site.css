@@ -382,3 +382,11 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 }
 
 @media (max-width:640px){.has-mbar header .nav > .btn{display:none}}
+/* build request form (v4.7) */
+.bform-wrap{max-width:780px}
+.bform fieldset{border:0;margin:0 0 22px;padding:0;min-width:0}
+.bform legend{font:600 15px var(--body);color:var(--text);margin-bottom:10px;padding:0}
+.bform legend small{font-weight:400;font-size:13px;color:var(--text-3);margin-left:6px}
+.bform .choices{display:flex;flex-wrap:wrap;gap:8px}
+#b-sent{max-width:780px}
+.note{font-size:14px;color:var(--text-2)}

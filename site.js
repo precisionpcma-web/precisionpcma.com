@@ -254,3 +254,34 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   form.addEventListener('input', update);
   update();
 })();
+
+/* ---------- custom build request form (builds) ---------- */
+(function () {
+  var form = document.getElementById('build-form');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var err = document.getElementById('b-err'), btn = document.getElementById('b-btn');
+    var show = function (m) { err.textContent = m; err.style.display = 'block'; };
+    err.style.display = 'none';
+    if (!v('b-for')) { show('Choose who the PC is for.'); return; }
+    if (!v('b-use')) { show('Choose the main thing you\'ll use it for.'); return; }
+    if (!v('b-budget')) { show('Choose a budget range, or "Not sure".'); return; }
+    var first = v('b-first'), last = v('b-last'), phone = v('b-phone'), email = v('b-email'), method = v('b-method');
+    if (!ppcValidContact(first, last, phone, email, show)) return;
+    if (!method) { show('Choose the best way to reach you.'); return; }
+    if (document.getElementById('b-bot').value) return;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      await ppcSend({ subject: 'New custom build request from ' + first + ' ' + last, name: first + ' ' + last, phone: phone, email: email,
+        preferred_contact: method, business_name: v('b-biz') || '(none)', build_for: v('b-for'), main_use: v('b-use'),
+        monitor: v('b-res') || 'Not given', refresh_rate: v('b-hz') || 'Not given', parts_budget: v('b-budget'),
+        case_size: v('b-case') || 'Not given', wifi_bluetooth: v('b-wifi') || 'Not given',
+        parts_they_have: v('b-have') || 'None', notes: v('b-notes') || '(none)' });
+      form.style.display = 'none';
+      document.getElementById('b-sent').style.display = 'block';
+      document.getElementById('b-sent-title').focus();
+    } catch (x) { show(PPC_FAIL); btn.disabled = false; btn.textContent = 'Get my free build sheet'; }
+  });
+})();
