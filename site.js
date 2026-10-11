@@ -487,3 +487,32 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   }
   show(1);
 })();
+
+/* ---------- home die map: cycling part callouts ---------- */
+(function () {
+  var g = document.getElementById('die-note');
+  if (!g) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
+  /* [x, y of the part, label line 1, line 2, side] */
+  var F = [
+    [300, 236, 'THERMAL INTERFACE', 'PASTE OR PTM7950', 'r'],
+    [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r'],
+    [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r'],
+    [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l'],
+    [250, 112, 'SUBSTRATE', 'LINKS CHIP TO BOARD', 'r']
+  ];
+  var i = 0;
+  function place(f) {
+    var x = f[0], y = f[1], d, tx, ty, anchor;
+    if (f[4] === 'l') { d = 'M' + x + ' ' + y + 'L90 90H20'; tx = 20; ty = 64; anchor = 'start'; }
+    else { var ey = Math.max(y - 70, 36); d = 'M' + x + ' ' + y + 'L372 ' + ey + 'h80'; tx = 374; ty = ey - 22; anchor = 'start'; }
+    lead.setAttribute('d', d); dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+    t1.setAttribute('x', tx); t1.setAttribute('y', ty); t2.setAttribute('x', tx); t2.setAttribute('y', ty + 14);
+    t1.textContent = f[2]; t2.textContent = f[3];
+  }
+  setInterval(function () {
+    g.classList.add('fade');
+    setTimeout(function () { i = (i + 1) % F.length; place(F[i]); g.classList.remove('fade'); }, 450);
+  }, 3800);
+})();

@@ -522,3 +522,14 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .gh-ico{margin-bottom:12px}
 .section.alt{background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:24px 24px}
 .stats + .section{padding-top:48px!important}
+/* die callouts */
+.die .note{transition:opacity .45s var(--ease)}
+.die .note.fade{opacity:0}
+/* builds hero rig */
+.page-hero.has-art .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:center}
+.rig{width:100%;height:auto;display:block}
+.rig .spin{transform-box:fill-box;transform-origin:center}
+@media (prefers-reduced-motion:no-preference){.rig .spin{animation:spin 1.2s linear infinite}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:760px){.page-hero.has-art .wrap{grid-template-columns:minmax(0,1fr) 120px;gap:16px}}
+@media (max-width:420px){.page-hero.has-art .wrap{grid-template-columns:1fr}.rig-wrap{display:none}}
