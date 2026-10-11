@@ -20,9 +20,6 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Precision PC","url":"https://precisionpcma.com/","email":"precisionpcma@gmail.com","image":"https://precisionpcma.com/og-image.png","logo":"https://precisionpcma.com/favicon-192.png","description":"PC repair, custom builds, performance tuning and thermal service in Greenfield, MA. Free diagnosis, with pickup and return across Franklin County.","address":{"@type":"PostalAddress","addressLocality":"Greenfield","addressRegion":"MA","addressCountry":"US"},"areaServed":[{"@type":"City","name":"Greenfield, MA"},{"@type":"AdministrativeArea","name":"Franklin County, MA"}]}
 </script>
-<script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Cash or Venmo, when you get your machine back. For custom builds, you either order the parts yourself, or we order them for you, with the parts and a $25 handling fee paid upfront by cash or Zelle."}}, {"@type": "Question", "name": "What's lifetime build support?", "acceptedAnswer": {"@type": "Answer", "text": "Every custom build includes free troubleshooting and diagnosis, help with manufacturer warranty claims (RMAs), a yearly dust-out, and driver and BIOS updates for as long as you own the PC. Replacement parts aren't included unless the manufacturer's warranty covers them, and the travel fee still applies outside Greenfield."}}, {"@type": "Question", "name": "Can I cancel a custom build?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If you ordered the parts, you own them, so you can cancel any time before we start building at no charge. If we ordered them for you, we return what we can and refund what the stores refund, minus restocking fees and return shipping. The $25 handling fee isn't refunded once parts are ordered."}}, {"@type": "Question", "name": "Do you work on Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No, we only work on Windows desktops and laptops, plus custom PC builds."}}, {"@type": "Question", "name": "Why does a laptop repaste cost more?", "acceptedAnswer": {"@type": "Answer", "text": "On most gaming laptops, the CPU and GPU share one heatsink that also cools the VRMs and VRAM. Those chips sit at a different height than the CPU and GPU, so thermal putty fills the gap between them and the heatsink. Lifting the heatsink to repaste tears the putty, so it always has to be replaced too. The putty and the extra work are included in the price."}}, {"@type": "Question", "name": "Why use thermal putty instead of pads?", "acceptedAnswer": {"@type": "Answer", "text": "Putty squishes to fill uneven gaps, so it keeps full contact with the heatsink where a pad of the wrong thickness can leave an air gap or keep the cooler from seating properly. That's why many gaming laptops and some newer GPUs ship with putty from the factory."}}, {"@type": "Question", "name": "My laptop came with liquid metal. Can you service it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We fully clean off the liquid metal and switch to PTM7950, which runs nearly as cool without the risk of the metal pumping out or shorting nearby parts over time."}}, {"@type": "Question", "name": "Is overclocking safe?", "acceptedAnswer": {"@type": "Answer", "text": "We stay within safe voltages and stability-test every change before your machine comes back. Results depend on your hardware, and some manufacturers say overclocking can void their warranty, so we'll go over what to expect before starting."}}, {"@type": "Question", "name": "What if I don't go ahead after the diagnosis?", "acceptedAnswer": {"@type": "Answer", "text": "That's fine. The diagnosis is free and you'll get your machine back as is. If you're outside Greenfield, the travel fee we agreed on still applies, since it covers the trip."}}, {"@type": "Question", "name": "What should I have ready at pickup?", "acceptedAnswer": {"@type": "Answer", "text": "Your charger and anything else that goes with it, a backup of anything important if the computer still turns on, and your login if we'll need it to test. You give us your login in person, and we never store it."}}, {"@type": "Question", "name": "What if parts need to be ordered?", "acceptedAnswer": {"@type": "Answer", "text": "Parts are included in your quote. For special-order parts we may ask for a deposit first, and the job takes a little longer while they ship."}}, {"@type": "Question", "name": "How far do you travel?", "acceptedAnswer": {"@type": "Answer", "text": "Anywhere in Franklin County, and pickup is free in Greenfield. Farther than that, just ask."}}]}
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -189,6 +186,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.94);backdrop-f
 @media (max-width:900px){.builder-qs{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.contact-grid{grid-template-columns:1fr;gap:0}}
 
+.nav ul a[aria-current="page"]{color:var(--text);box-shadow:inset 0 -2px 0 var(--orange);padding-bottom:4px}
+.page-hero{padding-block:64px 8px}
+.page-hero h1{font-size:clamp(2.1rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:16px}
+.page-hero p{font-size:1.1rem;max-width:36em}
+.more{margin-top:28px}
+.svc-price{display:block;margin-top:8px;font-family:var(--head);font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.svc-price small{font-family:var(--body);font-weight:500;font-size:13px;color:var(--text-3)}
+.service h3 a{text-decoration:none}
+.service h3 a:hover{color:var(--orange)}
+.options2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.opt{padding:24px;border:1px solid var(--line-strong);border-radius:12px;background:var(--surface)}
+.opt h3{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+.opt h3 small{font-family:var(--body);font-size:14px;font-weight:600;color:var(--orange);white-space:nowrap}
+.opt p{font-size:15px}
+.checklist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 48px}
+.checklist li{position:relative;padding-left:22px;color:var(--text-2);font-size:15px}
+.checklist li::before{content:"";position:absolute;left:0;top:.45em;width:10px;height:10px;background:var(--orange);clip-path:polygon(0 0,100% 0,0 100%)}
+.checklist b{color:var(--text);font-weight:600}
+@media (max-width:900px){.options2,.checklist{grid-template-columns:1fr}}
+
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:28px}
 .foot{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between;font-size:14px;color:var(--text-3)}
@@ -221,16 +238,14 @@ footer{border-top:1px solid var(--line);padding-block:28px}
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="brand" aria-label="Precision PC home"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
+    <a href="index.html" class="brand" aria-label="Precision PC home"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
     <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#build">Plan a build</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#how">How it works</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="builds.html">Custom builds</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="faq.html">FAQ</a></li>
     </ul>
-    <a href="#quote" class="btn btn-primary">Request service</a>
+    <a href="index.html#quote" class="btn btn-primary">Request service</a>
   </div>
 </header>
 
@@ -242,7 +257,7 @@ footer{border-top:1px solid var(--line);padding-block:28px}
       <p class="hero-lede">We'll pick up your computer, figure out what's wrong for free, and give you a price before doing any work. Every machine gets a free dust-out before it comes back, too.</p>
       <div class="hero-actions">
         <a href="#quote" class="btn btn-primary">Request service</a>
-        <a href="#pricing" class="btn btn-quiet">See pricing</a>
+        <a href="services.html#pricing" class="btn btn-quiet">See pricing</a>
       </div>
       <div class="hero-facts">
         <span><strong>1–3 days</strong> for most jobs</span>
@@ -288,7 +303,7 @@ footer{border-top:1px solid var(--line);padding-block:28px}
         <input type="text" id="f-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
         <button class="btn btn-primary" id="f-btn" type="submit">Send request</button>
         <p class="error" id="f-err" role="alert"></p>
-        <p class="fine">We only use this to reply to you. Please don't send passwords or payment info. <a href="#policies">Privacy</a></p>
+        <p class="fine">We only use this to reply to you. Please don't send passwords or payment info. <a href="faq.html#policies">Privacy</a></p>
       </form>
       <div class="sent" id="success-msg" role="status">
         <h2 id="sent-title" tabindex="-1">Request sent</h2>
@@ -314,113 +329,17 @@ footer{border-top:1px solid var(--line);padding-block:28px}
   <div class="wrap">
     <div class="section-head">
       <h2>Services</h2>
-      <p>Windows desktops, laptops and custom builds. We don't work on Macs. If something's outside what we do, we'll tell you right away.</p>
+      <p>Windows desktops, laptops and custom builds. We don't work on Macs.</p>
     </div>
     <div class="services">
-      <div class="service"><h3>Repair and troubleshooting</h3><p>No power, no POST, boot loops, BSODs, freezing or random shutdowns. We isolate the faulty part, driver or setting and fix the root cause, including part swaps like storage, RAM, power supplies and laptop batteries. We don't do board-level or soldering repairs.</p></div>
-      <div class="service"><h3>Custom PC builds</h3><p>Gaming, workstation or budget builds. Answer a few questions in the build planner and we'll send you a build sheet with every part, its price and live price links. Order the parts yourself, or have us order them for you, and we build it with clean cable management, the latest stable BIOS, Windows and drivers, XMP or EXPO and a full stress test. Every build comes with lifetime build support.</p></div>
-      <div class="service"><h3>Performance tuning</h3><p>Manual RAM timing tuning, CPU and GPU overclocking or undervolting, PBO and Curve Optimizer on AMD, power limits and undervolting on Intel, BIOS setup and custom fan curves. Every change is stability-tested before your machine comes back. Laptops are limited to what their BIOS allows, usually a GPU undervolt plus fan and power profiles.</p></div>
-      <div class="service"><h3>Thermal service</h3><p>Running hot or thermal throttling? We clean off the old thermal compound and apply high-end paste or PTM7950 to the CPU and GPU, and replace the thermal pads or Upsiren UTP-8 putty that fills the gap between the VRMs, VRAM and the heatsink.</p></div>
-      <div class="service"><h3>Windows cleanup and malware removal</h3><p>Startup bloat, background junk, pop-ups and malware. We clean up Windows, remove the malware, update drivers and set up protection to help keep it that way.</p></div>
-      <div class="service"><h3>Data transfer and setup</h3><p>Getting a new computer? We'll move your files over and set it up how you like it. Billed hourly, with an estimate first.</p></div>
-      <div class="service"><h3>Buying and upgrade advice</h3><p>Not sure which laptop or desktop to buy, or whether an upgrade is worth it for your work machine? Send us your budget and what you use it for, and we'll give you a straight recommendation for free. For a full written plan comparing specific laptops or prebuilts, it's $40, and that comes off the bill if we set it up for you. Parts lists for custom builds are always free. No pickup needed.</p></div>
+      <div class="service"><h3><a href="services.html#services">Repair and troubleshooting</a></h3><p>No POST, BSODs, crashes, part swaps and laptop batteries.</p><span class="svc-price"><small>from</small> $60</span></div>
+      <div class="service"><h3><a href="builds.html">Custom PC builds</a></h3><p>A free build sheet for your budget, built, stress-tested and backed by lifetime build support.</p><span class="svc-price">$100 <small>labor</small></span></div>
+      <div class="service"><h3><a href="services.html#services">Performance tuning</a></h3><p>RAM timings, overclocking and undervolting, all stability-tested.</p><span class="svc-price"><small>from</small> $99</span></div>
+      <div class="service"><h3><a href="services.html#services">Thermal service</a></h3><p>Fresh paste or PTM7950, plus new pads or UTP-8 putty on the VRMs and VRAM.</p><span class="svc-price"><small>from</small> $45</span></div>
+      <div class="service"><h3><a href="services.html#services">Windows cleanup and malware removal</a></h3><p>Startup bloat, pop-ups and malware cleaned up, drivers updated.</p><span class="svc-price"><small>from</small> $60</span></div>
+      <div class="service"><h3><a href="services.html#services">Buying and upgrade advice</a></h3><p>Not sure what to buy? Tell us your budget and we'll point you to the right machine.</p><span class="svc-price">Free</span></div>
     </div>
-  </div>
-</section>
-
-<section class="section alt" id="build">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Plan a build</h2>
-      <p>Answer a few quick questions and we'll send you a personal build sheet with every part, its price and live price links, usually within 24 hours. The build sheet is free, and you're under no obligation to have us build it.</p>
-    </div>
-    <form id="build-form" class="builder" onsubmit="event.preventDefault();submitBuild();" novalidate>
-      <div class="builder-qs">
-        <fieldset><legend>What will you use it for? <small>Pick all that apply</small></legend><div class="chips"><label class="chip"><input type="checkbox" name="use" value="Gaming" /><span>Gaming</span></label><label class="chip"><input type="checkbox" name="use" value="Streaming or content creation" /><span>Streaming or content creation</span></label><label class="chip"><input type="checkbox" name="use" value="Video or photo editing" /><span>Video or photo editing</span></label><label class="chip"><input type="checkbox" name="use" value="3D, CAD or engineering" /><span>3D, CAD or engineering</span></label><label class="chip"><input type="checkbox" name="use" value="AI and local models" /><span>AI and local models</span></label><label class="chip"><input type="checkbox" name="use" value="School or office work" /><span>School or office work</span></label></div></fieldset>
-        <fieldset><legend>What's your budget for parts?</legend><div class="chips"><label class="chip"><input type="radio" name="budget" value="Under $800" /><span>Under $800</span></label><label class="chip"><input type="radio" name="budget" value="$800–$1,200" /><span>$800–$1,200</span></label><label class="chip"><input type="radio" name="budget" value="$1,200–$1,800" /><span>$1,200–$1,800</span></label><label class="chip"><input type="radio" name="budget" value="$1,800–$2,500" /><span>$1,800–$2,500</span></label><label class="chip"><input type="radio" name="budget" value="$2,500+" /><span>$2,500+</span></label><label class="chip"><input type="radio" name="budget" value="Not sure" /><span>Not sure</span></label></div></fieldset>
-        <fieldset><legend>What monitor will you game on? <small>Optional</small></legend><div class="chips"><label class="chip"><input type="radio" name="monitor" value="1080p" /><span>1080p</span></label><label class="chip"><input type="radio" name="monitor" value="1440p" /><span>1440p</span></label><label class="chip"><input type="radio" name="monitor" value="4K" /><span>4K</span></label><label class="chip"><input type="radio" name="monitor" value="High-refresh competitive" /><span>High-refresh competitive</span></label><label class="chip"><input type="radio" name="monitor" value="I don&#x27;t game" /><span>I don&#x27;t game</span></label></div></fieldset>
-        <fieldset><legend>What are you reusing? <small>Optional</small></legend><div class="chips"><label class="chip"><input type="checkbox" name="reuse" value="Monitor" /><span>Monitor</span></label><label class="chip"><input type="checkbox" name="reuse" value="Keyboard and mouse" /><span>Keyboard and mouse</span></label><label class="chip"><input type="checkbox" name="reuse" value="Storage drives" /><span>Storage drives</span></label><label class="chip"><input type="checkbox" name="reuse" value="Graphics card" /><span>Graphics card</span></label><label class="chip"><input type="checkbox" name="reuse" value="Windows license" /><span>Windows license</span></label><label class="chip"><input type="checkbox" name="reuse" value="Nothing, starting fresh" /><span>Nothing, starting fresh</span></label></div></fieldset>
-        <fieldset><legend>What look do you want? <small>Optional</small></legend><div class="chips"><label class="chip"><input type="radio" name="look" value="Clean and minimal" /><span>Clean and minimal</span></label><label class="chip"><input type="radio" name="look" value="RGB lighting" /><span>RGB lighting</span></label><label class="chip"><input type="radio" name="look" value="All white" /><span>All white</span></label><label class="chip"><input type="radio" name="look" value="Small form factor" /><span>Small form factor</span></label><label class="chip"><input type="radio" name="look" value="No preference" /><span>No preference</span></label></div></fieldset>
-        <fieldset><legend>Any extras? <small>Optional</small></legend><div class="chips"><label class="chip"><input type="checkbox" name="extras" value="Advanced tuning" /><span>Advanced tuning</span></label><label class="chip"><input type="checkbox" name="extras" value="Sleeved or custom cables" /><span>Sleeved or custom cables</span></label><label class="chip"><input type="checkbox" name="extras" value="Wi-Fi and Bluetooth" /><span>Wi-Fi and Bluetooth</span></label><label class="chip"><input type="checkbox" name="extras" value="As quiet as possible" /><span>As quiet as possible</span></label></div></fieldset>
-        <fieldset><legend>When do you need it? <small>Optional</small></legend><div class="chips"><label class="chip"><input type="radio" name="when" value="As soon as possible" /><span>As soon as possible</span></label><label class="chip"><input type="radio" name="when" value="Within a month" /><span>Within a month</span></label><label class="chip"><input type="radio" name="when" value="Just planning" /><span>Just planning</span></label></div></fieldset>
-        <fieldset class="wide"><legend><label for="b-apps">Which games or apps matter most?</label> <small>Optional</small></legend><input type="text" id="b-apps" class="b-input" placeholder="For example: Valorant, Cyberpunk 2077, DaVinci Resolve" /></fieldset>
-      </div>
-      <div class="builder-contact">
-        <h3>Where should we send your build sheet?</h3>
-        <div class="contact-grid">
-          <div class="field"><label for="b-first">First name</label><input type="text" id="b-first" autocomplete="given-name" /></div>
-          <div class="field"><label for="b-last">Last name</label><input type="text" id="b-last" autocomplete="family-name" /></div>
-          <div class="field"><label for="b-phone">Phone</label><input type="tel" id="b-phone" autocomplete="tel" placeholder="(413) 555-0123" /></div>
-          <div class="field"><label for="b-email">Email</label><input type="email" id="b-email" autocomplete="email" placeholder="you@example.com" /></div>
-        </div>
-        <div class="field"><label for="b-notes">Anything else? <small>(optional)</small></label><textarea id="b-notes" placeholder="Brands you like, parts you want to avoid, size limits for your desk"></textarea></div>
-        <input type="text" id="b-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
-        <div class="builder-actions"><button class="btn btn-primary" id="b-btn" type="submit">Send build request</button><p class="error" id="b-err" role="alert"></p></div>
-      </div>
-    </form>
-    <div class="sent" id="b-sent" role="status"><h2 id="b-sent-title" tabindex="-1">Build request sent</h2><p>Thanks! We'll send your build sheet within 24 hours.</p></div>
-  </div>
-</section>
-
-<section class="section" id="pricing">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Pricing</h2>
-      <p>You'll always approve a price before we start. Thermal materials are included in the prices below. Other parts are extra, and the dust-out is free on every job.</p>
-    </div>
-    <div class="rates">
-      <div class="rate-group">
-        <h3>Diagnosis and repair</h3>
-        <div>
-          <div class="rate"><div><b>Diagnosis</b><span>Find the problem and get a quote</span></div><div class="price">Free</div></div>
-          <div class="rate"><div><b>Quick buying and upgrade advice</b><span>A recommendation for a new laptop, desktop or upgrade, by message or phone</span></div><div class="price">Free</div></div>
-          <div class="rate"><div><b>Detailed buying plan</b><span>For laptops, prebuilts and work machines: a written plan with specific models, prices and an upgrade path. Credited toward setup with us. Custom build parts lists are free</span></div><div class="price">$40</div></div>
-          <div class="rate"><div><b>Repair and troubleshooting</b><span>Hardware faults, part swaps, laptop batteries, software issues, Windows cleanup and malware removal. Parts extra</span></div><div class="price"><small>from</small> $60</div></div>
-        </div>
-      </div>
-      <div class="rate-group">
-        <h3>Thermal service</h3>
-        <div>
-          <div class="rate"><div><b>Desktop CPU</b><span>Old paste cleaned off, high-end thermal paste applied</span></div><div class="price">$45</div></div>
-          <div class="rate"><div><b>Desktop GPU</b><span>Die repasted, new thermal pads or putty on the VRAM and VRMs</span></div><div class="price">$75</div></div>
-          <div class="rate"><div><b>Desktop GPU with PTM7950</b><span>PTM7950 on the die instead of paste, new thermal pads or putty on the VRAM and VRMs</span></div><div class="price">$90</div></div>
-          <div class="rate"><div><b>Laptop</b><span>CPU and GPU dies repasted, Upsiren UTP-8 putty on the VRMs and VRAM</span></div><div class="price">$110</div></div>
-          <div class="rate"><div><b>Laptop with PTM7950</b><span>PTM7950 on the CPU and GPU dies, Upsiren UTP-8 putty on the VRMs and VRAM</span></div><div class="price">$125</div></div>
-        </div>
-      </div>
-      <div class="rate-group">
-        <h3>Performance tuning</h3>
-        <div>
-          <div class="rate"><div><b>Basic tuning</b><span>BIOS update, XMP or EXPO, Resizable BAR where supported, fan curves, a GPU undervolt and stability testing</span></div><div class="price">$99</div></div>
-          <div class="rate"><div><b>Advanced tuning</b><span>Manual RAM timings, CPU and GPU overclocking or undervolting, PBO and Curve Optimizer or Intel power tuning, extended stability testing. Final price depends on your hardware</span></div><div class="price"><small>from</small> $199</div></div>
-        </div>
-      </div>
-      <div class="rate-group">
-        <h3>Custom builds</h3>
-        <div>
-          <div class="rate"><div><b>Build labor</b><span>Free build sheet with live price links. Assembly, cable management, stable BIOS update, XMP or EXPO, Windows and driver install, stress testing. Paid at delivery</span></div><div class="price">$100</div></div>
-          <div class="rate"><div><b>We order the parts for you</b><span>Optional. Exact parts bought at cost with receipts handed over. Parts and fee paid upfront by cash or Zelle</span></div><div class="price">+ $25</div></div>
-          <div class="rate"><div><b>Lifetime build support</b><span>Troubleshooting and diagnosis, warranty claim (RMA) help, a yearly dust-out, and driver and BIOS updates for as long as you own the PC. Replacement parts not included unless covered by the manufacturer's warranty</span></div><div class="price">Free</div></div>
-          <div class="rate"><div><b>Advanced tuning add-on</b><span>Manual RAM timings and CPU or GPU tuning on your new build</span></div><div class="price"><small>from</small> $149</div></div>
-          <div class="rate"><div><b>Sleeved or custom cables</b><span>We pick cables matched to your power supply's pinout, you order them, and we install and route them</span></div><div class="price">+ $15</div></div>
-          <div class="rate"><div><b>Windows 11 license</b><span>Buy a genuine license from Microsoft or a major retailer (about $139 for Home). We install and activate it</span></div><div class="price">Included</div></div>
-        </div>
-      </div>
-      <div class="rate-group">
-        <h3>Other work</h3>
-        <div>
-          <div class="rate"><div><b>Hourly work</b><span>Data transfer, new computer setup and other open-ended jobs. Billed in 30-minute increments</span></div><div class="price">$60 <small>/ hr</small></div></div>
-        </div>
-      </div>
-      <div class="rate-group">
-        <h3>Pickup and return</h3>
-        <div>
-          <div class="rate"><div><b>In Greenfield</b><span>At your door or an agreed public meeting spot</span></div><div class="price">Free</div></div>
-          <div class="rate"><div><b>Elsewhere in Franklin County</b><span>Goes up with distance and covers the trip, even if you pass on the repair. Agreed before pickup</span></div><div class="price"><small>from</small> $15</div></div>
-        </div>
-      </div>
-    </div>
-    <p class="rates-note">Most jobs get one flat price after the diagnosis. Hourly is only for open-ended work, and we'll give you an estimate first. Repairs and build labor are paid when you get your machine back, by cash or Venmo. For builds, you can order the parts yourself, or we order them for you at cost plus a $25 handling fee, paid upfront by cash or Zelle.</p>
+    <div class="more"><a href="services.html" class="btn btn-quiet">See all services and pricing</a></div>
   </div>
 </section>
 
@@ -438,7 +357,6 @@ footer{border-top:1px solid var(--line);padding-block:28px}
     </ol>
   </div>
 </section>
-
 <section class="section" id="about">
   <div class="wrap about">
     <h2>About Precision PC</h2>
@@ -448,51 +366,13 @@ footer{border-top:1px solid var(--line);padding-block:28px}
     </div>
   </div>
 </section>
-
-<section class="section alt" id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Common questions</h2>
-      <p>Quick answers to what people usually ask.</p>
-    </div>
-    <div class="faq">
-      <details><summary>How do I pay?</summary><p>Cash or Venmo, when you get your machine back. For custom builds, you either order the parts yourself, or we order them for you, with the parts and a $25 handling fee paid upfront by cash or Zelle.</p></details>
-      <details><summary>What&#x27;s lifetime build support?</summary><p>Every custom build includes free troubleshooting and diagnosis, help with manufacturer warranty claims (RMAs), a yearly dust-out, and driver and BIOS updates for as long as you own the PC. Replacement parts aren&#x27;t included unless the manufacturer&#x27;s warranty covers them, and the travel fee still applies outside Greenfield.</p></details>
-      <details><summary>Can I cancel a custom build?</summary><p>Yes. If you ordered the parts, you own them, so you can cancel any time before we start building at no charge. If we ordered them for you, we return what we can and refund what the stores refund, minus restocking fees and return shipping. The $25 handling fee isn&#x27;t refunded once parts are ordered.</p></details>
-      <details><summary>Do you work on Macs?</summary><p>No, we only work on Windows desktops and laptops, plus custom PC builds.</p></details>
-      <details><summary>Why does a laptop repaste cost more?</summary><p>On most gaming laptops, the CPU and GPU share one heatsink that also cools the VRMs and VRAM. Those chips sit at a different height than the CPU and GPU, so thermal putty fills the gap between them and the heatsink. Lifting the heatsink to repaste tears the putty, so it always has to be replaced too. The putty and the extra work are included in the price.</p></details>
-      <details><summary>Why use thermal putty instead of pads?</summary><p>Putty squishes to fill uneven gaps, so it keeps full contact with the heatsink where a pad of the wrong thickness can leave an air gap or keep the cooler from seating properly. That&#x27;s why many gaming laptops and some newer GPUs ship with putty from the factory.</p></details>
-      <details><summary>My laptop came with liquid metal. Can you service it?</summary><p>Yes. We fully clean off the liquid metal and switch to PTM7950, which runs nearly as cool without the risk of the metal pumping out or shorting nearby parts over time.</p></details>
-      <details><summary>Is overclocking safe?</summary><p>We stay within safe voltages and stability-test every change before your machine comes back. Results depend on your hardware, and some manufacturers say overclocking can void their warranty, so we&#x27;ll go over what to expect before starting.</p></details>
-      <details><summary>What if I don&#x27;t go ahead after the diagnosis?</summary><p>That&#x27;s fine. The diagnosis is free and you&#x27;ll get your machine back as is. If you&#x27;re outside Greenfield, the travel fee we agreed on still applies, since it covers the trip.</p></details>
-      <details><summary>What should I have ready at pickup?</summary><p>Your charger and anything else that goes with it, a backup of anything important if the computer still turns on, and your login if we&#x27;ll need it to test. You give us your login in person, and we never store it.</p></details>
-      <details><summary>What if parts need to be ordered?</summary><p>Parts are included in your quote. For special-order parts we may ask for a deposit first, and the job takes a little longer while they ship.</p></details>
-      <details><summary>How far do you travel?</summary><p>Anywhere in Franklin County, and pickup is free in Greenfield. Farther than that, just ask.</p></details>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="policies">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Policies and privacy</h2>
-      <p>The short version. The full terms are on the service agreement you'll sign at pickup.</p>
-    </div>
-    <div class="policies">
-      <div><h3>Estimates and approval</h3><p>We'll give you a price before starting, and nothing happens without your OK. If we find something unexpected, we'll let you know right away.</p></div>
-      <div><h3>Back up your data</h3><p>Backing up your files before pickup is your responsibility. We're careful, but data can be lost, especially on failing hardware, and we can't be responsible for it.</p></div>
-      <div><h3>Your device, files and messages</h3><p>We only access your computer to do the work you approved. We never share or keep your files, and only copy them if you ask for a data transfer. Messages from the form go through a third-party form service to our email, are only used to reply to you, and are never sold.</p></div>
-      <div><h3>Return window</h3><p>We'll let you know when your machine is ready. If it isn't picked up or accepted back within 90 days of that, it's considered abandoned and may be recycled or sold to cover costs. We'll try to reach you before that happens.</p></div>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <a href="#top" class="brand"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
+    <a href="index.html" class="brand"><img src="data:image/png;base64,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" alt="" /><span class="wordmark">Precision <span>PC</span></span></a>
     <span>Greenfield, Massachusetts</span>
-    <nav aria-label="Footer"><a href="#policies">Policies and privacy</a><a href="#quote">Request service</a></nav>
+    <nav aria-label="Footer"><a href="services.html">Services and pricing</a><a href="builds.html">Custom builds</a><a href="faq.html">FAQ</a><a href="faq.html#policies">Policies and privacy</a></nav>
     <span>&copy; 2026 Precision PC</span>
   </div>
 </footer>
@@ -540,31 +420,6 @@ async function submitForm(){
   }
 }
 
-async function submitBuild(){
-  var v=function(id){return document.getElementById(id).value.trim();};
-  var picked=function(n){return Array.prototype.map.call(document.querySelectorAll('#build-form input[name="'+n+'"]:checked'),function(i){return i.value;});};
-  var err=document.getElementById('b-err'), btn=document.getElementById('b-btn');
-  var show=function(m){err.textContent=m;err.style.display='block';};
-  err.style.display='none';
-  var use=picked('use'), budget=picked('budget');
-  var first=v('b-first'), last=v('b-last'), phone=v('b-phone'), email=v('b-email');
-  if(!use.length||!budget.length){show('Pick what you\'ll use it for and your budget.');return;}
-  if(!first||!last||!phone||!email){show('Fill in your name, phone and email so we can send your list.');return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){show('That email address doesn\'t look right. Check it and try again.');return;}
-  if(phone.replace(/\D/g,'').length<10){show('Enter a 10-digit phone number, including area code.');return;}
-  if(document.getElementById('b-bot').value){return;}
-  var j=function(a){return a.length?a.join(', '):'Not specified';};
-  btn.disabled=true; btn.textContent='Sending…';
-  try{
-    var res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'New build request from '+first+' '+last,from_name:'Precision PC Website',
-        name:first+' '+last,phone:phone,email:email,use:j(use),budget:j(budget),monitor:j(picked('monitor')),reusing:j(picked('reuse')),
-        look:j(picked('look')),extras:j(picked('extras')),timeline:j(picked('when')),games_apps:v('b-apps')||'Not specified',notes:v('b-notes')||'(none)'})});
-    var data=await res.json();
-    if(data.success){document.getElementById('build-form').style.display='none';document.getElementById('b-sent').style.display='block';document.getElementById('b-sent-title').focus();}
-    else{throw new Error(data.message||'failed');}
-  }catch(e){show('That didn\'t go through. Check your connection and try again, or email us at precisionpcma@gmail.com.');btn.disabled=false;btn.textContent='Send build request';}
-}
 </script>
 </body>
 </html>
