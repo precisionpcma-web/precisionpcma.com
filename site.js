@@ -194,10 +194,21 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     entries.forEach(function (en) {
       if (!en.isIntersecting) return;
       links.forEach(function (l) { l.classList.remove('on'); });
-      var a = map[en.target.id]; if (a) { a.classList.add('on'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+      var a = map[en.target.id]; if (a) { a.classList.add('on'); var row = a.parentNode; row.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' }); }
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  /* click: land exactly below the sticky header + chip bar, at any screen size */
+  var reduceM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(a.getAttribute('href')); if (!t) return;
+      e.preventDefault();
+      var head = document.querySelector('header'), off = (head ? head.offsetHeight : 0) + bar.offsetHeight + 8;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior: reduceM ? 'auto' : 'smooth' });
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  });
 })();
 
 /* ---------- FAQ search ---------- */
