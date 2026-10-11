@@ -223,7 +223,7 @@ async function approve(d,partsTotal,service){
     var data=await res.json();
     if(data.success){document.getElementById('approve-form').style.display='none';document.getElementById('a-sent').style.display='block';document.getElementById('a-sent-title').focus();}
     else throw new Error(data.message||'failed');
-  }catch(e){show('That didn\'t go through. Check your connection and try again, or email us at precisionpcma@gmail.com.');btn.disabled=false;btn.textContent='Approve this build';}
+  }catch(e){show('That didn\'t go through. Check your connection and try again, or call or text (413) 239-4183.');btn.disabled=false;btn.textContent='Approve this build';}
 }
 (async function(){
   var h=location.hash.slice(1);
