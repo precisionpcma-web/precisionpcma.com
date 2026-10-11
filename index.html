@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="has-mbar">
 <header>
   <div class="wrap nav">
     <a href="index.html" class="brand" aria-label="Precision PC home"><img src="logo.png" alt="" width="40" height="40" /><span class="wordmark">Precision <span>PC</span></span></a>
@@ -32,68 +32,93 @@
   </div>
 </header>
 <main id="top">
-<section class="hero">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-repair" viewBox="0 0 24 24"><path d="M7 3h10l4 4v10l-4 4H7l-4-4V7z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M12.5 7l-2.5 4.5h4L11.5 17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M3.8 3.8h3.6L3.8 7.4z" fill="var(--orange)"/></symbol>
+<symbol id="i-thermal" viewBox="0 0 24 24"><path d="M5 14h14v7H5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M8 11c-1.2-1.4 1.2-2.6 0-4.5M16 11c-1.2-1.4 1.2-2.6 0-4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M12 11c-1.2-1.6 1.2-3 0-5.5" fill="none" stroke="var(--orange)" stroke-width="1.75" stroke-linecap="round"/></symbol>
+<symbol id="i-tune" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="15" cy="6" r="2.4" fill="var(--orange)"/><circle cx="8" cy="12" r="2.4" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.75"/><circle cx="17" cy="18" r="2.4" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.75"/></symbol>
+<symbol id="i-build" viewBox="0 0 24 24"><path d="M6 2.5h12v19H6z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="14.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M9 6.5h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M6.9 3.4h3L6.9 6.4z" fill="var(--orange)"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M8 8h5v5H8z" fill="var(--orange)"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.6 8-8 9-4.4-1-8-4-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="var(--orange)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M12 12c0-3 1-5 3-5.5M12 12c2.6 1.5 3.8 3.5 3 5.4M12 12c-2.6 1.5-5 1.4-6.2-.3" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="12" cy="12" r="1.8" fill="var(--orange)"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M8.5 15l2.3 2.3 4.7-4.6" fill="none" stroke="var(--orange)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-game" viewBox="0 0 24 24"><path d="M7 8h10a4 4 0 0 1 4 4v1.5a3.5 3.5 0 0 1-6.3 2.1L14 14.5h-4l-.7 1.1A3.5 3.5 0 0 1 3 13.5V12a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M7.5 10.5v3M6 12h3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="16.5" cy="11.5" r="1.4" fill="var(--orange)"/></symbol>
+<symbol id="i-stream" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="17" cy="9" r="1.6" fill="var(--orange)"/><path d="M7 14l3-3 2 2 3-3" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M10 9.2v5.6l4.8-2.8z" fill="var(--orange)"/></symbol>
+<symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-ai" viewBox="0 0 24 24"><path d="M7 4h10l3 3v10l-3 3H7l-3-3V7z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M9 15l3-6 3 6M10.2 13h3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.8 4.8h3L4.8 7.8z" fill="var(--orange)"/></symbol>
+<symbol id="i-office" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M9 7V5h6v2M3 12h18" fill="none" stroke="currentColor" stroke-width="1.75"/><rect x="10.5" y="11" width="3" height="2.5" fill="var(--orange)"/></symbol>
+<symbol id="i-school" viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M12 6v13.5" stroke="var(--orange)" stroke-width="1.75"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="var(--orange)"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9.5a13 13 0 0 1 18 0M6 13a8.5 8.5 0 0 1 12 0M9 16.5a4 4 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1.2" fill="currentColor"/><circle cx="12.5" cy="10.5" r="1.2" fill="var(--orange)"/><circle cx="16" cy="10.5" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="18" cy="6" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="13" r="1.3" fill="var(--orange)"/></symbol>
+</defs></svg>
+<section class="hero hero2">
   <div class="wrap hero-grid">
-    <div>
-      <h1>PC repair and custom builds in Greenfield, MA.</h1>
-      <p class="hero-lede">We'll pick up your computer, figure out what's wrong for free, and give you a price before doing any work. Every machine gets a free dust-out before it comes back, too.</p>
-      <div class="hero-actions"><a href="#quote" class="btn btn-primary">Request service</a><a href="services.html" class="btn btn-quiet">See prices</a></div>
-      <div class="hero-facts"><span><strong>1–3 days</strong> for most jobs</span><span><strong>24-hour</strong> replies</span><span><strong>Free</strong> pickup in Greenfield</span></div>
+    <div class="hero-copy">
+      <span class="eyebrow">Mobile PC repair · Greenfield, MA</span>
+      <h1>Computer acting up? We'll pick it up and fix it.</h1>
+      <p class="hero-lede">Repairs, thermal service, tuning and custom builds across Franklin County. The diagnosis is free, and if we can't fix it, you don't pay for the repair.</p>
+      <div class="hero-actions"><a href="#quote" class="btn btn-primary">Request service</a><a href="tel:+14132394183" class="btn btn-quiet">Call or text (413) 239-4183</a></div>
+      <p class="hero-by">Run by Ben Wheeler in Greenfield. Free pickup in town, and most jobs are back in 1–3 days.</p>
     </div>
-    <div class="card pinned" id="quote">
-      <form id="quote-form" novalidate>
-        <h2>Request service</h2>
-        <p class="card-intro">Tell us what's wrong and we'll get back to you within 24 hours.</p>
-        <div class="row">
-          <div class="field"><label for="f-first">First name</label><input type="text" id="f-first" placeholder="John" autocomplete="given-name" /></div>
-          <div class="field"><label for="f-last">Last name</label><input type="text" id="f-last" placeholder="Smith" autocomplete="family-name" /></div>
-        </div>
-        <div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" placeholder="(413) 555-0123" autocomplete="tel" /></div>
-        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" placeholder="you@example.com" autocomplete="email" /></div>
-        <div class="field"><label for="f-method">Best way to reach you</label>
-          <select id="f-method"><option value="">Choose one</option><option>Text message</option><option>Phone call</option><option>Email</option></select></div>
-        <div class="field"><label for="f-service">What do you need? <small>(optional)</small></label>
-          <select id="f-service"><option value="">Pick the closest match</option><option>Repair or troubleshooting</option><option>Thermal service (running hot)</option><option>Performance tuning or overclocking</option><option>Windows cleanup or malware removal</option><option>Buying advice, data transfer or setup</option><option>Not sure yet</option></select></div>
-        <p class="form-tip">Planning a new PC? Use the <a class="link" href="builds.html#plan">build planner</a> instead.</p>
-        <div class="field"><label for="f-msg">Details <small>(optional)</small></label><textarea id="f-msg" placeholder="For example: my PC shuts off when gaming, or my laptop gets very hot."></textarea></div>
-        <input type="text" id="f-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
-        <button class="btn btn-primary" id="f-btn" type="submit">Send request</button>
-        <p class="error" id="f-err" role="alert"></p>
-        <p class="fine">Prefer to call or text? <a class="link" href="tel:+14132394183">(413) 239-4183</a></p>
-        <p class="fine">We only use this to reply to you. Please don't send passwords or payment info. <a href="faq.html#policies">Privacy</a></p>
-      </form>
-      <div class="sent" id="success-msg" role="status"><h2 id="sent-title" tabindex="-1">Request sent</h2><p>Thanks! We'll get back to you within 24 hours.</p></div>
-    </div>
+    <div class="hero-art" aria-hidden="true"><svg class="die" viewBox="0 0 520 520" role="presentation" focusable="false">
+<defs>
+ <radialGradient id="hot" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff5818" stop-opacity=".34"/><stop offset=".55" stop-color="#ff5818" stop-opacity=".08"/><stop offset="1" stop-color="#ff5818" stop-opacity="0"/></radialGradient>
+ <radialGradient id="hot2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff5818" stop-opacity=".22"/><stop offset="1" stop-color="#ff5818" stop-opacity="0"/></radialGradient>
+ <radialGradient id="fade" cx="50%" cy="50%" r="50%"><stop offset=".45" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+ <mask id="tracefade"><rect width="520" height="520" fill="url(#fade)"/></mask>
+</defs>
+<g class="traces" mask="url(#tracefade)" fill="none" stroke="#ffffff" stroke-opacity=".09" stroke-width="1.2">
+ <path d="M230 110V70l-30-30H120"/><path d="M290 110V60l25-25h120"/><path d="M410 230h40l30-30v-80"/><path d="M410 290h50l25 25v120"/>
+ <path d="M290 410v40l30 30h110"/><path d="M230 410v50l-25 25H90"/><path d="M110 290H70l-30 30v100"/><path d="M110 230H60l-25-25V90"/>
+</g>
+<g fill="#0a0a0a" stroke="#ffffff" stroke-opacity=".14" stroke-width="1.2" mask="url(#tracefade)">
+ <circle cx="120" cy="40" r="3.5"/><circle cx="435" cy="35" r="3.5"/><circle cx="480" cy="120" r="3.5"/><circle cx="485" cy="435" r="3.5"/>
+ <circle cx="430" cy="480" r="3.5"/><circle cx="90" cy="485" r="3.5"/><circle cx="40" cy="420" r="3.5"/><circle cx="35" cy="90" r="3.5"/>
+</g>
+<g class="pulse" fill="none" stroke="#ff5818" stroke-width="1.6" stroke-linecap="round"><path d="M290 110V60l25-25h120"/><path d="M110 290H70l-30 30v100"/></g>
+<path d="M146 110h228l36 36v228l-36 36H146l-36-36V146z" fill="#131313" stroke="#ffffff" stroke-opacity=".16" stroke-width="1.5"/>
+<g fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="1.4">
+ <rect x="222" y="124" width="14" height="14" rx="2"/><rect x="284" y="124" width="14" height="14" rx="2"/>
+ <rect x="222" y="382" width="14" height="14" rx="2"/><rect x="284" y="382" width="14" height="14" rx="2"/>
+ <rect x="124" y="222" width="14" height="14" rx="2"/><rect x="124" y="284" width="14" height="14" rx="2"/>
+ <rect x="382" y="222" width="14" height="14" rx="2"/><rect x="382" y="284" width="14" height="14" rx="2"/>
+</g>
+<rect x="160" y="160" width="200" height="200" rx="12" fill="#0e0e0e" stroke="#ffffff" stroke-opacity=".2" stroke-width="1.5"/>
+<circle class="hot" cx="268" cy="252" r="118" fill="url(#hot)"/>
+<circle cx="228" cy="296" r="58" fill="url(#hot2)"/>
+<path d="M118 118h44l-44 44z" fill="#ff5818"/>
+<g class="note"><path d="M300 236l70-70h90" fill="none" stroke="#86837e" stroke-width="1"/><circle cx="300" cy="236" r="3" fill="#ff5818"/>
+<text x="372" y="158" fill="#86837e" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="1.5">THERMAL INTERFACE</text></g>
+</svg></div>
   </div>
 </section>
 
+<section class="stats" aria-label="Included with every job">
+  <ul class="wrap">
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></span><div><b>Free</b><span>diagnosis and quote</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><div><b>No fix, no fee</b><span>no repair charge if we can't fix it</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-fan"/></svg></span><div><b>Free dust-out</b><span>on every machine</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cal"/></svg></span><div><b>30 days</b><span>of coverage on repairs</span></div></li>
+  </ul>
+</section>
 
 <section class="section" id="services">
   <div class="wrap">
     <div class="section-head" data-reveal><h2>What's going on with your computer?</h2><p>Pick the closest match to see what's included and what it costs. Windows desktops and laptops, plus custom builds.</p></div>
     <div class="goals">
-      <a class="goal pinned" href="services.html#broken" data-reveal><h3>It's broken or acting up</h3><p>Won't turn on, crashes, blue screens, pop-ups or malware.</p><span class="from"><small>from</small> $75</span><span class="go">See prices</span></a>
-      <a class="goal pinned" href="services.html#hot" data-reveal><h3>It runs hot or loud</h3><p>Fans screaming, thermal throttling, or it shuts off under load.</p><span class="from"><small>from</small> $60</span><span class="go">See prices</span></a>
-      <a class="goal pinned" href="services.html#faster" data-reveal><h3>I want it faster</h3><p>RAM timings, overclocking and undervolting, all stability-tested.</p><span class="from"><small>from</small> $99</span><span class="go">See prices</span></a>
-      <a class="goal pinned" href="builds.html" data-reveal><h3>I want a new PC</h3><p>A custom build for your budget, or help picking the right one.</p><span class="from">$150 <small>labor</small></span><span class="go">See prices</span></a>
+      <a class="goal pinned" href="services.html#broken" data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-repair"/></svg></span><h3>It's broken or acting up</h3><p>Won't turn on, crashes, blue screens, pop-ups or malware.</p><span class="from"><small>from</small> $75</span></a>
+      <a class="goal pinned" href="services.html#hot" data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-thermal"/></svg></span><h3>It runs hot or loud</h3><p>Fans screaming, thermal throttling, or it shuts off under load.</p><span class="from"><small>from</small> $60</span></a>
+      <a class="goal pinned" href="services.html#faster" data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-tune"/></svg></span><h3>I want it faster</h3><p>RAM timings, overclocking and undervolting, all stability-tested.</p><span class="from"><small>from</small> $99</span></a>
+      <a class="goal pinned" href="builds.html" data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-build"/></svg></span><h3>I want a new PC</h3><p>A custom gaming or work PC planned around how you use it.</p><span class="from">Free build sheet</span></a>
     </div>
-    <p class="goals-note">Not sure which? <a class="link" href="#quote">Send a request</a>. The diagnosis is free.</p>
+    <p class="goals-note">Not sure which? <a class="link" href="#quote">Send a request</a> and we'll figure it out. <a class="link" href="services.html">See all prices</a></p>
   </div>
 </section>
 
-<section class="included" aria-labelledby="inc-title">
-  <div class="wrap">
-    <h2 id="inc-title" data-reveal>Included with every job</h2>
-    <ul>
-      <li class="pin" data-reveal data-delay="0"><h3>Free diagnosis</h3><p>We figure out what's wrong and what it'll cost before you commit to anything.</p></li>
-      <li class="pin" data-reveal data-delay="90"><h3>Free dust-out</h3><p>Fans, heatsinks, vents and filters blown out on every machine we work on.</p></li>
-      <li class="pin" data-reveal data-delay="180"><h3>No fix, no fee</h3><p>If we can't fix it, you don't pay for the repair.</p></li>
-      <li class="pin" data-reveal data-delay="270"><h3>30 days of coverage</h3><p>If a repair we did fails within 30 days, we'll make it right.</p></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section" id="how">
+<section class="section alt" id="how">
   <div class="wrap">
     <div class="section-head" data-reveal><h2>How it works</h2><p>You don't have to go anywhere. We pick your computer up and bring it back.</p></div>
     <ol class="trace">
@@ -105,12 +130,43 @@
   </div>
 </section>
 
-<section class="section alt" id="about">
+<section class="section" id="about">
   <div class="wrap about" data-reveal>
-    <h2>About Precision PC</h2>
+    <div>
+      <h2>Meet Ben</h2>
+      <dl class="spec">
+        <div><dt>Owner</dt><dd>Ben Wheeler</dd></div>
+        <div><dt>Based in</dt><dd>Greenfield, MA</dd></div>
+        <div><dt>Building PCs since</dt><dd>2012</dd></div>
+        <div><dt>Service area</dt><dd>Franklin County</dd></div>
+      </dl>
+    </div>
     <div class="about-copy">
       <p>Precision PC is solely owned and operated by Ben Wheeler. He's been fixing computers since he was a kid and building them for people and local businesses since 2012.</p>
       <p>We don't have a storefront, which keeps prices down, and you deal with the same person start to finish. Before you pay, you'll know exactly what was wrong and what we did about it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="quote">
+  <div class="wrap req">
+    <div class="req-copy" data-reveal>
+      <h2>Request service</h2>
+      <p>Tell us what's going on and we'll get back to you within 24 hours with next steps and a price range.</p>
+      <p>Rather text? <a class="link" href="sms:+14132394183">(413) 239-4183</a></p>
+      <p class="hint">Planning a new PC? Use the <a class="link" href="builds.html#plan">build form</a> instead.</p>
+    </div>
+    <div>
+      <form class="card pinned" id="request-form" novalidate>
+        <div class="field"><label for="r-name">Name</label><input id="r-name" autocomplete="name" /></div>
+        <div class="row"><div class="field"><label for="r-phone">Phone</label><input id="r-phone" type="tel" autocomplete="tel" placeholder="(413) 555-0123" /></div><div class="field"><label for="r-email">Email <small>(optional)</small></label><input id="r-email" type="email" autocomplete="email" placeholder="you@example.com" /></div></div>
+        <div class="field"><label for="r-msg">What's going on?</label><textarea id="r-msg" placeholder="For example: my laptop gets really hot and shuts off when gaming."></textarea></div>
+        <input type="text" id="r-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <button class="btn btn-primary" id="r-btn" type="submit">Send request</button>
+        <p class="error" id="r-err" role="alert"></p>
+        <p class="fine">We only use this to reply to you. Please don't send passwords or payment info. <a href="faq.html#policies">Privacy</a></p>
+      </form>
+      <div class="card sent" id="r-sent" role="status"><h2 id="r-sent-title" tabindex="-1">Request sent</h2><p>Thanks! We'll get back to you within 24 hours.</p></div>
     </div>
   </div>
 </section>
@@ -123,6 +179,7 @@
     <span>&copy; 2026 Precision PC</span>
   </div>
 </footer>
+<div class="mbar"><a href="sms:+14132394183" class="btn btn-primary">Text us</a><a href="tel:+14132394183" class="btn btn-quiet">Call</a></div>
 <script src="site.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Custom PC Builds | Precision PC</title>
-<meta name="description" content="Custom gaming and workstation PCs built in Greenfield, MA. $150 labor, parts at cost, free build sheet and lifetime build support." />
+<meta name="description" content="Custom gaming and workstation PCs built in Greenfield, MA. Parts at cost, a free build sheet and lifetime build support." />
 <link rel="canonical" href="https://precisionpcma.com/builds.html" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Precision PC" />
 <meta property="og:title" content="Custom PC Builds | Precision PC" />
-<meta property="og:description" content="Custom gaming and workstation PCs built in Greenfield, MA. $150 labor, parts at cost, free build sheet and lifetime build support." />
+<meta property="og:description" content="Custom gaming and workstation PCs built in Greenfield, MA. Parts at cost, a free build sheet and lifetime build support." />
 <meta property="og:url" content="https://precisionpcma.com/builds.html" />
 <meta property="og:image" content="https://precisionpcma.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -36,21 +36,79 @@
 <section class="page-hero" style="padding-bottom:24px">
   <div class="wrap">
     <h1>Custom PC builds</h1>
-    <p>Gaming rigs and work machines, planned around what you do and the monitor you use. $150 build labor, parts at cost, and lifetime build support.</p>
+    <p>Gaming rigs and work machines, planned around what you do and the monitor you use.</p>
   </div>
 </section>
 <section class="section" id="plan" style="padding-top:16px">
-  <div class="wrap bform-wrap">
-    <form class="card pinned bform" id="build-form" novalidate><h2>Tell us about your build</h2><p class="hint" style="margin-bottom:18px">About 2 minutes. Free, no obligation, and nothing is ordered until you approve your build sheet.</p><div class="row"><div class="field"><label for="b-for">Who is it for?</label><select id="b-for"><option value="">Choose one</option><option>Home or gaming</option><option>Business or work</option></select></div><div class="field"><label for="b-use">Main use</label><select id="b-use"><option value="">Choose one</option><option>Gaming</option><option>Gaming and streaming</option><option>Video or photo editing</option><option>3D, CAD or engineering</option><option>AI and local models</option><option>Office or business software</option><option>School or everyday use</option></select></div></div><div class="row"><div class="field"><label for="b-res">Monitor resolution</label><select id="b-res"><option value="">Choose one</option><option>1080p</option><option>1440p</option><option>4K</option><option>Ultrawide</option><option>Multiple monitors</option><option>Not sure</option></select></div><div class="field"><label for="b-hz">Refresh rate</label><select id="b-hz"><option value="">Choose one</option><option>60 Hz</option><option>120 to 165 Hz</option><option>240 Hz or more</option><option>Not sure</option></select></div></div><div class="row"><div class="field"><label for="b-budget">Budget for parts <small>labor is a flat $150</small></label><select id="b-budget"><option value="">Choose one</option><option>Under $800</option><option>$800 to $1,200</option><option>$1,200 to $1,800</option><option>$1,800 to $2,500</option><option>$2,500 or more</option><option>Not sure</option></select></div><div class="field"><label for="b-case">Case size</label><select id="b-case"><option value="">Choose one</option><option>Standard</option><option>Compact</option><option>No preference</option></select></div></div><div class="row"><div class="field"><label for="b-wifi">Need Wi-Fi or Bluetooth?</label><select id="b-wifi"><option value="">Choose one</option><option>Yes</option><option>No</option><option>Not sure</option></select></div><div class="field"><label for="b-biz">Business name <small>(optional)</small></label><input id="b-biz" autocomplete="organization" /></div></div><div class="field"><label for="b-have">Parts you already have <small>(optional)</small></label><input id="b-have" placeholder="For example: RTX 3080, 2TB NVMe SSD, Windows license" /></div><div class="field"><label for="b-notes">Anything else? <small>(optional)</small></label><textarea id="b-notes" placeholder="Other uses, a look you want, a deadline"></textarea></div><div class="row"><div class="field"><label for="b-first">First name</label><input id="b-first" autocomplete="given-name" /></div><div class="field"><label for="b-last">Last name</label><input id="b-last" autocomplete="family-name" /></div></div><div class="row"><div class="field"><label for="b-phone">Phone</label><input id="b-phone" type="tel" autocomplete="tel" placeholder="(413) 555-0123" /></div><div class="field"><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email" placeholder="you@example.com" /></div></div><div class="field"><label for="b-method">Best way to reach you</label><select id="b-method"><option value="">Choose one</option><option>Text</option><option>Phone call</option><option>Email</option></select></div><input type="text" id="b-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" /><button class="btn btn-primary" id="b-btn" type="submit">Get my free build sheet</button><p class="error" id="b-err" role="alert"></p><p class="fine">Prefer to call or text? <a class="link" href="tel:+14132394183">(413) 239-4183</a></p></form><div class="card sent" id="b-sent" role="status"><h2 id="b-sent-title" tabindex="-1">Request sent</h2><p>Thanks! We'll send your build sheet within 24 hours, with every part, its price and live price links.</p></div>
+  <div class="wrap quiz-grid">
+    <div class="quiz-col"><svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-repair" viewBox="0 0 24 24"><path d="M7 3h10l4 4v10l-4 4H7l-4-4V7z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M12.5 7l-2.5 4.5h4L11.5 17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M3.8 3.8h3.6L3.8 7.4z" fill="var(--orange)"/></symbol>
+<symbol id="i-thermal" viewBox="0 0 24 24"><path d="M5 14h14v7H5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M8 11c-1.2-1.4 1.2-2.6 0-4.5M16 11c-1.2-1.4 1.2-2.6 0-4.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M12 11c-1.2-1.6 1.2-3 0-5.5" fill="none" stroke="var(--orange)" stroke-width="1.75" stroke-linecap="round"/></symbol>
+<symbol id="i-tune" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="15" cy="6" r="2.4" fill="var(--orange)"/><circle cx="8" cy="12" r="2.4" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.75"/><circle cx="17" cy="18" r="2.4" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.75"/></symbol>
+<symbol id="i-build" viewBox="0 0 24 24"><path d="M6 2.5h12v19H6z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="14.5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M9 6.5h6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M6.9 3.4h3L6.9 6.4z" fill="var(--orange)"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M8 8h5v5H8z" fill="var(--orange)"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.6 8-8 9-4.4-1-8-4-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="var(--orange)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-fan" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M12 12c0-3 1-5 3-5.5M12 12c2.6 1.5 3.8 3.5 3 5.4M12 12c-2.6 1.5-5 1.4-6.2-.3" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="12" cy="12" r="1.8" fill="var(--orange)"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><path d="M8.5 15l2.3 2.3 4.7-4.6" fill="none" stroke="var(--orange)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-game" viewBox="0 0 24 24"><path d="M7 8h10a4 4 0 0 1 4 4v1.5a3.5 3.5 0 0 1-6.3 2.1L14 14.5h-4l-.7 1.1A3.5 3.5 0 0 1 3 13.5V12a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M7.5 10.5v3M6 12h3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="16.5" cy="11.5" r="1.4" fill="var(--orange)"/></symbol>
+<symbol id="i-stream" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="17" cy="9" r="1.6" fill="var(--orange)"/><path d="M7 14l3-3 2 2 3-3" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M10 9.2v5.6l4.8-2.8z" fill="var(--orange)"/></symbol>
+<symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-ai" viewBox="0 0 24 24"><path d="M7 4h10l3 3v10l-3 3H7l-3-3V7z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M9 15l3-6 3 6M10.2 13h3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.8 4.8h3L4.8 7.8z" fill="var(--orange)"/></symbol>
+<symbol id="i-office" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M9 7V5h6v2M3 12h18" fill="none" stroke="currentColor" stroke-width="1.75"/><rect x="10.5" y="11" width="3" height="2.5" fill="var(--orange)"/></symbol>
+<symbol id="i-school" viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M12 6v13.5" stroke="var(--orange)" stroke-width="1.75"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="6" fill="var(--orange)"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9.5a13 13 0 0 1 18 0M6 13a8.5 8.5 0 0 1 12 0M9 16.5a4 4 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1.2" fill="currentColor"/><circle cx="12.5" cy="10.5" r="1.2" fill="var(--orange)"/><circle cx="16" cy="10.5" r="1.2" fill="currentColor"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="18" cy="6" r="1.6" fill="var(--orange)"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><circle cx="12" cy="13" r="1.3" fill="var(--orange)"/></symbol>
+</defs></svg><form class="quiz card pinned" id="quiz" novalidate>
+  <div class="qprog"><ol class="qpads" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol><span class="qstep" id="q-step">Step 1 of 5</span></div>
+  <div id="q-stage" aria-live="polite"></div>
+  <p class="error" id="q-err" role="alert"></p>
+  <div class="qnav"><button type="button" class="btn btn-quiet" id="q-back">Back</button><button type="submit" class="btn btn-primary" id="q-next">Next</button></div>
+  <input type="text" id="q-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+</form>
+<div class="card sent" id="q-sent" role="status"><h2 id="q-sent-title" tabindex="-1">Request sent</h2><p>Thanks! We'll send your build sheet within 24 hours, with every part, its price and live price links.</p></div></div>
+    <aside class="readout card" aria-label="Your build, so far">
+  <div class="ro-head"><span class="eyebrow" style="margin:0">Your build</span><span class="hint">Illustration, not a quote</span></div>
+  <svg class="ro-art" viewBox="0 0 300 220" role="img" aria-label="Sketch of your setup">
+    <defs><radialGradient id="ro-hot" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff5818" stop-opacity=".9"/><stop offset="1" stop-color="#ff5818" stop-opacity="0"/></radialGradient></defs>
+    <line x1="10" y1="200" x2="290" y2="200" stroke="#ffffff" stroke-opacity=".12"/>
+    <g id="ro-mons" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="2"></g>
+    <g id="ro-tower" style="transform-origin:236px 200px">
+      <rect x="200" y="50" width="72" height="150" rx="6" fill="#141414" stroke="#ffffff" stroke-opacity=".7" stroke-width="2"/>
+      <path d="M206 56h10l-10 10z" fill="#ff5818"/>
+      <circle id="ro-glow" cx="236" cy="96" r="30" fill="url(#ro-hot)" opacity=".15"/>
+      <rect x="226" y="86" width="20" height="20" rx="3" fill="#0e0e0e" stroke="#ffffff" stroke-opacity=".6" stroke-width="1.5"/>
+      <rect id="ro-gpu" x="210" y="128" width="52" height="10" rx="2" fill="#1f1f1f" stroke="#ff5818" stroke-width="1.5" opacity="0"/>
+      <circle cx="236" cy="172" r="12" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width="1.5"/>
+      <g id="ro-wifi" fill="none" stroke="#ff5818" stroke-width="1.8" stroke-linecap="round" opacity="0"><path d="M224 40a17 17 0 0 1 24 0"/><path d="M229 45a9 9 0 0 1 14 0"/></g>
+    </g>
+  </svg>
+  <dl class="ro-spec">
+    <div><dt>For</dt><dd id="ro-for">–</dd></div>
+    <div><dt>Display</dt><dd id="ro-disp">–</dd></div>
+    <div><dt>Target</dt><dd id="ro-target">–</dd></div>
+    <div><dt>Parts budget</dt><dd id="ro-budget">–</dd></div>
+    <div><dt>Case</dt><dd id="ro-case">–</dd></div>
+  </dl>
+</aside>
   </div>
 </section>
+<section class="stats" aria-label="Every build includes"><ul class="wrap">
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"/></svg></span><div><b>Free build sheet</b><span>every part with live prices</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-build"/></svg></span><div><b>Parts at cost</b><span>with receipts</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-fan"/></svg></span><div><b>Stress-tested</b><span>before delivery</span></div></li>
+    <li data-reveal><span class="ico-tile"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span><div><b>Lifetime support</b><span>for the original owner</span></div></li>
+  </ul></section>
 <section class="section alt" id="how-builds">
   <div class="wrap">
     <div class="section-head" data-reveal><h2>How a build works</h2><p>Nothing is ordered until you approve your build sheet.</p></div>
     <ol class="trace">
-      <li><h3>Tell us what you need</h3><p>Fill in the short form above.</p></li>
+      <li><h3>Tell us what you need</h3><p>Five quick steps above.</p></li>
       <li><h3>Get your build sheet</h3><p>Every part, its price and live price links, within 24 hours.</p></li>
-      <li><h3>Approve, sign and pay upfront</h3><p>We order the exact parts and handle any returns or warranty claims. <a class="link" href="pay.html">Payment details</a></p></li>
+      <li><h3>Approve and sign</h3><p>If we order the parts, you pay upfront and we help with any returns or warranty claims. <a class="link" href="pay.html">Payment details</a></p></li>
       <li><h3>We build, test and deliver</h3><p>Stress-tested, set up and ready to go.</p></li>
     </ol>
   </div>
@@ -103,7 +161,7 @@
     <span>&copy; 2026 Precision PC</span>
   </div>
 </footer>
-<div class="mbar"><a href="index.html#quote" class="btn btn-primary">Request service</a></div>
+<div class="mbar"><a href="sms:+14132394183" class="btn btn-primary">Text us</a><a href="tel:+14132394183" class="btn btn-quiet">Call</a></div>
 <script src="site.js"></script>
 </body>
 </html>
