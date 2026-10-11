@@ -247,7 +247,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     if (cables) { total += 15; rows += '<div><span>Cable install</span><span>$15</span></div>'; }
     if (order) { total += 25; rows += '<div><span>We order the parts</span><span>$25</span></div>'; }
     var b = picked('budget');
-    rows += '<div class="tot"><span>Labor and add-ons</span><span>' + (tuning ? 'from ' : '') + money(total) + '</span></div>';
+    rows += '<div class="tot"><span>Labor, add-ons and fees</span><span>' + (tuning ? 'from ' : '') + money(total) + '</span></div>';
     board.querySelector('.estimate').innerHTML = rows + '<p>Parts: ' + (b.length ? b[0] : 'your budget') + ', bought at cost. Exact parts and prices come on your build sheet.</p>';
   }
   form.addEventListener('change', update);
