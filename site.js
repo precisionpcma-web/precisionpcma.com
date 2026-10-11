@@ -493,14 +493,14 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   var g = document.getElementById('die-note');
   if (!g) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
+  var cap = document.getElementById('die-cap'), lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
   /* [x, y of the part, label line 1, line 2, side] */
   var F = [
-    [300, 236, 'THERMAL INTERFACE', 'PASTE OR PTM7950', 'r'],
-    [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r'],
-    [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r'],
-    [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l'],
-    [250, 112, 'SUBSTRATE', 'LINKS CHIP TO BOARD', 'r']
+    [300, 236, 'THERMAL INTERFACE', 'PASTE OR PTM7950', 'r', 'Thermal interface', 'The paste or PTM7950 between the chip and the cooler'],
+    [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r', 'Hot spot', 'Where heat builds up first, and where throttling starts'],
+    [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r', 'Heat spreader', 'The metal lid that carries heat up to the cooler'],
+    [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l', 'Pin 1 marker', 'Lines the chip up the right way in its socket'],
+    [250, 112, 'SUBSTRATE', 'LINKS CHIP TO BOARD', 'r', 'Substrate', 'The board under the chip that connects it to the motherboard']
   ];
   var i = 0;
   function place(f) {
@@ -510,6 +510,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     lead.setAttribute('d', d); dot.setAttribute('cx', x); dot.setAttribute('cy', y);
     t1.setAttribute('x', tx); t1.setAttribute('y', ty); t2.setAttribute('x', tx); t2.setAttribute('y', ty + 14);
     t1.textContent = f[2]; t2.textContent = f[3];
+    if (cap) { cap.querySelector('b').textContent = f[5]; cap.querySelector('span').textContent = f[6]; }
   }
   setInterval(function () {
     g.classList.add('fade');

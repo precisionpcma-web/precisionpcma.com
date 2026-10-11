@@ -526,10 +526,37 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .die .note{transition:opacity .45s var(--ease)}
 .die .note.fade{opacity:0}
 /* builds hero rig */
-.page-hero.has-art .wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:center}
+.page-hero.has-art .wrap{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:32px;align-items:center}
 .rig{width:100%;height:auto;display:block}
 .rig .spin{transform-box:fill-box;transform-origin:center}
 @media (prefers-reduced-motion:no-preference){.rig .spin{animation:spin 1.2s linear infinite}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media (max-width:760px){.page-hero.has-art .wrap{grid-template-columns:minmax(0,1fr) 120px;gap:16px}}
+@media (max-width:760px){.page-hero.has-art .wrap{grid-template-columns:minmax(0,1fr) 104px;gap:16px}}
 @media (max-width:420px){.page-hero.has-art .wrap{grid-template-columns:1fr}.rig-wrap{display:none}}
+
+/* home GPU hero + services die (v5.2) */
+.hero-art .gpu{width:100%;max-width:560px;height:auto;display:block;margin-left:auto}
+.gpu .spin{transform-box:fill-box;transform-origin:center}
+.gpu .heat path{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .gpu .spin{animation:spin 1s linear infinite}
+  .gpu .heat path{animation:rise 3.2s ease-in-out infinite}
+  .gpu .heat path:nth-child(2){animation-delay:.6s}.gpu .heat path:nth-child(3){animation-delay:1.2s}.gpu .heat path:nth-child(4){animation-delay:1.8s}.gpu .heat path:nth-child(5){animation-delay:2.4s}
+}
+@keyframes rise{0%{opacity:0;transform:translateY(8px)}40%{opacity:1}100%{opacity:0;transform:translateY(-14px)}}
+@media (max-width:900px){.hero-art .gpu{max-width:340px}}
+.group-art{margin-top:18px;max-width:300px}
+.group-art .die{width:100%;height:auto;display:block}
+@media (max-width:900px){.group-art{max-width:220px}.group-art .die .note{display:block}}
+@media (max-width:640px){.group-art{display:none}}
+#hot .group-head{align-items:start}
+.group-art{margin:18px 0 0;max-width:320px}
+.group-art .die .note text{display:none}
+.die-cap{margin-top:6px;min-height:3.2em;font-size:14px;color:var(--text-3);transition:opacity .45s var(--ease)}
+.die-cap b{display:block;color:var(--text);font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.group-art:has(.note.fade) .die-cap{opacity:0}
+.group-art .die #die-lead{display:none}
+.group-art .die #die-dot{r:10}
+@media (prefers-reduced-motion:no-preference){.group-art .die #die-dot{animation:dotpulse 1.6s ease-in-out infinite}}
+@keyframes dotpulse{0%,100%{opacity:1}50%{opacity:.35}}
+.group-art{margin-top:22px;max-width:300px}
