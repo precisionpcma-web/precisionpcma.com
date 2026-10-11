@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Custom PC Builds | Precision PC</title>
-<meta name="description" content="Custom gaming and workstation PCs built in Greenfield, MA. Free build sheet, order parts yourself or through us, and lifetime build support." />
+<meta name="description" content="Custom gaming and workstation PCs built in Greenfield, MA. $100 labor, parts at cost, free build sheet and lifetime build support." />
 <link rel="canonical" href="https://precisionpcma.com/builds.html" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Precision PC" />
 <meta property="og:title" content="Custom PC Builds | Precision PC" />
-<meta property="og:description" content="Custom gaming and workstation PCs built in Greenfield, MA. Free build sheet, order parts yourself or through us, and lifetime build support." />
+<meta property="og:description" content="Custom gaming and workstation PCs built in Greenfield, MA. $100 labor, parts at cost, free build sheet and lifetime build support." />
 <meta property="og:url" content="https://precisionpcma.com/builds.html" />
 <meta property="og:image" content="https://precisionpcma.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="has-mbar">
 <header>
   <div class="wrap nav">
     <a href="index.html" class="brand" aria-label="Precision PC home"><img src="logo.png" alt="" width="40" height="40" /><span class="wordmark">Precision <span>PC</span></span></a>
@@ -33,27 +33,15 @@
 </header>
 <main id="top">
 
-<section class="page-hero">
+<section class="page-hero" style="padding-bottom:28px">
   <div class="wrap">
     <h1>Custom PC builds</h1>
-    <p>Built around what you actually play or work on. Start with a free build sheet, and we build it, test it and support it for as long as you own it.</p>
-    <a href="#plan" class="btn btn-primary">Plan your build</a>
+    <p>$100 build labor, parts at cost, and lifetime build support. Answer a few questions and we'll send you a free build sheet within 24 hours.</p>
   </div>
 </section>
-<section class="section" style="padding-top:32px">
-  <div class="wrap">
-    <ol class="steps">
-      <li data-delay="0"><h3>Answer a few questions</h3><p>About two minutes in the planner below.</p></li>
-      <li data-delay="150"><h3>Get your build sheet</h3><p>Every part, its price and live price links, within 24 hours.</p></li>
-      <li data-delay="300"><h3>Get the parts</h3><p>Order them yourself, or have us order them for you.</p></li>
-      <li data-delay="450"><h3>We build and test it</h3><p>Then deliver it, stress-tested and ready to go.</p></li>
-    </ol>
-  </div>
-</section>
-<section class="section alt" id="plan">
-  <div class="wrap">
-    <div class="section-head" data-reveal><h2>Plan your build</h2><p>Your build sheet is free, with no obligation to have us build it.</p></div>
-    <form class="wizard" id="planner" novalidate data-reveal>
+<section class="section" id="plan" style="padding-top:24px">
+  <div class="wrap planner-grid">
+    <form class="wizard pinned" id="planner" novalidate>
       <div class="wiz-top"><span data-count>Question 1</span><span>About 2 minutes</span></div>
       <div class="progress" aria-hidden="true"><i></i></div>
       <div class="wiz-body">
@@ -62,7 +50,7 @@
         <fieldset class="q" data-auto><legend class="q-title">What monitor will you game on?</legend><p>Skip this one if you don&#x27;t game.</p><div class="choices"><label class="choice"><input type="radio" name="monitor" value="1080p" /><span>1080p</span></label><label class="choice"><input type="radio" name="monitor" value="1440p" /><span>1440p</span></label><label class="choice"><input type="radio" name="monitor" value="4K" /><span>4K</span></label><label class="choice"><input type="radio" name="monitor" value="High-refresh competitive" /><span>High-refresh competitive</span></label><label class="choice"><input type="radio" name="monitor" value="I don&#x27;t game" /><span>I don&#x27;t game</span></label></div></fieldset>
         <fieldset class="q"><legend class="q-title">Anything you&#x27;re reusing?</legend><p>Optional. Pick all that apply.</p><div class="choices"><label class="choice"><input type="checkbox" name="reuse" value="Monitor" /><span>Monitor</span></label><label class="choice"><input type="checkbox" name="reuse" value="Keyboard and mouse" /><span>Keyboard and mouse</span></label><label class="choice"><input type="checkbox" name="reuse" value="Storage drives" /><span>Storage drives</span></label><label class="choice"><input type="checkbox" name="reuse" value="Graphics card" /><span>Graphics card</span></label><label class="choice"><input type="checkbox" name="reuse" value="Windows license" /><span>Windows license</span></label><label class="choice"><input type="checkbox" name="reuse" value="Nothing, starting fresh" /><span>Nothing, starting fresh</span></label></div></fieldset>
         <fieldset class="q" data-auto><legend class="q-title">What look do you want?</legend><p>Optional.</p><div class="choices"><label class="choice"><input type="radio" name="look" value="Clean and minimal" /><span>Clean and minimal</span></label><label class="choice"><input type="radio" name="look" value="RGB lighting" /><span>RGB lighting</span></label><label class="choice"><input type="radio" name="look" value="All white" /><span>All white</span></label><label class="choice"><input type="radio" name="look" value="Small form factor" /><span>Small form factor</span></label><label class="choice"><input type="radio" name="look" value="No preference" /><span>No preference</span></label></div></fieldset>
-        <fieldset class="q"><legend class="q-title">Any extras?</legend><p>Optional.</p><div class="choices"><label class="choice"><input type="checkbox" name="extras" value="Advanced tuning (+$149)" /><span>Advanced tuning (+$149)</span></label><label class="choice"><input type="checkbox" name="extras" value="Sleeved or custom cables" /><span>Sleeved or custom cables</span></label><label class="choice"><input type="checkbox" name="extras" value="Wi-Fi and Bluetooth" /><span>Wi-Fi and Bluetooth</span></label><label class="choice"><input type="checkbox" name="extras" value="As quiet as possible" /><span>As quiet as possible</span></label></div></fieldset>
+        <fieldset class="q"><legend class="q-title">Any extras?</legend><p>Optional.</p><div class="choices"><label class="choice"><input type="checkbox" name="extras" value="Advanced tuning (+$149)" /><span>Advanced tuning (+$149)</span></label><label class="choice"><input type="checkbox" name="extras" value="Sleeved or custom cables (+$15)" /><span>Sleeved or custom cables (+$15)</span></label><label class="choice"><input type="checkbox" name="extras" value="We order the parts (+$25)" /><span>We order the parts (+$25)</span></label><label class="choice"><input type="checkbox" name="extras" value="Wi-Fi and Bluetooth" /><span>Wi-Fi and Bluetooth</span></label><label class="choice"><input type="checkbox" name="extras" value="As quiet as possible" /><span>As quiet as possible</span></label></div></fieldset>
         <fieldset class="q" data-auto><legend class="q-title">When do you need it?</legend><p>Optional.</p><div class="choices"><label class="choice"><input type="radio" name="when" value="As soon as possible" /><span>As soon as possible</span></label><label class="choice"><input type="radio" name="when" value="Within a month" /><span>Within a month</span></label><label class="choice"><input type="radio" name="when" value="Just planning" /><span>Just planning</span></label></div></fieldset>
         <div class="q"><label class="q-title" for="b-apps">Which games or apps matter most?</label><p>Optional. This helps us size the CPU and GPU.</p><div class="field"><input type="text" id="b-apps" placeholder="For example: Valorant, Cyberpunk 2077, DaVinci Resolve" /></div></div>
         <div class="q"><h3 class="q-title">Where should we send your build sheet?</h3><p>Here's what you picked. We'll reply within 24 hours.</p><div class="summary"></div>
@@ -76,20 +64,36 @@
       </div>
       <div class="sent" id="b-sent" role="status"><h3 id="b-sent-title" tabindex="-1" style="font-size:1.5rem;margin-bottom:6px">Build request sent</h3><p>Thanks! Your build sheet is on its way within 24 hours.</p></div>
     </form>
+    <aside class="board pinned" id="board" aria-label="Your build so far">
+        <h3>Your build</h3><p>Lights up as you answer.</p>
+        <div class="slots"><div class="slot s-cpu">CPU<small></small></div><div class="slot s-ram">Memory<small></small></div><div class="slot s-gpu">Graphics card<small></small></div><div class="slot s-cool">Cooling<small></small></div><div class="slot s-mb">Motherboard<small></small></div><div class="slot s-ssd">Storage<small></small></div><div class="slot s-psu">Power supply<small></small></div><div class="slot s-case">Case<small></small></div></div>
+        <div class="estimate" aria-live="polite"></div>
+      </aside>
+  </div>
+</section>
+<section class="section alt" id="how-builds">
+  <div class="wrap">
+    <div class="section-head" data-reveal><h2>How a build works</h2><p>Nothing is ordered until you approve your build sheet.</p></div>
+    <ol class="trace">
+      <li><h3>Answer a few questions</h3><p>About two minutes in the planner above.</p></li>
+      <li><h3>Get your build sheet</h3><p>Every part, its price and live price links, within 24 hours.</p></li>
+      <li><h3>Get the parts</h3><p>Order them yourself, or have us order them for you.</p></li>
+      <li><h3>We build and test it</h3><p>Then deliver it, stress-tested and ready to go.</p></li>
+    </ol>
   </div>
 </section>
 <section class="section" id="parts">
   <div class="wrap">
     <div class="section-head" data-reveal><h2>Two ways to get the parts</h2><p>Either way, you get the exact parts on your build sheet.</p></div>
     <div class="opts">
-      <div class="opt" data-reveal data-delay="0"><h3>Order them yourself <small>No fee</small></h3><p>Buy each part in your name from the links on your build sheet. You own them from day one, and you pay us for labor when we deliver.</p></div>
-      <div class="opt" data-reveal data-delay="120"><h3>We order them for you <small>+ $25</small></h3><p>We buy the exact parts at cost and hand you the receipts. Parts and fee are paid upfront by cash or Zelle, and labor at delivery.</p></div>
+      <div class="opt pinned" data-reveal data-delay="0"><h3>Order them yourself <small>No fee</small></h3><p>Buy each part in your name from the links on your build sheet. You own them from day one, and you pay us for labor when we deliver.</p></div>
+      <div class="opt pinned" data-reveal data-delay="120"><h3>We order them for you <small>+ $25</small></h3><p>We buy the exact parts at cost and hand you the receipts. Parts and fee are paid upfront by cash or Zelle, and labor at delivery.</p></div>
     </div>
   </div>
 </section>
 <section class="section alt" id="included-builds">
   <div class="wrap">
-    <div class="section-head" data-reveal><h2>Every build includes</h2><p>Build labor is a flat $100. Lifetime build support is for the original owner, and replacement parts are only covered by the manufacturer's warranty.</p></div>
+    <div class="section-head" data-reveal><h2>Every build includes</h2><p>Lifetime build support is for the original owner. Replacement parts are covered by the manufacturer's warranty, not by us.</p></div>
     <ul class="checklist" data-reveal>
       <li><b>Clean cable management</b></li>
       <li><b>Latest stable BIOS</b>, XMP or EXPO on</li>
@@ -100,7 +104,7 @@
       <li><b>A free dust-out every year</b></li>
       <li><b>Driver and BIOS updates</b> on request</li>
     </ul>
-    <div class="more"><a href="services.html#builds" class="btn btn-quiet">See build pricing and add-ons</a></div>
+    <div class="more"><a href="services.html#newpc" class="btn btn-quiet">See build pricing</a></div>
   </div>
 </section>
 <section class="section" id="build-faq">
@@ -120,6 +124,7 @@
     <span>&copy; 2026 Precision PC</span>
   </div>
 </footer>
+<div class="mbar"><a href="index.html#quote" class="btn btn-primary">Request service</a></div>
 <script src="site.js"></script>
 </body>
 </html>

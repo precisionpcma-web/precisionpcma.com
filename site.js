@@ -1,10 +1,11 @@
 /* Precision PC site behavior: scroll reveal, service tabs, build planner, FAQ filters, forms. */
 document.documentElement.classList.add('js');
+(function(){var h=document.querySelector('header');if(!h)return;function set(){document.documentElement.style.setProperty('--hh',h.offsetHeight+'px');}set();window.addEventListener('resize',set);})();
 var WEB3FORMS_KEY = 'b2d3553d-df17-41ff-9ce2-e11c1f78308b';
 
 /* ---------- scroll reveal ---------- */
 (function () {
-  var els = document.querySelectorAll('[data-reveal], .steps li');
+  var els = document.querySelectorAll('[data-reveal], .steps li, .trace');
   if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
@@ -180,4 +181,76 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     }
   });
   go(0, 0);
+})();
+
+/* ---------- jump chips scroll-spy (services) ---------- */
+(function () {
+  var bar = document.querySelector('.jump');
+  if (!bar || !('IntersectionObserver' in window)) return;
+  var links = Array.prototype.slice.call(bar.querySelectorAll('a'));
+  var map = {};
+  links.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) map[t.id] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      links.forEach(function (l) { l.classList.remove('on'); });
+      var a = map[en.target.id]; if (a) { a.classList.add('on'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+
+/* ---------- FAQ search ---------- */
+(function () {
+  var box = document.getElementById('faq-search');
+  if (!box) return;
+  var groups = document.querySelectorAll('.faq-group'), none = document.querySelector('.no-results');
+  box.addEventListener('input', function () {
+    var q = box.value.trim().toLowerCase(), any = false;
+    groups.forEach(function (g) {
+      var shown = 0;
+      g.querySelectorAll('details').forEach(function (d) {
+        var hit = !q || d.textContent.toLowerCase().indexOf(q) > -1;
+        d.hidden = !hit; if (hit) shown++;
+        if (q && hit) d.open = true; if (!q) d.open = false;
+      });
+      g.hidden = shown === 0; if (shown) any = true;
+    });
+    none.style.display = any ? 'none' : 'block';
+  });
+})();
+
+/* ---------- build board + estimate ---------- */
+(function () {
+  var form = document.getElementById('planner'), board = document.getElementById('board');
+  if (!form || !board) return;
+  var MAP = { use: 'cpu', budget: 'mb', monitor: 'gpu', reuse: 'ssd', look: 'case', when: 'cool' };
+  function picked(n) { return Array.prototype.map.call(form.querySelectorAll('input[name="' + n + '"]:checked'), function (x) { return x.value; }); }
+  function short(v) { return v.replace(/\s*\(\+\$\d+\)/, ''); }
+  function money(n) { return '$' + n.toLocaleString('en-US'); }
+  function update() {
+    Object.keys(MAP).forEach(function (q) {
+      var slot = board.querySelector('.s-' + MAP[q]), v = picked(q);
+      slot.classList.toggle('lit', v.length > 0);
+      slot.querySelector('small').textContent = v.length ? v.map(short).join(', ') : '';
+    });
+    var ex = picked('extras');
+    var tuning = ex.some(function (e) { return /tuning/i.test(e); });
+    var cables = ex.some(function (e) { return /cables/i.test(e); });
+    var order = ex.some(function (e) { return /order the parts/i.test(e); });
+    board.querySelector('.s-ram').classList.toggle('lit', tuning || ex.length > 0);
+    board.querySelector('.s-ram small').textContent = tuning ? 'Tuned timings' : (ex.length ? 'XMP or EXPO' : '');
+    board.querySelector('.s-psu').classList.toggle('lit', cables || ex.length > 0);
+    board.querySelector('.s-psu small').textContent = cables ? 'Sleeved cables' : (ex.length ? 'Sized to the build' : '');
+    var total = 100, rows = '<div><span>Build labor</span><span>$100</span></div>';
+    if (tuning) { total += 149; rows += '<div><span>Advanced tuning</span><span>from $149</span></div>'; }
+    if (cables) { total += 15; rows += '<div><span>Cable install</span><span>$15</span></div>'; }
+    if (order) { total += 25; rows += '<div><span>We order the parts</span><span>$25</span></div>'; }
+    var b = picked('budget');
+    rows += '<div class="tot"><span>Labor and add-ons</span><span>' + (tuning ? 'from ' : '') + money(total) + '</span></div>';
+    board.querySelector('.estimate').innerHTML = rows + '<p>Parts: ' + (b.length ? b[0] : 'your budget') + ', bought at cost. Exact parts and prices come on your build sheet.</p>';
+  }
+  form.addEventListener('change', update);
+  form.addEventListener('input', update);
+  update();
 })();
