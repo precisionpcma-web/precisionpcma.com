@@ -307,15 +307,16 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     var err = document.getElementById('r-err'), btn = document.getElementById('r-btn');
     var show = function (m) { err.textContent = m; err.style.display = 'block'; };
     err.style.display = 'none';
-    var name = v('r-name'), phone = v('r-phone'), email = v('r-email'), msg = v('r-msg');
+    var name = v('r-name'), phone = v('r-phone'), email = v('r-email'), town = v('r-town'), device = v('r-device'), msg = v('r-msg');
     if (!name) { show('Add your name so we know who to reach.'); return; }
     if (phone.replace(/\D/g, '').length < 10) { show('Enter a 10-digit phone number, including area code.'); return; }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { show('That email address doesn\'t look right. Check it, or leave it blank.'); return; }
+    if (!town) { show('Choose your town so we can tell you the service call price.'); return; }
     if (!msg) { show('Tell us a little about what\'s going on.'); return; }
     if (document.getElementById('r-bot').value) return;
     btn.disabled = true; btn.textContent = 'Sending…';
     try {
-      await ppcSend({ subject: 'New Precision PC request from ' + name, name: name, phone: phone, email: email || '(none)', message: msg });
+      await ppcSend({ subject: 'New Precision PC request from ' + name + ' (' + town + ')', name: name, phone: phone, email: email || '(none)', town: town, computer: device || '(not given)', message: msg });
       form.style.display = 'none';
       document.getElementById('r-sent').style.display = 'block';
       document.getElementById('r-sent-title').focus();
@@ -573,7 +574,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   var cap = document.getElementById('die-cap'), lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
   /* [x, y of the part, label line 1, line 2, side] */
   var F = [
-    [300, 236, 'THERMAL INTERFACE', 'PASTE OR PTM7950', 'r', 'Thermal interface', 'The paste or PTM7950 between the chip and the cooler'],
+    [300, 236, 'THERMAL INTERFACE', 'PASTE ON A DESKTOP CPU', 'r', 'Thermal interface', 'Thermal paste between a desktop CPU and its cooler. Graphics cards and laptops get PTM7950 instead.'],
     [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r', 'Hot spot', 'Where heat builds up first, and where throttling starts'],
     [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r', 'Heat spreader', 'The metal lid that carries heat up to the cooler'],
     [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l', 'Pin 1 marker', 'Lines the chip up the right way in its socket'],
