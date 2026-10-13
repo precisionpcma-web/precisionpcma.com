@@ -506,7 +506,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   function verdict() {
     if (!A.uses.length) return { t: '–', cap: 'Answer a few questions to see what this build is aiming for.', fill: 0, warn: false };
     var b = bud();
-    if (!A.budget && !light()) return { t: useText() + ' build', cap: 'Pick a budget to see what this build can do.', fill: 0, warn: false };
+    if (!A.budget && !light()) return { t: '–', cap: 'Pick a budget to see what this build can do.', fill: 0, warn: false };
     if (light()) return { t: 'Fast, quiet everyday PC', cap: 'A fast, quiet machine for everyday work, with room for plenty of tabs and apps. No graphics card needed.', fill: b < 0 ? 0 : Math.min(5, 3 + b), warn: false };
     if (b < 0) return { t: (gaming() ? 'Gaming' : A.uses[0]) + ' build', cap: 'Not sure about budget? That\'s fine. We\'ll suggest a sensible range on your build sheet.', fill: 0, warn: false };
     var sc = b - need(), fill = Math.max(1, Math.min(5, 3 + sc));
@@ -563,7 +563,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     if (looks('Quiet') && gaming() && A.gtier === 'The newest big games') n.push('No gaming PC is silent at full load, but bigger fans and a good case keep it calm.');
     if (A.have) n.push('We\'ll check that the parts you have are compatible and won\'t hold the new ones back.');
     if (light()) n.push('Built-in graphics are plenty for this. The money goes to a fast SSD and 16 to 32 GB of memory.');
-    if (!light() && n.length < 2) n.push(b >= 0 && b <= 1 ? 'Memory prices are high this year, so we\'ll start with 16 GB and leave room to add more later.' : 'Memory prices are high this year, so we\'ll balance memory against the graphics card. Most builds at this budget should have 32 GB.');
+    if (!light() && n.length < 2 && A.budget && A.budget !== 'Not sure') n.push(b >= 0 && b <= 1 ? 'Memory prices are high this year, so we\'ll start with 16 GB and leave room to add more later.' : 'Memory prices are high this year, so we\'ll balance memory against the graphics card. Most builds at this budget should have 32 GB.');
     return n.slice(0, 2);
   }
   function scene(x, y, w, h) {
@@ -588,7 +588,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     $('ro-notes').innerHTML = notes().map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('');
     var O = owns();
     $('ro-budget').textContent = A.budget || '–';
-    $('ro-case-t').textContent = any ? (A.look.length ? A.look.join(', ') : 'No preference') : '–';
+    $('ro-case-t').textContent = A.look.length ? A.look.join(', ') : (step >= 4 ? 'No preference' : '–');
     on('ro-empty', !any); $('ro-empty').style.opacity = any ? 0 : 1;
     $('ro-case').style.transform = compact ? 'scale(.8)' : 'scale(1)';
     $('ro-case').style.opacity = any ? 1 : .35;
@@ -808,7 +808,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     return A.where ? 16 : 0;
   }
   function battery() {
-    if (!A.uses.length) return { n: 0, t: '' };
+    if (!A.uses.length || !A.bat) return { n: 0, t: '' };
     var n;
     if (heavyGame() && !mac()) n = 1;
     else if (uses('Photos, video or design') && !mac()) n = 3;
@@ -849,7 +849,8 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     var sc = b - n, fill = Math.max(1, Math.min(5, 3 + sc));
     if (gaming() && mac()) return heavyGame() ? { cap: 'Most games are made for Windows. A Mac is a weak pick for gaming, so we may suggest a Windows laptop too.', fill: Math.min(fill, 2), warn: true } : { cap: 'Minecraft, Roblox and The Sims run fine on a Mac. Many other games don\'t, so we\'ll check your list.', fill: fill, warn: false };
     if (gaming()) {
-      if (b === 0) return { cap: 'Under $600 there are no real gaming laptops. Light and older games only.', fill: fill, warn: A.gtier !== 'Light or older games' };
+      if (A.gtier === 'Light or older games') return { cap: b === 0 ? 'Light and older games run on the built-in graphics most laptops have. Expect lower settings at this budget.' : 'Light and older games run well on built-in graphics, so the money can go to a better screen and battery.', fill: fill, warn: false };
+      if (b === 0) return { cap: 'Under $600 there are no real gaming laptops. Light and older games only.', fill: fill, warn: true };
       if (b === 1) return { cap: A.gtier === 'The newest big games' ? 'An entry-level graphics card. The newest games run at low to medium settings.' : 'An entry-level graphics card. Popular games run well at 1080p.', fill: fill, warn: A.gtier === 'The newest big games' };
       if (b === 2) return { cap: 'A solid gaming laptop. Most games run at high settings at 1080p.', fill: fill, warn: false };
       if (b === 3) return { cap: 'A strong gaming laptop. High settings, even on a sharper 1440p screen.', fill: fill, warn: false };

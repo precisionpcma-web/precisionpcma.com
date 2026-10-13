@@ -630,3 +630,30 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 @media (max-width:359px){.qcards,.qcards.two,.qcards.three{grid-template-columns:1fr}.qcard{min-height:0}}
 .qc-h,.qc-t{overflow-wrap:anywhere}
 .quiz-grid>*{min-width:0}
+
+/* v5.9 cinematic home hero (preview) */
+.hero-cine{background:#070707;isolation:isolate}
+.hero-cine::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,7,7,.92) 0%,rgba(7,7,7,.65) 38%,rgba(7,7,7,0) 70%);z-index:0;pointer-events:none}
+.cine-bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.cine-bg .glow{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55}
+.cine-bg .g1{width:520px;height:520px;right:6%;top:8%;background:radial-gradient(circle,rgba(255,88,24,.45),rgba(255,88,24,0) 70%)}
+.cine-bg .g2{width:380px;height:380px;right:30%;bottom:-120px;background:radial-gradient(circle,rgba(255,140,60,.22),rgba(255,140,60,0) 70%)}
+.cine-bg .mote{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:#ff8a4c;opacity:0;box-shadow:0 0 8px 2px rgba(255,88,24,.6)}
+.hero-cine .hero-copy{z-index:2}
+.cine{position:relative;z-index:1;perspective:1400px}
+.cine-stage{position:relative;transform-style:preserve-3d}
+.cine-stage .gpu{width:118%;max-width:none;margin-left:-6%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.65))}
+.cine-sheen{position:absolute;inset:10% 4% 18% 4%;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.16) 48%,rgba(255,200,160,.10) 52%,transparent 65%);mix-blend-mode:screen;background-size:250% 100%;background-position:120% 0;opacity:0;border-radius:6px}
+@media (prefers-reduced-motion:no-preference){
+  .cine-stage{animation:orbit 14s ease-in-out infinite}
+  .gpu .sweep{animation:sweep 7s ease-in-out infinite}
+  .cine-bg .g1{animation:pulse 8s ease-in-out infinite}
+  .cine-bg .mote{animation-name:mote;animation-timing-function:linear;animation-iteration-count:infinite}
+}
+@keyframes orbit{0%,100%{transform:rotateY(-10deg) rotateX(4deg) translateY(0) scale(1)}50%{transform:rotateY(8deg) rotateX(-2deg) translateY(-10px) scale(1.03)}}
+@keyframes sheen{0%,35%{background-position:120% 0;opacity:0}45%{opacity:1}70%,100%{background-position:-30% 0;opacity:0}}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.7;transform:scale(1.08)}}
+@keyframes mote{0%{transform:translateY(0);opacity:0}10%{opacity:.9}100%{transform:translateY(-560px) translateX(30px);opacity:0}}
+@media (max-width:900px){.hero-cine::after{background:linear-gradient(180deg,rgba(7,7,7,.2),rgba(7,7,7,.85))}.cine-stage .gpu{width:100%;margin-left:0}}
+@keyframes sweep{0%,30%{transform:skewX(-18deg) translateX(0)}75%,100%{transform:skewX(-18deg) translateX(720px)}}
+.hero-cine .gpu .sweep{transform-box:view-box}
