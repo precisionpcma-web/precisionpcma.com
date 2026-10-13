@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Laptop Match | Precision PC</title>
-<meta name="description" content="Answer 5 quick questions and get 2 or 3 free laptop picks that fit how you work. Windows or Mac. From Precision PC in Greenfield, MA." />
+<title>Laptop Finder | Precision PC</title>
+<meta name="description" content="Answer 6 quick questions and get 2 or 3 free laptop picks that fit how you work. Windows or Mac. From Precision PC in Greenfield, MA." />
 <link rel="canonical" href="https://precisionpcma.com/laptops.html" />
 <link rel="icon" href="/favicon.ico" sizes="48x48" />
 <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
@@ -12,8 +12,8 @@
 <meta name="theme-color" content="#0a0a0a" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Precision PC" />
-<meta property="og:title" content="Laptop Match | Precision PC" />
-<meta property="og:description" content="Answer 5 quick questions and get 2 or 3 free laptop picks that fit how you work. Windows or Mac. From Precision PC in Greenfield, MA." />
+<meta property="og:title" content="Laptop Finder | Precision PC" />
+<meta property="og:description" content="Answer 6 quick questions and get 2 or 3 free laptop picks that fit how you work. Windows or Mac. From Precision PC in Greenfield, MA." />
 <meta property="og:url" content="https://precisionpcma.com/laptops.html" />
 <meta property="og:image" content="https://precisionpcma.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -27,7 +27,7 @@
 <header>
   <div class="wrap nav">
     <a href="index.html" class="brand" aria-label="Precision PC home"><img src="logo.png" alt="" width="40" height="40" /><span class="wordmark">Precision <span>PC</span></span></a>
-    <ul><li><a href="services.html">Services</a></li><li><a href="builds.html"><span class="nl">Custom builds</span><span class="ns">Builds</span></a></li><li><a href="laptops.html" aria-current="page"><span class="nl">Laptop Match</span><span class="ns">Laptops</span></a></li><li><a href="index.html#about">About</a></li><li><a href="faq.html">FAQ</a></li></ul>
+    <ul><li><a href="services.html">Services</a></li><li><a href="builds.html"><span class="nl">Custom builds</span><span class="ns">Builds</span></a></li><li><a href="laptops.html" aria-current="page"><span class="nl">Laptop Finder</span><span class="ns">Laptops</span></a></li><li><a href="index.html#about">About</a></li><li><a href="faq.html">FAQ</a></li></ul>
     <a href="index.html#quote" class="btn btn-primary">Request service</a>
   </div>
 </header>
@@ -56,16 +56,16 @@
 </defs></svg>
 <section class="page-hero" style="padding-bottom:24px">
   <div class="wrap">
-    <h1>Laptop Match</h1>
-    <p>Shopping for a new laptop? Answer 5 quick questions and we'll pick 2 or 3 that fit how you work. Free, within 24 hours.</p>
+    <h1>Laptop Finder</h1>
+    <p>Shopping for a new laptop? Answer 6 quick questions and we'll pick 2 or 3 that fit how you work. Free, within 24 hours.</p>
     <p class="note">Laptop broken or running hot? <a class="link" href="services.html#broken">See repairs</a>.</p>
   </div>
 </section>
 <section class="section" id="find" style="padding-top:16px">
   <div class="wrap quiz-grid">
     <div class="quiz-col"><form class="quiz card pinned" id="lquiz" novalidate>
-  <div class="qprog"><ol class="qpads" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol><span class="qstep" id="lq-step">Step 1 of 5</span></div>
-  <div id="lq-stage" aria-live="polite"></div>
+  <div class="qprog"><ol class="qpads" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li></ol><span class="qstep" id="lq-step" aria-live="polite">Step 1 of 6</span></div>
+  <div id="lq-stage"></div>
   <p class="error" id="lq-err" role="alert"></p>
   <div class="qnav"><button type="button" class="btn btn-quiet" id="lq-back">Back</button><button type="submit" class="btn btn-primary" id="lq-next">Next</button></div>
   <input type="text" id="lq-bot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
@@ -76,23 +76,34 @@
   <svg class="ro-art" viewBox="0 0 320 220" role="img" aria-label="Preview of your laptop">
 <defs>
  <linearGradient id="l-scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d1410"/><stop offset="1" stop-color="#0f0f0f"/></linearGradient>
+ <linearGradient id="l-glare" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset=".38" stop-color="#ffffff" stop-opacity=".0"/></linearGradient>
+ <linearGradient id="l-lid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#161616"/></linearGradient>
+ <linearGradient id="l-deck" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1e1e"/><stop offset="1" stop-color="#2c2c2c"/></linearGradient>
+ <linearGradient id="l-edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity=".05"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity=".05"/></linearGradient>
  <radialGradient id="l-glowg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff5818" stop-opacity=".5"/><stop offset="1" stop-color="#ff5818" stop-opacity="0"/></radialGradient>
 </defs>
 <line x1="6" y1="206" x2="314" y2="206" stroke="#ffffff" stroke-opacity=".12"/>
+<ellipse cx="160" cy="203" rx="134" ry="5" fill="#000" opacity=".55"/>
 <ellipse id="l-floor" cx="160" cy="206" rx="140" ry="7" fill="url(#l-glowg)" opacity=".15"/>
 <g id="l-body" style="transform-origin:160px 206px">
- <rect x="58" y="28" width="204" height="132" rx="9" fill="#0f0f0f" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.6"/>
+ <rect x="58" y="28" width="204" height="132" rx="9" fill="url(#l-lid)" stroke="#ffffff" stroke-opacity=".55" stroke-width="1.6"/>
  <path d="M58 37a9 9 0 0 1 9-9h14L58 51z" fill="#ff5818"/>
- <rect x="67" y="37" width="186" height="112" rx="3" fill="url(#l-scr)" stroke="#ffffff" stroke-opacity=".18"/>
+ <rect x="64" y="34" width="192" height="120" rx="5" fill="#070707"/>
+ <circle cx="160" cy="31.5" r="1.2" fill="#2e2e2e" stroke="#ffffff" stroke-opacity=".25" stroke-width=".4"/>
+ <rect x="67" y="37" width="186" height="112" rx="3" fill="url(#l-scr)" stroke="#ffffff" stroke-opacity=".14"/>
  <g id="l-scene"></g>
+ <rect x="67" y="37" width="186" height="112" rx="3" fill="url(#l-glare)" pointer-events="none"/>
  <text id="l-scr-t" x="245" y="56" text-anchor="end" fill="#f0ede8" font-family="Plus Jakarta Sans,Inter,sans-serif" font-weight="800" font-size="11"></text>
  <text id="l-os" x="160" y="156" text-anchor="middle" fill="#86837e" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="6.5" letter-spacing=".8"></text>
- <path d="M48 160h224l22 28H26z" fill="#141414" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
+ <rect x="96" y="158" width="128" height="3" rx="1.5" fill="#0b0b0b" stroke="#ffffff" stroke-opacity=".18" stroke-width=".5"/>
+ <path d="M48 160h224l22 28H26z" fill="url(#l-deck)" stroke="#ffffff" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
+ <path d="M49 161h222" stroke="url(#l-edge)" stroke-width="1"/>
+ <g fill="#000" fill-opacity=".45"><path d="M54 165h4l-2 18h-4z"/><path d="M262 165h4l2 18h-4z"/></g>
  <ellipse id="l-rgb" cx="160" cy="176" rx="118" ry="16" fill="url(#l-glowg)" opacity="0"/>
- <g id="l-keys" fill="#1f1f1f" stroke="#ffffff" stroke-opacity=".22" stroke-width=".5"><rect x="62.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="77.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="93.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="108.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="124.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="139.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="155.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="170.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="186.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="201.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="217.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="232.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="64.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="79.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="95.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="110.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="126.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="141.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="157.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="172.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="188.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="203.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="219.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="234.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="66.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="81.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="97.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="112.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="128.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="143.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="159.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="174.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="190.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="205.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="221.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="236.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="68.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="83.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="99.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="114.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="130.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="145.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="161.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="176.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="192.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="207.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="223.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="238.5" y="183.6" width="12.5" height="3.6" rx=".8"/></g>
- <g id="l-num" class="part" fill="#1f1f1f" stroke="#ffffff" stroke-opacity=".22" stroke-width=".5"><rect x="256.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="262.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="268.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="258.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="264.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="270.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="260.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="266.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="272.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="262.0" y="183.6" width="4.8" height="3.6" rx=".8"/><rect x="268.0" y="183.6" width="4.8" height="3.6" rx=".8"/><rect x="274.0" y="183.6" width="4.8" height="3.6" rx=".8"/></g>
- <rect x="134" y="191" width="52" height="0" rx="1" fill="#1a1a1a"/>
+ <g id="l-keys" fill="#151515" stroke="#ffffff" stroke-opacity=".22" stroke-width=".5"><rect x="62.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="77.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="93.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="108.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="124.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="139.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="155.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="170.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="186.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="201.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="217.0" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="232.5" y="168.0" width="12.5" height="3.6" rx=".8"/><rect x="64.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="79.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="95.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="110.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="126.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="141.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="157.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="172.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="188.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="203.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="219.0" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="234.5" y="173.2" width="12.5" height="3.6" rx=".8"/><rect x="66.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="81.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="97.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="112.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="128.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="143.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="159.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="174.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="190.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="205.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="221.0" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="236.5" y="178.4" width="12.5" height="3.6" rx=".8"/><rect x="68.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="83.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="99.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="114.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="130.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="145.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="161.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="176.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="192.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="207.5" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="223.0" y="183.6" width="12.5" height="3.6" rx=".8"/><rect x="238.5" y="183.6" width="12.5" height="3.6" rx=".8"/></g>
+ <g id="l-num" class="part" fill="#151515" stroke="#ffffff" stroke-opacity=".22" stroke-width=".5"><rect x="256.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="262.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="268.0" y="168.0" width="4.8" height="3.6" rx=".8"/><rect x="258.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="264.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="270.0" y="173.2" width="4.8" height="3.6" rx=".8"/><rect x="260.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="266.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="272.0" y="178.4" width="4.8" height="3.6" rx=".8"/><rect x="262.0" y="183.6" width="4.8" height="3.6" rx=".8"/><rect x="268.0" y="183.6" width="4.8" height="3.6" rx=".8"/><rect x="274.0" y="183.6" width="4.8" height="3.6" rx=".8"/></g>
  <rect id="l-thick" x="26" y="188" width="268" height="5" rx="2" fill="#191919" stroke="#ffffff" stroke-opacity=".4"/>
+ <path d="M30 189h260" stroke="url(#l-edge)" stroke-width=".8"/>
  <g id="l-vents" class="part" stroke="#ff5818" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"><path d="M40 196h10M54 196h10M256 196h10M270 196h10"/></g>
  <g id="l-ports" class="part" fill="#ffffff" fill-opacity=".55"><rect x="30" y="189.5" width="5" height="2" rx=".6"/><rect x="38" y="189.5" width="3" height="2" rx=".6"/><rect x="279" y="189.5" width="5" height="2" rx=".6"/><rect x="286" y="189.5" width="3" height="2" rx=".6"/></g>
  <g id="l-ports-more" class="part" fill="#ff5818"><rect x="44" y="189.5" width="6" height="2" rx=".6"/><rect x="53" y="189.5" width="4" height="2" rx=".6"/><rect x="270" y="189.5" width="6" height="2" rx=".6"/></g>
@@ -106,9 +117,9 @@
   <p class="ro-cap" id="l-cap">Answer a few questions to see what kind of laptop fits.</p>
   <ul class="ro-notes" id="l-notes"></ul>
   <dl class="ro-spec">
-    <div><dt>For</dt><dd id="l-for">–</dd></div>
+    <div><dt>Use</dt><dd id="l-for">–</dd></div>
     <div><dt>Size</dt><dd id="l-size">–</dd></div>
-    <div><dt>Must-haves</dt><dd id="l-must">–</dd></div>
+    <div><dt>Priorities</dt><dd id="l-must">–</dd></div>
     <div><dt>Budget</dt><dd id="l-budget">–</dd></div>
     <div><dt>System</dt><dd id="l-sys">–</dd></div>
   </dl>
@@ -126,7 +137,7 @@
   <div class="wrap">
     <div class="section-head" data-reveal><h2>How it works</h2><p>Your picks are free. Want a deeper comparison? Our detailed buying plan is $40, credited toward setup, up to the setup price.</p></div>
     <ol class="trace">
-      <li><h3>Answer 5 questions</h3><p>Use, size, must-haves, budget and where to send your picks.</p></li>
+      <li><h3>Answer 6 questions</h3><p>What you use it for, where it lives, what matters, the programs it must run, budget and where to send your picks.</p></li>
       <li><h3>Get your picks</h3><p>2 or 3 laptops with links and why each one fits, within 24 hours.</p></li>
       <li><h3>Buy it where you like</h3><p>Any store is fine. We just help you choose.</p></li>
       <li><h3>Optional setup</h3><p>We can set up a new Windows laptop and move your files over. <a class="link" href="services.html#newpc">See pricing</a></p></li>
@@ -139,7 +150,7 @@
   <div class="wrap foot">
     <a href="index.html" class="brand"><img src="logo.png" alt="" width="28" height="28" /><span class="wordmark">Precision <span>PC</span></span></a>
     <span>Greenfield, Massachusetts · <a href="tel:+14132394183">(413) 239-4183</a> · precisionpcma@gmail.com</span>
-    <nav aria-label="Footer"><a href="services.html">Services and pricing</a><a href="builds.html">Custom builds</a><a href="faq.html">FAQ</a><a href="laptops.html">Laptop Match</a><a href="pay.html">Payment</a><a href="faq.html#policies">Policies and privacy</a></nav>
+    <nav aria-label="Footer"><a href="services.html">Services and pricing</a><a href="builds.html">Custom builds</a><a href="faq.html">FAQ</a><a href="laptops.html">Laptop Finder</a><a href="pay.html">Payment</a><a href="faq.html#policies">Policies and privacy</a></nav>
     <span>&copy; 2026 Precision PC</span>
   </div>
 </footer>

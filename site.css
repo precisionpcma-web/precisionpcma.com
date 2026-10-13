@@ -593,7 +593,7 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .ro-art .yours-tag.on,#ro-mon .yours-tag{opacity:1}
 .ro-art #ro-gpu.mine #ro-gpu-body{stroke-dasharray:4 3;stroke:#ff5818;stroke-opacity:.9}
 @media (max-width:900px){.readout .ro-notes,.readout .ro-foot{display:none}.readout .ro-cap{font-size:13px;margin-bottom:4px}}
-/* Laptop Match */
+/* Laptop Finder */
 .ro-meter span b{font-weight:600;color:var(--text);margin-left:6px}
 #lquiz ~ .sent,#lq-sent{max-width:none}
 .ro-art #l-body{transition:transform .45s var(--ease),opacity .45s}
@@ -606,3 +606,27 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 @media (max-width:640px){.nav ul{gap:16px}}
 @media (max-width:359px){.nav ul{gap:12px}}
 @media (max-width:900px){#find .readout .ro-spec div:nth-child(3){display:none}#find .readout .ro-spec div:nth-child(1){display:flex}}
+
+/* v5.7.0 illustrations */
+.group-art .art,.group-art .rig{width:100%;height:auto;display:block}
+.blink{opacity:.9}
+@media (prefers-reduced-motion:no-preference){
+  .blink{animation:blink 2.4s steps(2,jump-none) infinite}
+  .art .needle{transform-box:view-box;transform-origin:108px 104px;animation:needle 5s ease-in-out infinite}
+}
+@keyframes blink{0%,100%{opacity:.9}50%{opacity:.2}}
+@keyframes needle{0%,100%{transform:rotate(-70deg)}45%,80%{transform:rotate(0deg)}}
+
+.group-art .rig{max-width:230px}
+
+/* v5.8.0 quiz chips (games and programs) */
+.qchips{display:flex;flex-wrap:wrap;gap:8px}
+.qchips label{position:relative;display:inline-flex;align-items:center;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;background:var(--surface-2);cursor:pointer;font-size:14px;transition:border-color .18s,background .18s}
+.qchips label:hover{border-color:var(--text-3)}
+.qchips label.sel{border-color:var(--orange);background:linear-gradient(rgba(255,88,24,.12),rgba(255,88,24,.12)),var(--surface-2)}
+.qchips input{position:absolute;opacity:0;width:1px;height:1px}
+.qchips label:focus-within{outline:2px solid var(--orange);outline-offset:2px}
+.ro-meter b{font-weight:500;color:var(--text-3);margin-left:4px}
+@media (max-width:359px){.qcards,.qcards.two,.qcards.three{grid-template-columns:1fr}.qcard{min-height:0}}
+.qc-h,.qc-t{overflow-wrap:anywhere}
+.quiz-grid>*{min-width:0}
