@@ -255,7 +255,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     board.querySelector('.s-psu small').textContent = cables ? 'Sleeved cables' : (ex.length ? 'Sized to the build' : '');
     var total = 150, rows = '<div><span>Build labor</span><span>$150</span></div>';
     if (tuning) { total += 149; rows += '<div><span>Advanced tuning</span><span>from $149</span></div>'; }
-    if (cables) { total += 15; rows += '<div><span>Cable install</span><span>$15</span></div>'; }
+    if (cables) { total += 15; rows += '<div><span>Sleeved or custom cables</span><span>$15</span></div>'; }
     if (order) { total += 25; rows += '<div><span>We order the parts</span><span>$25</span></div>'; }
     var b = picked('budget');
     rows += '<div class="tot"><span>Labor, add-ons and fees</span><span>' + (tuning ? 'from ' : '') + money(total) + '</span></div>';
@@ -333,7 +333,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   var pads = form.querySelectorAll('.qpads li');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var A = { have: '', notes: '', name: '', phone: '', email: '', biz: '' };
-  var USE_HOME = [['Gaming','game','Smooth frames at your resolution'],['Gaming and streaming','stream','Play and broadcast at once'],['Video or photo editing','video','Premiere, Resolve, Lightroom'],['3D, CAD or engineering','cube','Blender, SolidWorks, Fusion'],['AI and local models','ai','Running models on your own GPU'],['School or everyday use','school','Browsing, homework, streaming']];
+  var USE_HOME = [['Gaming','game','Smooth frames at your resolution'],['Gaming and streaming','stream','Play and broadcast at once'],['Video or photo editing','video','Premiere, Resolve, Lightroom'],['3D, CAD or engineering','cube','Blender, SolidWorks, Fusion'],['AI and local models','ai','Running AI on your own computer'],['School or everyday use','school','Browsing, homework, streaming']];
   var USE_BIZ = [['Office or business software','office','Email, Office, accounting, browsers'],['Video or photo editing','video','Marketing, video and photo work'],['3D, CAD or engineering','cube','Design and engineering seats'],['AI and local models','ai','Private, on-site AI tools']];
   var RES = [['1080p','Full HD',16,9,34],['1440p','QHD, the gaming sweet spot',16,9,42],['4K','Ultra HD',16,9,50],['Ultrawide','21:9 and wider',21,9,56],['Multiple monitors','Two or more screens',16,9,30],['Not sure','We\'ll help you pick',16,9,36]];
   var HZ = ['60 Hz','120 to 200 Hz','240 Hz or more','Not sure'];
@@ -400,7 +400,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     ['have', 'notes', 'name', 'phone', 'email', 'biz'].forEach(function (k) { var el = document.getElementById('q-' + k); if (el) A[k] = el.value.trim(); });
   }
   function check() {
-    var need = [[0, 'for', 'Choose who it\'s for.'], [0, 'use', 'Choose what it will mostly do.'], [1, 'res', 'Choose your monitor, or "Not sure".'], [2, 'budget', 'Pick a budget range, or "Not sure".'], [3, 'case', 'Choose a case size.'], [4, 'reach', 'Choose the best way to reach you.']];
+    var need = [[0, 'for', 'Choose who it\'s for.'], [0, 'use', 'Choose what it will mostly do.'], [1, 'res', 'Choose your monitor, or "Not sure".'], [2, 'budget', 'Choose a budget range, or "Not sure".'], [3, 'case', 'Choose a case size.'], [4, 'reach', 'Choose the best way to reach you.']];
     for (var i = 0; i < need.length; i++) if (need[i][0] === step && !A[need[i][1]]) return need[i][2];
     if (step === 1 && needsHz() && !A.hz) return 'Choose a refresh rate, or "Not sure".';
     if (step === 4) {
@@ -463,8 +463,8 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     var b = BUD.indexOf(A.budget); if (A.budget === 'Not sure') b = -1;
     var light = A.use === 'Office or business software' || A.use === 'School or everyday use';
     if (light) return { t: 'Fast, quiet everyday PC', cap: 'A fast, quiet machine for everyday work, with room for plenty of tabs and apps.', fill: b < 0 ? 0 : Math.min(5, 3 + b), warn: false };
-    if (b < 0) return { t: A.use + ' build', cap: 'Not sure on budget? That\'s fine. We\'ll suggest a sensible range on your build sheet.', fill: 0, warn: false };
-    if (A.use === 'Video or photo editing') return b >= 2 ? { t: 'Smooth 4K editing, common footage', cap: 'Comfortable 4K editing for most footage, with fast exports.', fill: Math.min(5, b + 2), warn: false } : { t: 'Smooth 1080p editing', cap: 'Smooth 1080p editing. 4K works, with proxies on heavier projects.', fill: b + 2, warn: false };
+    if (b < 0) return { t: A.use + ' build', cap: 'Not sure about budget? That\'s fine. We\'ll suggest a sensible range on your build sheet.', fill: 0, warn: false };
+    if (A.use === 'Video or photo editing') return b >= 2 ? { t: 'Smooth 4K editing, common footage', cap: 'Comfortable 4K editing for most footage, with fast exports.', fill: Math.min(5, b + 2), warn: false } : { t: 'Smooth 1080p editing', cap: 'Smooth 1080p editing. 4K works, using lighter preview files on heavier projects.', fill: b + 2, warn: false };
     if (A.use === '3D, CAD or engineering') return b >= 3 ? { t: 'Heavy 3D and rendering', cap: 'Handles large scenes and long renders without breaking a sweat.', fill: 5, warn: false } : { t: 'Everyday 3D and CAD', cap: 'Smooth modeling and CAD. Big renders take longer at this budget.', fill: b + 2, warn: false };
     if (A.use === 'AI and local models') return b >= 4 ? { t: 'Larger local models', cap: 'Room for larger local models and faster responses.', fill: 5, warn: false } : b === 3 ? { t: 'Mid-size local models', cap: 'Runs mid-size local models well.', fill: 4, warn: false } : { t: 'Smaller local models', cap: 'Runs smaller local models. Bigger ones need more graphics memory.', fill: b + 2, warn: false };
     if (!A.res || A.res === 'Not sure') return { t: 'Gaming build', cap: 'Pick a monitor and we\'ll aim the build at it.', fill: b + 1, warn: false };
@@ -476,7 +476,8 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     var cause = A.res === '4K' ? '4K' : A.res === 'Ultrawide' ? 'Ultrawide' : '';
     if (A.hz === '240 Hz or more') cause = cause ? cause + ' at 240 Hz' : '240 Hz';
     if (!cause) cause = res + ' at this refresh rate';
-    return { t: 'Stretch: may need more budget', cap: cause + ' needs more graphics power than this budget usually buys. Dropping a step in resolution or raising the budget a tier fits better.', fill: fill, warn: true };
+    cause = cause.charAt(0).toUpperCase() + cause.slice(1);
+    return { t: 'Stretch: may need more budget', cap: cause + ' needs more graphics power than this budget usually buys. A lower resolution or a bigger budget would fit better.', fill: fill, warn: true };
   }
   function target() { return verdict().t; }
   function owns() {
@@ -490,8 +491,8 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     if (!light && heavyRes && b >= 0 && b <= 2 && !verdict().warn && /Gaming/.test(A.use)) n.push('4K, ultrawide and 240 Hz lean hard on the graphics card. Expect to tune settings or use upscaling.');
     if (A.use === 'AI and local models') n.push(b >= 0 && b <= 3 ? 'Model size is limited mostly by graphics card memory. Some larger models won\'t fit at this budget.' : 'Graphics card memory matters most for local AI.');
     if (A.case === 'Compact' && !light) n.push('Compact cases run warmer and louder under load and leave fewer upgrades later. We\'ll pick parts that fit.');
-    if (A.have) n.push('We\'ll check the parts you have are compatible and won\'t hold the new ones back.');
-    var pri = { 'Gaming': 'Most of the budget usually goes to the graphics card. Plan on 32 GB of memory.', 'Gaming and streaming': 'Most of the budget goes to the graphics card, with a strong processor for streaming. Plan on 32 GB of memory.', 'Video or photo editing': 'Budget is split between processor, memory and graphics. Plan on 32 to 64 GB of memory.', '3D, CAD or engineering': 'Budget is split between processor, memory and graphics, depending on your software. Plan on 32 to 64 GB of memory.', 'AI and local models': 'More system memory helps too. Plan on 32 to 64 GB.', 'Office or business software': 'Fast storage and 16 GB of memory matter more than a graphics card.', 'School or everyday use': 'Fast storage and 16 GB of memory matter more than a graphics card.' }[A.use];
+    if (A.have) n.push('We\'ll check that the parts you have are compatible and won\'t hold the new ones back.');
+    var pri = { 'Gaming': 'Most of the budget usually goes to the graphics card. Plan on 32 GB of memory.', 'Gaming and streaming': 'Most of the budget goes to the graphics card, with a strong processor for streaming. Plan on 32 GB of memory.', 'Video or photo editing': 'The budget is split between processor, memory and graphics. Plan on 32 to 64 GB of memory.', '3D, CAD or engineering': 'The budget is split between processor, memory and graphics, depending on your software. Plan on 32 to 64 GB of memory.', 'AI and local models': 'More system memory helps too. Plan on 32 to 64 GB.', 'Office or business software': 'Fast storage and 16 GB of memory matter more than a graphics card.', 'School or everyday use': 'Fast storage and 16 GB of memory matter more than a graphics card.' }[A.use];
     if (pri) n.push(pri);
     return n.slice(0, 2);
   }
@@ -574,7 +575,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   var cap = document.getElementById('die-cap'), lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
   /* [x, y of the part, label line 1, line 2, side] */
   var F = [
-    [300, 236, 'THERMAL INTERFACE', 'PASTE ON A DESKTOP CPU', 'r', 'Thermal interface', 'Thermal paste between a desktop CPU and its cooler. Graphics cards and laptops get PTM7950 instead.'],
+    [300, 236, 'THERMAL INTERFACE', 'PASTE ON A DESKTOP CPU', 'r', 'Thermal interface', 'Thermal paste carries heat from a desktop processor to its cooler. Graphics cards and laptops get a long-lasting thermal pad instead.'],
     [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r', 'Hot spot', 'Where heat builds up first, and where throttling starts'],
     [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r', 'Heat spreader', 'The metal lid that carries heat up to the cooler'],
     [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l', 'Pin 1 marker', 'Lines the chip up the right way in its socket'],
@@ -708,7 +709,7 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     if (A.use === 'Gaming' && b === 0) return { cap: 'Gaming laptops under $600 make big compromises. The next budget range up gets a real graphics card.', fill: fill, warn: true };
     if (A.use === 'Gaming' && b === 1) return { cap: 'Expect an entry-level graphics card and medium settings at 1080p. The next range up gets high settings.', fill: fill, warn: false };
     if (A.use === 'Video or photo editing' && b < 2) return { cap: 'Editing works at this budget, but the next range up gets a better screen and more memory.', fill: fill, warn: true };
-    if (has('Light to carry') && A.size === '17 to 18 inch') return { cap: 'Most 17 to 18 inch laptops are heavy. A few light ones exist, or a 15 to 16 inch laptop could be the sweet spot.', fill: fill, warn: true };
+    if (has('Light to carry') && A.size === '17 to 18 inch') return { cap: 'Most 17 to 18 inch laptops are heavy. A few light ones exist, but a 15 to 16 inch laptop may be the sweet spot.', fill: fill, warn: true };
     var label = { 'Everyday and streaming': 'A quick, reliable laptop for everyday use and streaming.', 'School and notes': 'A light, dependable laptop for classes and homework.', 'Office or business software': 'A solid work laptop that handles meetings and lots of tabs.', 'Programming': 'A fast laptop with plenty of memory for code and tools.', 'Video or photo editing': 'A strong editing laptop with a good screen.', 'Gaming': b >= 3 ? 'A strong gaming laptop for high settings, even above 1080p.' : 'A capable gaming laptop for high settings at 1080p.' }[A.use];
     return { cap: label, fill: fill, warn: false };
   }
