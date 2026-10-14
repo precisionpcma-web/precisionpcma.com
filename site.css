@@ -672,24 +672,20 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .page-hero h1{position:relative;display:inline-block}
 .page-hero h1::after{content:"";display:block;height:3px;width:72px;margin-top:14px;border-radius:2px;background:linear-gradient(90deg,var(--orange),rgba(255,88,24,0));transform-origin:0 50%}
 /* spotlight cards */
-.goal,.fact,.qcard,.faq-group,.part,.ro-card{position:relative;--mx:50%;--my:50%}
-.goal::before,.fact::before,.qcard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+.goal,.qcard{position:relative;--mx:50%;--my:50%}
+.goal::before,.qcard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
   background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,88,24,.14),transparent 60%)}
-.goal:hover::before,.fact:hover::before,.qcard:hover::before{opacity:1}
-.goal:hover,.fact:hover{border-color:rgba(255,88,24,.45)}
+.goal:hover::before,.qcard:hover::before{opacity:1}
 .goal{will-change:transform}
 /* price rows */
 .line{position:relative;transition:padding .25s var(--ease)}
-.line::before{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--orange);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease)}
-.line:hover::before{transform:scaleX(1)}
-.line:hover{padding-left:8px}
-.line:hover .amt{color:var(--orange)}
+
 /* buttons */
 .btn-primary{position:relative;overflow:hidden;isolation:isolate}
 .btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transition:left .6s var(--ease)}
 .btn-primary:hover::after{left:130%}
 .ico-tile{transition:border-color .2s,transform .3s var(--ease),box-shadow .3s}
-.goal:hover .ico-tile,.fact:hover .ico-tile,.group-head:hover .ico-tile{border-color:var(--orange);transform:rotate(-6deg) scale(1.06);box-shadow:0 0 18px rgba(255,88,24,.35)}
+.goal:hover .ico-tile{border-color:var(--orange);transform:rotate(-6deg) scale(1.06);box-shadow:0 0 18px rgba(255,88,24,.35)}
 /* section seams */
 .section,.group,.stats{position:relative}
 .group::before,.section.alt::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,88,24,.55),transparent);background-size:200% 100%}
@@ -720,3 +716,29 @@ body{background:radial-gradient(1100px 700px at 85% -10%,rgba(255,88,24,.10),tra
   background:radial-gradient(circle,rgba(255,88,24,.16) 0%,rgba(255,88,24,.07) 35%,transparent 68%)}
 .jhint{padding-block:48px 72px;color:var(--text-3);font-size:15px}
 .jhint[hidden]{display:none}
+/* v6.0.1 no fixed orange glows; the cursor glow is the only one */
+.page-hero::before{display:none}
+body{background:radial-gradient(900px 700px at -10% 40%,rgba(90,110,150,.08),transparent 60%),var(--bg);background-attachment:fixed}
+/* v6.0.2 only clickable things react to the mouse */
+.pinned:not(a):hover::before{width:14px;height:14px}
+.pinned:not(a):focus-within::before{width:14px;height:14px}
+.goal:hover{border-color:rgba(255,88,24,.45)}
+/* v6.0.4 FAQ: each category is its own panel */
+.faq-group{margin-bottom:28px;padding:26px 28px 10px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.faq-group h2{display:flex;align-items:center;gap:12px;font-size:1.3rem;margin-bottom:6px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.faq-group h2::before{content:"";width:4px;height:1.1em;border-radius:2px;background:var(--orange);flex:none}
+.faq-group .faq:first-of-type{border-top:0}
+@media (max-width:640px){.faq-group{padding:20px 18px 6px}}
+.faq-group>.faq:last-child,.faq-group>.faq:last-child details{border-bottom:0}
+.ro-stats{min-height:96px}
+.ro-empty-stats{font-size:13px;color:var(--text-3);margin:6px 0 12px}
+.ro-stats .ro-meter span b{font-weight:500;color:var(--text);margin-left:6px}
+/* v6.2 Laptop Finder result */
+.lpick .lp-name{margin:6px 0 4px}
+.lp-price{font-family:var(--head);font-weight:700;font-size:1.15rem;color:var(--orange);margin:0 0 10px}
+.lp-price small{display:block;font-family:var(--body);font-weight:400;font-size:12px;color:var(--text-3)}
+.lp-note{color:var(--text);margin:0 0 10px}
+.lp-why{margin:0 0 16px;padding-left:18px;color:var(--text-2);font-size:14px}
+.lp-why li{margin:4px 0}
+.lp-spec dd{color:var(--text)}
+.lp-cta{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 10px}
