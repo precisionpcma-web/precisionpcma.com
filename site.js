@@ -192,23 +192,40 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
   links.forEach(function (a) { var t = document.querySelector(a.getAttribute('href')); if (t) map[t.id] = a; });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
-      if (!en.isIntersecting) return;
+      return; /* tabs mode: chips are set on click */
       links.forEach(function (l) { l.classList.remove('on'); });
       var a = map[en.target.id]; if (a) { a.classList.add('on'); var row = a.parentNode; row.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' }); }
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
-  /* click: land exactly below the sticky header + chip bar, at any screen size */
+  /* tabs: only the picked section shows, right under the chips. Click it again (or Esc) to close it. */
   var reduceM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var cur = null;
+  document.body.classList.add('jfocus');
+  var hint = document.createElement('p'); hint.className = 'jhint wrap'; hint.textContent = 'Pick a category above to see what we do and what it costs.';
+  bar.parentNode.insertBefore(hint, bar.nextSibling);
+  function stuckTop() { var head = document.querySelector('header'); return head ? head.offsetHeight : 0; }
+  function open(t, a, animate) {
+    var wasStuck = bar.getBoundingClientRect().top <= stuckTop() + 1;
+    cur = t; hint.hidden = !!t;
+    secs.forEach(function (s) { s.hidden = s !== t; s.classList.remove('pop'); });
+    links.forEach(function (l) { var on = l === a; l.classList.toggle('on', on); l.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    if (t) { void t.offsetWidth; if (animate && !reduceM) t.classList.add('pop'); t.querySelectorAll('[data-reveal], .stg').forEach(function (el) { el.classList.add('in'); }); }
+    if (wasStuck) { var pv = bar.previousElementSibling; window.scrollTo({ top: (pv ? pv.offsetTop + pv.offsetHeight : 0) - stuckTop(), behavior: 'instant' }); }
+    history.replaceState(null, '', t ? a.getAttribute('href') : location.pathname);
+  }
+  var start = links.filter(function (l) { return l.getAttribute('href') === location.hash; })[0] || links[0];
+  open(document.querySelector(start.getAttribute('href')), start, false);
   links.forEach(function (a) {
+    a.setAttribute('role', 'button');
     a.addEventListener('click', function (e) {
       var t = document.querySelector(a.getAttribute('href')); if (!t) return;
       e.preventDefault();
-      var head = document.querySelector('header'), off = (head ? head.offsetHeight : 0) + bar.offsetHeight + 8;
-      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior: reduceM ? 'auto' : 'smooth' });
-      history.replaceState(null, '', a.getAttribute('href'));
+      if (cur === t) open(null, null, false); else open(t, a, true);
     });
   });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cur) open(null, null, false); });
 })();
 
 /* ---------- FAQ search ---------- */
@@ -924,4 +941,38 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     meter('l-wt', W.n); $('l-wt-t').textContent = W.t;
   }
   show(0);
+})();
+
+/* ---------- v6.0 flare layer ---------- */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  // scroll progress
+  var bar = document.createElement('div'); bar.className = 'scroll-prog'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar);
+  var tick = false;
+  function prog() { var h = document.documentElement, max = h.scrollHeight - h.clientHeight; bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')'; tick = false; }
+  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(prog); } }, { passive: true }); prog();
+  // staggered reveal for repeated items
+  if (!reduce && 'IntersectionObserver' in window) {
+    var groups = {};
+    document.querySelectorAll('.goal, .fact, .line, .faq, .part, .faq-group').forEach(function (el) {
+      if (el.closest('[data-reveal]') || el.closest('form')) return;
+      var p = el.parentNode; var k = groups[p] = (groups[p] || 0);
+      el.classList.add('stg'); el.style.setProperty('--d', Math.min(k, 8) * 0.06 + 's'); groups[p] = k + 1;
+    });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.stg').forEach(function (el) { io.observe(el); });
+  }
+  if (!fine) return;
+  var glow = null, gx = 0, gy = 0, gq = false;
+  if (!reduce) { glow = document.createElement('div'); glow.className = 'cursor-glow'; glow.setAttribute('aria-hidden', 'true'); document.body.appendChild(glow);
+    document.documentElement.addEventListener('mouseleave', function () { glow.style.opacity = '0'; }); }
+  // cursor spotlight + gentle tilt
+  document.addEventListener('pointermove', function (e) {
+    var c = e.target.closest && e.target.closest('.goal, .fact, .qcard');
+    if (c) { var r = c.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; c.style.setProperty('--mx', x + 'px'); c.style.setProperty('--my', y + 'px');
+      if (!reduce && c.classList.contains('goal')) c.style.transform = 'perspective(700px) rotateX(' + ((r.height / 2 - y) / r.height * 5).toFixed(2) + 'deg) rotateY(' + ((x - r.width / 2) / r.width * 6).toFixed(2) + 'deg) translateY(-3px)'; }
+    if (glow) { gx = e.clientX; gy = e.clientY; if (!gq) { gq = true; requestAnimationFrame(function () { glow.style.transform = 'translate(' + (gx - 300) + 'px,' + (gy - 300) + 'px)'; glow.style.opacity = '1'; gq = false; }); } }
+  }, { passive: true });
+  document.addEventListener('pointerout', function (e) { var c = e.target.closest && e.target.closest('.goal'); if (c && !c.contains(e.relatedTarget)) c.style.transform = ''; });
 })();

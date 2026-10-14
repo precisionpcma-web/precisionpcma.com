@@ -1,6 +1,6 @@
 /* Precision PC site styles. Dark, one orange accent taken from the logo's pin-1 corner. */
 :root{
-  --bg:#0a0a0a; --surface:#141414; --surface-2:#1a1a1a; --field:#1c1c1c;
+  --bg:#0c0d0f; --surface:#191a1e; --surface-2:#202126; --field:#24252b;
   --line:rgba(255,255,255,.09); --line-strong:rgba(255,255,255,.18);
   --text:#f0ede8; --text-2:#b4b1ac; --text-3:#86837e; --orange:#ff5818; --orange-soft:rgba(255,88,24,.12);
   --head:'Plus Jakarta Sans','Inter',system-ui,sans-serif;
@@ -21,7 +21,7 @@ a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
 
 /* header */
-header{position:sticky;top:0;z-index:50;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--orange),rgba(255,88,24,0) 40%) 1}
+header{position:sticky;top:0;z-index:50;background:rgba(17,18,21,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--orange),rgba(255,88,24,0) 40%) 1}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand img{width:40px;height:40px;display:block}
@@ -263,7 +263,7 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .trace p{font-size:15px}
 
 /* jump chips with scroll-spy */
-.jump{position:sticky;top:var(--hh,68px);z-index:40;background:rgba(10,10,10,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.jump{position:sticky;top:var(--hh,68px);z-index:40;background:rgba(17,18,21,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .jump .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
 .jump a{flex:none;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;font-size:14px;font-weight:500;color:var(--text-2);text-decoration:none;transition:border-color .15s,color .15s,background-color .15s}
 .jump a:hover{color:var(--text)}
@@ -371,7 +371,7 @@ footer{border-top:1px solid var(--line);padding-block:32px}
   .slots{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"cpu cpu gpu gpu" "ram cool mb ssd" "psu case case case"}
   .slot{min-height:44px;padding:8px}
   .slot small{display:none}
-  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(10,10,10,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(17,18,21,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
   .mbar .btn{width:100%}
   body.has-mbar{padding-bottom:76px}
 }
@@ -632,8 +632,8 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 .quiz-grid>*{min-width:0}
 
 /* v5.9 cinematic home hero (preview) */
-.hero-cine{background:#070707;isolation:isolate}
-.hero-cine::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,7,7,.92) 0%,rgba(7,7,7,.65) 38%,rgba(7,7,7,0) 70%);z-index:0;pointer-events:none}
+.hero-cine{background:#0e0f12;isolation:isolate}
+.hero-cine::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,15,18,.92) 0%,rgba(14,15,18,.65) 38%,rgba(14,15,18,0) 70%);z-index:0;pointer-events:none}
 .cine-bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
 .cine-bg .glow{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55}
 .cine-bg .g1{width:520px;height:520px;right:6%;top:8%;background:radial-gradient(circle,rgba(255,88,24,.45),rgba(255,88,24,0) 70%)}
@@ -654,10 +654,69 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 @keyframes sheen{0%,35%{background-position:120% 0;opacity:0}45%{opacity:1}70%,100%{background-position:-30% 0;opacity:0}}
 @keyframes pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.7;transform:scale(1.08)}}
 @keyframes mote{0%{transform:translateY(0);opacity:0}10%{opacity:.9}100%{transform:translateY(-560px) translateX(30px);opacity:0}}
-@media (max-width:900px){.hero-cine::after{background:linear-gradient(180deg,rgba(7,7,7,.2),rgba(7,7,7,.85))}.cine-stage .gpu{width:100%;margin-left:0}}
+@media (max-width:900px){.hero-cine::after{background:linear-gradient(180deg,rgba(14,15,18,.2),rgba(14,15,18,.85))}.cine-stage .gpu{width:100%;margin-left:0}}
 @keyframes sweep{0%,30%{transform:skewX(-18deg) translateX(0)}75%,100%{transform:skewX(-18deg) translateX(720px)}}
 .hero-cine .gpu .sweep{transform-box:view-box}
 /* v5.9.1 services die: caption sits beside the chip so rotating text never moves the page */
 #hot .group-art{display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:center;max-width:480px}
 #hot .group-art .die-cap{margin:0;min-height:0}
 @media (max-width:900px){#hot .group-art{max-width:460px;grid-template-columns:160px minmax(0,1fr)}}
+/* ===== v6.0 flare layer (all pages) ===== */
+.scroll-prog{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--orange),#ffb15c);z-index:60;pointer-events:none}
+.page-hero{position:relative;overflow:hidden;isolation:isolate}
+.page-hero::before{content:"";position:absolute;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(420px 300px at var(--hx,78%) var(--hy,30%),rgba(255,88,24,.22),transparent 70%),radial-gradient(360px 260px at 12% 110%,rgba(255,150,60,.10),transparent 70%)}
+.page-hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000 10%,transparent 75%)}
+.page-hero h1{position:relative;display:inline-block}
+.page-hero h1::after{content:"";display:block;height:3px;width:72px;margin-top:14px;border-radius:2px;background:linear-gradient(90deg,var(--orange),rgba(255,88,24,0));transform-origin:0 50%}
+/* spotlight cards */
+.goal,.fact,.qcard,.faq-group,.part,.ro-card{position:relative;--mx:50%;--my:50%}
+.goal::before,.fact::before,.qcard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,88,24,.14),transparent 60%)}
+.goal:hover::before,.fact:hover::before,.qcard:hover::before{opacity:1}
+.goal:hover,.fact:hover{border-color:rgba(255,88,24,.45)}
+.goal{will-change:transform}
+/* price rows */
+.line{position:relative;transition:padding .25s var(--ease)}
+.line::before{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--orange);transform:scaleX(0);transform-origin:0 50%;transition:transform .5s var(--ease)}
+.line:hover::before{transform:scaleX(1)}
+.line:hover{padding-left:8px}
+.line:hover .amt{color:var(--orange)}
+/* buttons */
+.btn-primary{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transition:left .6s var(--ease)}
+.btn-primary:hover::after{left:130%}
+.ico-tile{transition:border-color .2s,transform .3s var(--ease),box-shadow .3s}
+.goal:hover .ico-tile,.fact:hover .ico-tile,.group-head:hover .ico-tile{border-color:var(--orange);transform:rotate(-6deg) scale(1.06);box-shadow:0 0 18px rgba(255,88,24,.35)}
+/* section seams */
+.section,.group,.stats{position:relative}
+.group::before,.section.alt::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,88,24,.55),transparent);background-size:200% 100%}
+/* stagger */
+.js .stg{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease);transition-delay:var(--d,0s)}
+.js .stg.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){
+  .page-hero::before{animation:herodrift 14s ease-in-out infinite alternate}
+  .page-hero::after{animation:gridpan 30s linear infinite}
+  .page-hero h1::after{animation:barin 1s .2s var(--ease) both}
+  .group::before,.section.alt::before{animation:seam 6s linear infinite}
+}
+@keyframes herodrift{0%{transform:translate(0,0)}100%{transform:translate(-6%,4%)}}
+@keyframes gridpan{to{background-position:44px 44px}}
+@keyframes barin{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes seam{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.js .stg{opacity:1;transform:none;transition:none}.goal{transform:none!important}}
+/* v6.1 lift the black: ambient light on the page */
+body{background:radial-gradient(1100px 700px at 85% -10%,rgba(255,88,24,.10),transparent 60%),radial-gradient(900px 700px at -10% 40%,rgba(90,110,150,.10),transparent 60%),radial-gradient(900px 600px at 100% 100%,rgba(255,120,40,.06),transparent 60%),var(--bg);background-attachment:fixed}
+.section.alt{background-color:rgba(255,255,255,.025)}
+/* v6.2 services chips: show one section in place */
+.jfocus .jump a.on::after{content:"\00d7";margin-left:8px;font-weight:700;color:var(--orange)}
+.jfocus .group[hidden],.jfocus #pickup[hidden]{display:none}
+.group.pop,#pickup.pop{animation:popin .4s var(--ease) both}
+@keyframes popin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+/* v6.3 page-wide cursor glow (sits behind content, never over text) */
+.cursor-glow{position:fixed;left:0;top:0;width:600px;height:600px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s,transform .12s linear;
+  background:radial-gradient(circle,rgba(255,88,24,.16) 0%,rgba(255,88,24,.07) 35%,transparent 68%)}
+.jhint{padding-block:48px 72px;color:var(--text-3);font-size:15px}
+.jhint[hidden]{display:none}
