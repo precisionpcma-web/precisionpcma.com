@@ -657,3 +657,7 @@ footer{border-top:1px solid var(--line);padding-block:32px}
 @media (max-width:900px){.hero-cine::after{background:linear-gradient(180deg,rgba(7,7,7,.2),rgba(7,7,7,.85))}.cine-stage .gpu{width:100%;margin-left:0}}
 @keyframes sweep{0%,30%{transform:skewX(-18deg) translateX(0)}75%,100%{transform:skewX(-18deg) translateX(720px)}}
 .hero-cine .gpu .sweep{transform-box:view-box}
+/* v5.9.1 services die: caption sits beside the chip so rotating text never moves the page */
+#hot .group-art{display:grid;grid-template-columns:190px minmax(0,1fr);gap:20px;align-items:center;max-width:480px}
+#hot .group-art .die-cap{margin:0;min-height:0}
+@media (max-width:900px){#hot .group-art{max-width:460px;grid-template-columns:160px minmax(0,1fr)}}
