@@ -781,3 +781,18 @@ body{background:radial-gradient(900px 700px at -10% 40%,rgba(90,110,150,.08),tra
   .mbar .btn-primary::after{display:none}
 }
 @media (max-width:900px){html:not(.q-on) .quiz-grid .readout{display:none}}
+
+.lp-h{font:700 1rem var(--head);margin:22px 0 10px}
+.lp-fit{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.lp-fit li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:2px 10px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2)}
+.lp-fit .lp-fi{grid-row:span 2;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--body);background:rgba(108,197,143,.16);color:#6cc58f}
+.lp-fit li.tw .lp-fi{background:rgba(255,88,24,.16);color:var(--orange)}
+.lp-fit b{font-weight:600;color:var(--text);font-size:14px}
+.lp-fit li span:last-child{color:var(--text-2);font-size:14px}
+.lp-cmpw{overflow-x:auto;margin:0 0 14px;border:1px solid var(--line);border-radius:10px}
+.lp-cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:420px}
+.lp-cmp th,.lp-cmp td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+.lp-cmp tbody th{color:var(--text-3);font-weight:500;white-space:nowrap}
+.lp-cmp thead th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);font-weight:600}
+.lp-cmp td:nth-child(2){background:rgba(255,88,24,.06)}
+.lp-cmp tr:last-child th,.lp-cmp tr:last-child td{border-bottom:0}

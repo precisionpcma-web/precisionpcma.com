@@ -829,13 +829,13 @@ function statsHTML(rows, empty) {
   var LAPTOPS = [
     { id: 'omni5', n: 'HP OmniBook 5 14 (Snapdragon)', mk: 'HP', os: 'win', arm: 1, p: 579, ps: 'About $550 to $600', seen: 'Oct 2025', sz: 14, lb: 2.9, bt: 5, g: 1, mem: 16, c: 0, b: 2, s: 1,
       cfg: 'Snapdragon X Plus, 16 GB memory, 512 GB SSD, OLED screen', cpu: 'Qualcomm Snapdragon X Plus', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '14 in OLED, 1920 x 1200', bat: '16.9 hrs on Wi-Fi (Notebookcheck)',
-      url: GS('HP OmniBook 5 14 Snapdragon OLED'), note: 'The best laptop we\'ve found under $600: a 14-inch OLED, 16 GB of memory and all-day battery. Some games and older programs don\'t run on Snapdragon.' },
+      url: 'https://www.hp.com/us-en/laptops-and-2-in-1s/omnibook-5-ai-pc.html', note: 'The best laptop we\'ve found under $600: a 14-inch OLED, 16 GB of memory and all-day battery. Some games and older programs don\'t run on Snapdragon.' },
     { id: 'neo', n: 'MacBook Neo (512 GB)', mk: 'Apple', os: 'mac', p: 799, ps: 'About $800', seen: 'Jul 2026', sz: 14, lb: 2.7, bt: 4, g: 1, mem: 8, c: 0, b: 3, q: 1,
       cfg: 'The 512 GB version. The 256 GB one fills up fast for $100 less', cpu: 'Apple A18 Pro', gpu: 'Apple built-in graphics', ram: '8 GB memory (can\'t be upgraded), 512 GB SSD', scr: '13 in, 2408 x 1506', bat: '13.5 hrs of web browsing (Tom\'s Guide)',
       url: 'https://www.apple.com/macbook-neo/', note: 'Great for school, browsing and documents, with Apple\'s build quality. 8 GB of memory is the limit, so it\'s not for editing or heavy multitasking, and the keyboard isn\'t backlit.' },
     { id: 'flip14', n: 'HP OmniBook X Flip 14', mk: 'HP', os: 'win', p: 750, ps: 'About $700 to $1,000', seen: '2026', sz: 14, lb: 3.1, bt: 2, g: 1, mem: 16, c: 0, b: 1, t: 1, pen: 1,
       cfg: 'Core Ultra 5, 16 GB memory, 512 GB SSD', cpu: 'Intel Core Ultra 5 226V', gpu: 'Intel Arc built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '14 in touchscreen, 1920 x 1200, folds into a tablet', bat: '8.5 hrs of web browsing (Tom\'s Guide)',
-      url: GS('HP OmniBook X Flip 14 Core Ultra 5 226V'), note: 'The best-value 2-in-1: a touchscreen that folds back, with pen support. The keyboard is a bit soft.' },
+      url: 'https://www.hp.com/us-en/shop/pdp/hp-omnibook-x-flip-14-inch-2-in-1-laptop-next-gen-ai-pc-ak4z4av-1', note: 'The best-value 2-in-1: a touchscreen that folds back, with pen support. The keyboard is a bit soft.' },
     { id: 'xps13', n: 'Dell XPS 13 (2026, 16 GB)', mk: 'Dell', os: 'win', p: 999, ps: 'About $1,000', seen: 'Aug 2026', sz: 14, lb: 2.2, bt: 4, g: 0, mem: 16, c: 0, b: 3, s: 1,
       cfg: 'The 16 GB version. The $700 8 GB one slows down with lots of tabs, and memory can\'t be added later', cpu: 'Intel Core 5 320', gpu: 'Intel built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '13.4 in, 2.5K, 120 Hz', bat: '14.5 hrs of web browsing (Tom\'s Guide, 8 GB model)',
       url: 'https://www.dell.com/en-us/shop/laptop-computers/spd/xps13dx13260', note: 'Excellent build in a very light body. Few ports and no headphone jack.' },
@@ -847,56 +847,56 @@ function statsHTML(rows, empty) {
       url: 'https://www.apple.com/macbook-air/', note: 'A bigger screen that stays silent and light, often for barely more than the 13-inch.' },
     { id: 'a14', n: 'ASUS Zenbook A14 (2026)', mk: 'ASUS', os: 'win', arm: 1, p: 1349, ps: 'About $1,350', seen: 'Jul 2026', sz: 14, lb: 2.2, bt: 5, g: 1, mem: 16, c: 0, b: 3, s: 1,
       cfg: 'Snapdragon X2 Elite, 16 GB memory, 512 GB SSD', cpu: 'Qualcomm Snapdragon X2 Elite', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '14 in OLED, 1920 x 1200', bat: '23.5 hrs of video (Windows Central)',
-      url: GS('ASUS Zenbook A14 2026 Snapdragon X2 Elite'), note: 'The longest battery life we recommend, in a 2.2 lb body. Some games and older programs don\'t run on Snapdragon.' },
+      url: 'https://www.asus.com/us/laptops/for-home/zenbook/asus-zenbook-a14-ux3407/', note: 'The longest battery life we recommend, in a 2.2 lb body. Some games and older programs don\'t run on Snapdragon.' },
     { id: 'zs16', n: 'ASUS Zenbook S16 (2026)', mk: 'ASUS', os: 'win', p: 1499, ps: 'About $1,500 on sale (list $1,800)', seen: 'Jun 2026', sz: 16, lb: 3.3, bt: 4, g: 2, mem: 32, c: 1, b: 3, t: 1, s: 1,
       cfg: 'Ryzen AI 9 465, 32 GB memory, 1 TB SSD', cpu: 'AMD Ryzen AI 9 465', gpu: 'AMD Radeon built-in graphics', ram: '32 GB memory, 1 TB SSD', scr: '16 in OLED touchscreen, 2880 x 1800, 120 Hz', bat: '83 Wh battery',
-      url: 'https://www.asus.com/us/laptops/for-home/zenbook/', note: 'A thin, light 16-inch with a 120 Hz OLED and 32 GB of memory. Ideal for school, work and light photo editing. Not for gaming.' },
+      url: 'https://www.asus.com/us/laptops/for-home/zenbook/asus-zenbook-s-16-um5606/', note: 'A thin, light 16-inch with a 120 Hz OLED and 32 GB of memory. Ideal for school, work and light photo editing. Not for gaming.' },
     { id: 'surf', n: 'Microsoft Surface Laptop 13.8 (2026)', mk: 'Microsoft', os: 'win', arm: 1, p: 1499, ps: 'About $1,500 on sale (list $1,700)', seen: 'Oct 2026', sz: 14, lb: 2.95, bt: 4, g: 1, mem: 16, c: 0, b: 2, kb: 1, t: 1, s: 1,
       cfg: 'Snapdragon X2 Elite, 16 GB memory, 512 GB SSD', cpu: 'Qualcomm Snapdragon X2 Elite', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '13.8 in touchscreen, 120 Hz', bat: 'Not independently tested yet',
       url: 'https://www.microsoft.com/en-us/surface/devices/surface-laptop', note: 'A great keyboard and touchscreen in a clean, simple design. Some games and older programs don\'t run on Snapdragon.' },
     { id: 'gram17', n: 'LG Gram 17', mk: 'LG', os: 'win', p: 1479, ps: 'About $1,480 to $1,700', seen: 'Dec 2025', sz: 18, lb: 3.2, bt: 5, g: 1, mem: 16, c: 0, b: 1, t: 1,
       cfg: 'Core Ultra 7, 16 GB memory, 1 TB SSD', cpu: 'Intel Core Ultra 7 256V', gpu: 'Intel Arc built-in graphics', ram: '16 GB memory, 1 TB SSD', scr: '17 in touchscreen, 2560 x 1600', bat: '15.5 hrs of web browsing (Tom\'s Guide)',
-      url: GS('LG Gram 17 Core Ultra 7 256V'), note: 'A 17-inch screen that weighs only 3.2 lb with all-day battery. The body feels a bit plasticky.' },
+      url: 'https://www.lg.com/us/laptops/lg-17z90tl-g.aub5u1-gram-laptop', note: 'A 17-inch screen that weighs only 3.2 lb with all-day battery. The body feels a bit plasticky.' },
     { id: 'mbp14', n: 'MacBook Pro 14 (M5)', mk: 'Apple', os: 'mac', p: 1999, ps: 'About $2,000', seen: 'Sep 2026', sz: 14, lb: 3.4, bt: 5, g: 2, mem: 16, c: 3, b: 3, kb: 1, po: 1, s: 1,
       cfg: 'M5, 16 GB memory, 1 TB SSD. Only worth it over an Air for long editing sessions', cpu: 'Apple M5', gpu: 'Apple built-in graphics', ram: '16 GB memory, 1 TB SSD', scr: '14.2 in mini-LED, 3024 x 1964, 120 Hz', bat: '18 hrs of web browsing (Tom\'s Guide)',
       url: 'https://www.apple.com/macbook-pro/', note: 'A brighter 120 Hz screen, HDMI and SD card slot, and fans that keep it fast through long video exports.' },
     { id: 'yoga9', n: 'Lenovo Yoga 9i 2-in-1 Aura Edition', mk: 'Lenovo', os: 'win', p: 1999, ps: 'About $2,000 on sale', seen: 'Oct 2026', sz: 14, lb: 2.9, bt: 4, g: 2, mem: 16, c: 1, b: 3, t: 1, pen: 1, s: 1,
       cfg: 'Core Ultra 9, OLED touchscreen', cpu: 'Intel Core Ultra 9 386H', gpu: 'Intel Arc built-in graphics', ram: '16 GB or more, 1 TB SSD', scr: '14 in OLED touchscreen, 2880 x 1800, 120 Hz', bat: '12.8 hrs of web browsing (Tom\'s Guide)',
-      url: GS('Lenovo Yoga 9i 2-in-1 Aura Edition'), note: 'A premium 2-in-1 with a 120 Hz OLED and pen support.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/yoga/yoga-2-in-1-series/lenovo-yoga-9i-2-in-1-gen-11-aura-edition-14-inch-intel/len101y0074', note: 'A premium 2-in-1 with a 120 Hz OLED and pen support.' },
     { id: 'proart', n: 'ASUS ProArt P16', mk: 'ASUS', os: 'win', cr: 1, p: 2500, ps: 'About $2,500', seen: '2025 launch price', sz: 16, lb: 4.1, bt: 3, g: 5, mem: 32, c: 3, b: 3, t: 1, s: 1, po: 1,
       cfg: 'Ryzen AI 9 HX 370, RTX 5070, 32 GB memory', cpu: 'AMD Ryzen AI 9 HX 370', gpu: 'NVIDIA RTX 5070', ram: '32 GB memory', scr: '16 in OLED touchscreen, 2880 x 1800', bat: '90 Wh battery',
-      url: GS('ASUS ProArt P16 H7606 RTX 5070'), note: 'Built for color-accurate photo and video work, with a real graphics card for exports and 3D.' },
+      url: 'https://www.asus.com/us/laptops/for-creators/proart/proart-p16-h7606/', note: 'Built for color-accurate photo and video work, with a real graphics card for exports and 3D.' },
     // gaming
     { id: 'loq15', n: 'Lenovo LOQ 15 (RTX 5050)', mk: 'Lenovo', os: 'win', p: 700, ps: 'About $650 to $800', seen: 'Nov 2025 to Jun 2026', sz: 16, lb: 5.1, bt: 1, g: 3, mem: 16, c: 1, b: 2, po: 1, up: 1,
       cfg: 'Core i5-13450HX, RTX 5050, 16 GB memory, 512 GB SSD. Skip the "LOQ Essential": its graphics card runs at much lower power', cpu: 'Intel Core i5-13450HX', gpu: 'NVIDIA RTX 5050 (8 GB)', ram: '16 GB memory (upgradeable), 512 GB SSD', scr: '15.6 in, 1920 x 1080, 144 Hz', bat: 'Short away from the plug, like most gaming laptops',
-      url: GS('Lenovo LOQ 15 RTX 5050 i5-13450HX'), note: 'The best-value way into real laptop gaming. Fortnite, Valorant and Apex run well at 1080p, DLSS covers heavier games, and it\'s easy to upgrade.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/loq-laptops/loq-15-series/lenovo-loq-15irx10/len101q0011', note: 'The best-value way into real laptop gaming. Fortnite, Valorant and Apex run well at 1080p, DLSS covers heavier games, and it\'s easy to upgrade.' },
     { id: 'tuff16', n: 'ASUS TUF Gaming F16 (RTX 5050)', mk: 'ASUS', os: 'win', p: 899, ps: 'About $900 on sale (list $1,300)', seen: 'Apr 2026', sz: 16, lb: 4.9, bt: 1, g: 3, mem: 16, c: 1, b: 2, po: 1, up: 1,
       cfg: 'Core i5-13450HX, RTX 5050, 16 GB memory, 512 GB SSD. Only worth it on sale', cpu: 'Intel Core i5-13450HX', gpu: 'NVIDIA RTX 5050 (8 GB)', ram: '16 GB memory (upgradeable), 512 GB SSD', scr: '16 in, 1920 x 1200, 165 Hz', bat: 'Short away from the plug, like most gaming laptops',
-      url: GS('ASUS TUF Gaming F16 RTX 5050 i5-13450HX'), note: 'A tough, simple gaming laptop with a bigger 16-inch screen.' },
+      url: 'https://www.asus.com/us/laptops/for-gaming/tuf-gaming/asus-tuf-gaming-f16-2025/', note: 'A tough, simple gaming laptop with a bigger 16-inch screen.' },
     { id: 'leg5', n: 'Lenovo Legion 5i (Gen 10, RTX 5070)', mk: 'Lenovo', os: 'win', p: 1250, ps: 'About $1,200 to $1,300 on sale', seen: 'Mar 2026', sz: 16, lb: 4.2, bt: 1, g: 5, mem: 16, c: 2, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Model 83F00006US: Core Ultra 7 255HX, RTX 5070 at 115 W, 16 GB, 1 TB, OLED. It ships with one 16 GB stick (single-channel); we can add a second for dual-channel and 32 GB', cpu: 'Intel Core Ultra 7 255HX', gpu: 'NVIDIA RTX 5070 (8 GB, 115 W)', ram: '16 GB, single stick (upgradeable), 1 TB SSD', scr: '15.1 in OLED, 2560 x 1600, 165 Hz', bat: 'About 4 to 5 hrs of video (LaptopMedia, PCWorld)',
-      url: GS('Lenovo Legion 5i Gen 10 83F00006US'), note: 'The best gaming value we\'ve found: an RTX 5070 at 115 W, a 165 Hz OLED and solid Legion build quality and cooling.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/legion-laptops/legion-series/lenovo-legion-5i-gen-10-15-inch-intel/83f00006us', note: 'The best gaming value we\'ve found: an RTX 5070 at 115 W, a 165 Hz OLED and solid Legion build quality and cooling.' },
     { id: 'leg7', n: 'Lenovo Legion 7i (Gen 10)', mk: 'Lenovo', os: 'win', p: 1400, ps: 'About $1,250 to $1,500', seen: 'Mar 2026', sz: 16, lb: 4.36, bt: 2, g: 4, mem: 32, c: 2, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Core Ultra 7 255HX, RTX 5060 at 115 W, 32 GB memory, 1 TB SSD, OLED', cpu: 'Intel Core Ultra 7 255HX', gpu: 'NVIDIA RTX 5060 (8 GB, 115 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in OLED, 2560 x 1600, 165 Hz', bat: 'Just under 8 hrs of video (TechRadar)',
-      url: GS('Lenovo Legion 7i Gen 10 RTX 5060 OLED'), note: 'A slimmer, lighter Legion with an OLED screen, an SD card reader and 32 GB of memory. Good for gaming and editing. Runs hot in its fastest mode.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/legion-laptops/legion-series/lenovo-legion-7i-gen-10-16-inch-intel/len101g0044', note: 'A slimmer, lighter Legion with an OLED screen, an SD card reader and 32 GB of memory. Good for gaming and editing. Runs hot in its fastest mode.' },
     { id: 'leg5x', n: 'Lenovo Legion 5i (Gen 10, 32 GB)', mk: 'Lenovo', os: 'win', p: 1599, ps: 'About $1,600', seen: 'Jun 2026', sz: 16, lb: 4.2, bt: 1, g: 5, mem: 32, c: 2, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Core Ultra 9 275HX, RTX 5070, 32 GB memory, 1 TB SSD, OLED', cpu: 'Intel Core Ultra 9 275HX', gpu: 'NVIDIA RTX 5070 (8 GB)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '15.1 in OLED, 2560 x 1600, 165 Hz', bat: 'About 4 to 5 hrs of video (LaptopMedia, PCWorld)',
-      url: GS('Lenovo Legion 5i Gen 10 Core Ultra 9 275HX RTX 5070 32GB'), note: 'Our top value gaming pick with a faster processor and 32 GB of memory already in it.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/legion-laptops/legion-series/lenovo-legion-5i-gen-10-15-inch-intel/83f00006us', note: 'Our top value gaming pick with a faster processor and 32 GB of memory already in it.' },
     { id: 'strix16', n: 'ASUS ROG Strix G16 (RTX 5070 Ti)', mk: 'ASUS', os: 'win', p: 1750, ps: 'About $1,750 on sale (list $2,300)', seen: 'Sep 2026', sz: 16, lb: 5.2, bt: 1, g: 6, mem: 16, c: 2, b: 2, po: 1, up: 1,
       cfg: 'Ryzen 9 8940HX, RTX 5070 Ti, 16 GB memory, 1 TB SSD. The screen is 1080p-class and not very bright', cpu: 'AMD Ryzen 9 8940HX', gpu: 'NVIDIA RTX 5070 Ti (12 GB)', ram: '16 GB memory (upgradeable), 1 TB SSD', scr: '16 in, 1920 x 1200, 165 Hz', bat: '3 to 4 hrs of everyday use (PCWorld)',
-      url: GS('ASUS ROG Strix G16 Ryzen 9 8940HX RTX 5070 Ti'), note: 'RTX 5070 Ti power with excellent cooling that holds its speed under long gaming sessions. Bulky and a bit plasticky.' },
+      url: 'https://rog.asus.com/us/laptops/rog-strix/rog-strix-g16-2025-g614/', note: 'RTX 5070 Ti power with excellent cooling that holds its speed under long gaming sessions. Bulky and a bit plasticky.' },
     { id: 'g14', n: 'ASUS ROG Zephyrus G14 (2025)', mk: 'ASUS', os: 'win', p: 2250, ps: 'Last seen about $2,050 to $2,500', seen: 'Jul 2025', sz: 14, lb: 3.4, bt: 3, g: 6, mem: 32, c: 3, b: 3, s: 1, po: 1,
       cfg: 'The 2025 model (Ryzen AI 9 HX 370, RTX 5070 Ti, 32 GB, 1 TB). The 2026 version costs over $1,000 more for little gain', cpu: 'AMD Ryzen AI 9 HX 370', gpu: 'NVIDIA RTX 5070 Ti (12 GB)', ram: '32 GB memory (can\'t be upgraded), 1 TB SSD', scr: '14 in OLED, 2880 x 1800, 120 Hz', bat: '73 Wh battery',
-      url: GS('ASUS ROG Zephyrus G14 GA403 RTX 5070 Ti 2025'), note: 'An RTX 5070 Ti and a 120 Hz OLED in a 3.4 lb aluminum body you can carry every day.' },
+      url: 'https://rog.asus.com/us/laptops/rog-zephyrus/rog-zephyrus-g14-2025/', note: 'An RTX 5070 Ti and a 120 Hz OLED in a 3.4 lb aluminum body you can carry every day.' },
     { id: 'strix16x', n: 'ASUS ROG Strix G16 (Ryzen 9 9955HX3D)', mk: 'ASUS', os: 'win', x3d: 1, p: 2250, ps: 'About $2,250', seen: '2026', sz: 16, lb: 5.2, bt: 1, g: 6, mem: 32, c: 2, b: 2, po: 1, up: 1,
       cfg: 'Ryzen 9 9955HX3D, RTX 5070 Ti at 140 W, 32 GB memory, 1 TB SSD, 240 Hz screen', cpu: 'AMD Ryzen 9 9955HX3D', gpu: 'NVIDIA RTX 5070 Ti (12 GB, 140 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in, 2560 x 1600, 240 Hz', bat: 'About 6 hrs of video (PCWorld)',
-      url: GS('ASUS ROG Strix G16 9955HX3D RTX 5070 Ti'), note: 'The X3D chip that leads laptop gaming, paired with a full 140 W RTX 5070 Ti. Great for 240 Hz competitive games.' },
+      url: 'https://rog.asus.com/us/laptops/rog-strix/rog-strix-g16-2025-g614/', note: 'The X3D chip that leads laptop gaming, paired with a full 140 W RTX 5070 Ti. Great for 240 Hz competitive games.' },
     { id: 'pro7', n: 'Lenovo Legion Pro 7i (Gen 10, RTX 5080)', mk: 'Lenovo', os: 'win', p: 2550, ps: 'About $2,450 to $2,650', seen: 'May to Jul 2026', sz: 16, lb: 5.9, bt: 1, g: 7, mem: 32, c: 3, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Model 83F50012US: Core Ultra 9 275HX, RTX 5080 at 175 W, 32 GB memory, 1 TB SSD, 240 Hz OLED', cpu: 'Intel Core Ultra 9 275HX', gpu: 'NVIDIA RTX 5080 (16 GB, 175 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in OLED, 2560 x 1600, 240 Hz', bat: '4 hrs 37 min (Tom\'s Hardware)',
-      url: GS('Lenovo Legion Pro 7i Gen 10 83F50012US RTX 5080'), note: 'Our fastest laptop pick: a full-power 175 W RTX 5080, a 240 Hz OLED, quiet fans for its class and premium build. Best on a desk.' },
+      url: 'https://www.lenovo.com/us/en/p/laptops/legion-laptops/legion-pro-series/legion-pro-7i-gen-10-16-inch-intel/len101g0039', note: 'Our fastest laptop pick: a full-power 175 W RTX 5080, a 240 Hz OLED, quiet fans for its class and premium build. Best on a desk.' },
     { id: 'scar18', n: 'ASUS ROG Strix SCAR 18 (2026, RTX 5080)', mk: 'ASUS', os: 'win', p: 4200, ps: 'About $4,150 to $4,300', seen: 'Oct 2026', sz: 18, lb: 8.2, bt: 1, g: 7, mem: 32, c: 3, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Core Ultra 9 290HX Plus, RTX 5080, 32 GB memory, 1 TB SSD, 4K mini-LED', cpu: 'Intel Core Ultra 9 290HX Plus', gpu: 'NVIDIA RTX 5080 (16 GB)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '18 in mini-LED, 3840 x 2400, 240 Hz', bat: 'Short away from the plug',
-      url: GS('ASUS ROG Strix SCAR 18 2026 RTX 5080'), note: 'A huge 18-inch desktop replacement with a 4K 240 Hz mini-LED screen. Heavy at 8.2 lb, and loud at full power.' }
+      url: 'https://rog.asus.com/us/laptops/rog-strix/rog-strix-scar-18-2026/', note: 'A huge 18-inch desktop replacement with a 4K 240 Hz mini-LED screen. Heavy at 8.2 lb, and loud at full power.' }
   ];
   var Q = { omni5: 'HP OmniBook 5 14 Snapdragon X Plus OLED', neo: 'MacBook Neo 512GB', flip14: 'HP OmniBook X Flip 14 Core Ultra 5 226V', xps13: 'Dell XPS 13 2026 16GB', air13: 'MacBook Air 13 M5 16GB 512GB', air15: 'MacBook Air 15 M5 16GB 512GB',
     a14: 'ASUS Zenbook A14 Snapdragon X2 Elite', zs16: 'ASUS Zenbook S16 Ryzen AI 9 465 32GB', surf: 'Surface Laptop 13.8 Snapdragon X2 Elite', gram17: 'LG Gram 17 Core Ultra 7 256V', mbp14: 'MacBook Pro 14 M5 16GB 1TB',
@@ -906,11 +906,10 @@ function statsHTML(rows, empty) {
   var DOM = { HP: 'hp.com', Apple: 'apple.com', Dell: 'dell.com', ASUS: 'asus.com', Microsoft: 'microsoft.com', LG: 'lg.com', Lenovo: 'lenovo.com' };
   function priceBtns(L) {
     var q = Q[L.id] || L.n, e = encodeURIComponent(q);
-    var maker = /google\.com\/search/.test(L.url) ? GS(q + ' site:' + DOM[L.mk]) : L.url;
     return '<p class="lp-price-h">Check today\'s price</p><div class="lp-price-btns">' +
       '<a class="btn btn-quiet" href="https://www.amazon.com/s?k=' + e + '" target="_blank" rel="noopener">Amazon</a>' +
       '<a class="btn btn-quiet" href="https://www.bestbuy.com/site/searchpage.jsp?st=' + e + '" target="_blank" rel="noopener">Best Buy</a>' +
-      '<a class="btn btn-quiet" href="' + maker + '" target="_blank" rel="noopener">' + esc(DOM[L.mk]) + '</a></div>';
+      '<a class="btn btn-quiet" href="' + L.url + '" target="_blank" rel="noopener">Manufacturer website</a></div>';
   }
   var BR = [[0, 600], [600, 900], [900, 1300], [1300, 2000], [2000, 99999]];
   var step = 0, N = 6, PICK = null, ALT = null, NOFIT = '';
@@ -927,7 +926,7 @@ function statsHTML(rows, empty) {
     if (L.os !== 'mac' && needMac() && !needWin()) return -999;
     if (gaming() && L.g < 3) return -999;
     if (gaming()) { if (L.g < need) s -= (need - L.g) * (need - L.g >= 2 ? 30 : 20); else s += 12 + Math.min(L.g - need, 2) * (A.gtier === 'heavy' ? 7 : 3) + (A.gtier === 'online' && L.x3d ? 10 : 0); }
-    else if (L.g >= 3) s -= (uses('Photos, video or design') || maxApp('c') >= 2 ? 14 : 24) + (L.g - 3) * 5;
+    else if (L.g >= 3) s -= (uses('Photos, video or design') || maxApp('c') >= 2 ? 14 : 45) + (L.g - 3) * 5;
     if (b >= 0) { var r = BR[b]; if (L.p >= r[0] && L.p <= r[1] + 50) s += 30; else if (L.p < r[0]) s += 26 - (r[0] - L.p) / (gaming() ? 50 : 150); else s -= 12 + (L.p - r[1]) / 25; }
     else s -= Math.abs(L.p - 1200) / 80;
     s += (L.b - 2) * 5;
@@ -942,7 +941,9 @@ function statsHTML(rows, empty) {
     var cneed = maxApp('c'); if (cneed && L.c < cneed) s -= (cneed - L.c) * 10;
     if (A.where === 'Carried every day') s -= Math.max(0, L.lb - 3.6) * 14;
     else if (A.where === 'Moves around the house') s -= Math.max(0, L.lb - 5.5) * 6;
-    if (sz) s -= Math.abs(L.sz - sz) / 2 * (A.size && A.size !== 'Let us pick' ? 16 : 10);
+    var want = { 'Smaller (13 to 14 in)': 14, 'Middle (15 to 16 in)': 16, 'Big (17 to 18 in)': 18 }[A.size];
+    if (want && L.sz !== want && !RELAX) return -999;
+    if (sz) s -= Math.abs(L.sz - sz) / 2 * (want ? 16 : 10);
     if (A.bat === 'A full day (10+ hours)') s += (L.bt >= 4 ? 16 : L.bt <= 2 ? -25 : 0) * bw;
     else if (A.bat === 'Most of a day') s += (L.bt >= 3 ? 6 : L.bt <= 1 ? -15 : 0) * bw;
     if (has('Really nice screen')) s += L.s ? 10 : -4;
@@ -955,9 +956,11 @@ function statsHTML(rows, empty) {
     if (L.arm && armRisk()) s -= 60;
     return s;
   }
+  var RELAX = false, SIZEMISS = false;
   function ranked() { return LAPTOPS.map(function (L) { return { L: L, s: score(L) }; }).filter(function (x) { return x.s > -500; }).sort(function (a, b) { return b.s - a.s; }); }
   function pick() {
-    var R = ranked(); ALT = null; NOFIT = '';
+    RELAX = false; SIZEMISS = false; var R = ranked(); ALT = null; NOFIT = '';
+    if (!R.length && A.size && A.size !== 'Let us pick') { RELAX = true; R = ranked(); RELAX = false; SIZEMISS = !!R.length; }
     if (!R.length) { NOFIT = 'Nothing on our list fits that mix of programs.'; return null; }
     var L = R[0].L, b = bud();
     // one alternative, chosen for the most useful trade-off
@@ -971,8 +974,45 @@ function statsHTML(rows, empty) {
     // be honest when nothing good fits
     if (gaming() && b === 0) NOFIT = 'There are no good gaming laptops under $600 right now. The cheapest one worth buying, with a dedicated GPU, starts around $650 to $800. This is the closest pick we\'d actually buy.';
     else if (b >= 0 && L.p > BR[b][1] + 150) NOFIT = 'Nothing we\'d recommend does this well in your budget. This is the closest pick, but it costs more.';
-    else if (A.size === 'Big (17 to 18 in)' && L.sz !== 18) NOFIT = 'We don\'t have a 17 or 18-inch laptop we\'d recommend for these answers at this budget, so this is the closest fit.';
+    if (SIZEMISS) NOFIT = 'We don\'t have a ' + A.size.replace(/^\w+ \((.*)\)$/, '$1').replace(' in', '-inch') + ' laptop we\'d recommend for these answers, so this is the closest fit in another size.';
     return L;
+  }
+  var GPUN = function (L) { return L.gpu.replace(/ \(.*\)/, '').replace(/^NVIDIA /, ''); };
+  function fitRows(L) {
+    var r = [], b = bud(), add = function (ok, q, a) { r.push([ok, q, a]); };
+    if (gaming()) add(L.g >= gNeed(), GT[A.gtier].replace(/^./, function (c) { return c.toUpperCase(); }), L.g >= gNeed() ? GPUN(L) + (L.g >= 5 ? ': high settings at 1080p and 1440p' : ': smooth at 1080p, DLSS for heavier games') : GPUN(L) + ' is below what these games want at high settings');
+    if (uses('Photos, video or design')) add(L.c >= 2, 'Photo and video editing', L.c >= 2 ? 'Strong for editing: ' + (L.mem >= 32 ? '32 GB' : L.mem + ' GB') + ' memory' + (L.s ? ', color-rich screen' : '') : 'Fine for light edits; big video projects will be slow');
+    if (uses('Coding or tech work')) add(L.mem >= 16, 'Programming', L.mem + ' GB memory' + (L.mem >= 32 ? ', plenty for containers and VMs' : L.mem >= 16 ? ', fine for most dev work' : ', tight for an IDE plus a browser'));
+    if (uses('Work and video calls')) add(L.mem >= 16, 'Work', (L.kb ? 'Great keyboard, ' : '') + L.mem + ' GB memory for lots of tabs');
+    if (uses('School') || uses('Everyday and streaming')) add(L.mem >= 8, uses('School') ? 'School' : 'Everyday use', 'Quick for browsing, docs and video' + (L.mem < 16 ? ' (8 GB is the limit; avoid heavy multitasking)' : ''));
+    var want = { 'Smaller (13 to 14 in)': 14, 'Middle (15 to 16 in)': 16, 'Big (17 to 18 in)': 18 }[A.size];
+    add(!want || L.sz === want, want ? A.size.replace(/^\w+ \((.*)\)$/, '$1') + ' screen' : 'Screen size', L.scr.split(',')[0] + (want && L.sz !== want ? ', not the size you asked for' : ''));
+    if (A.where === 'Carried every day') add(L.lb <= 3.6, 'Carried every day', L.lb + ' lb' + (L.lb <= 3.6 ? ', easy to carry' : L.lb <= 4.6 ? ', a bit heavy for daily carry' : ', heavy for daily carry'));
+    else if (A.where === 'Moves around the house') add(L.lb <= 5.5, 'Around the house', L.lb + ' lb');
+    else if (A.where) add(true, 'Mostly on a desk', L.lb + ' lb, and it\'ll mostly stay plugged in');
+    if (A.bat) { var bok = A.bat === 'A few hours' || (A.bat === 'Most of a day' ? L.bt >= 3 : L.bt >= 4); add(bok, 'Battery: ' + A.bat.toLowerCase(), L.bat + (bok ? '' : '. Shorter than you asked for')); }
+    var P = { 'Really nice screen': function () { return [!!L.s, L.s ? L.scr.split(',').slice(0, 2).join(',') : 'A standard screen, not its strong point']; },
+      'Quiet and cool': function () { return [!!L.q || L.g < 3, L.q ? 'No fan noise' : L.g < 3 ? 'Runs cool and quiet in everyday use' : 'Fans get loud while gaming, like every gaming laptop']; },
+      'Great keyboard': function () { return [!!L.kb, L.kb ? 'One of the better keyboards' : 'A decent keyboard, not a standout']; },
+      'Good webcam and mic': function () { return ['warn', 'Camera and mic quality not confirmed for this model']; },
+      'Plugs for my stuff': function () { return [!!L.po, L.po ? 'Plenty of ports' : 'Few ports; you may want a USB-C hub']; },
+      'Touchscreen or pen': function () { return [!!L.t, L.t ? (L.pen ? 'Touchscreen with pen support' : 'Touchscreen') : 'No touchscreen']; },
+      'Lots of tabs and apps open': function () { return [L.mem >= 16, L.mem + ' GB memory']; },
+      'Can upgrade or repair later': function () { return [!!L.up, L.up ? 'Memory and storage can be upgraded' : 'Memory is built in and can\'t be upgraded']; } };
+    A.pri.forEach(function (k) { var x = P[k](); add(x[0], PRI.filter(function (p) { return p[0] === k; })[0][2], x[1]); });
+    var hard = picked().filter(function (a) { return a.g && a.g > L.g; });
+    if (A.apps.length) add(!hard.length, 'Runs your programs', hard.length ? hard.map(function (a) { return a.n; }).join(', ') + ' will need lower settings' : 'Everything you listed runs on it');
+    if (A.extra.length) add('warn', 'Not on our list', 'We couldn\'t check ' + A.extra.join(', ') + '. Ask Ben to confirm');
+    if (b >= 0) add(L.p <= BR[b][1] + 50, 'Budget: ' + A.budget, L.ps + (L.p < BR[b][0] - 300 && !gaming() ? '. You don\'t need to spend more for this' : L.p > BR[b][1] + 50 ? '. Over your range' : ''));
+    return r;
+  }
+  function fitHTML(L) {
+    return '<ul class="lp-fit">' + fitRows(L).map(function (x) { var ok = x[0] === true; return '<li class="' + (ok ? 'ok' : 'tw') + '"><span class="lp-fi" aria-label="' + (ok ? 'Fits' : 'Trade-off') + '">' + (ok ? '✓' : '!') + '</span><b>' + esc(x[1]) + '</b><span>' + esc(x[2]) + '</span></li>'; }).join('') + '</ul>';
+  }
+  function cmpHTML(L, B) {
+    var rows = [['Price', L.ps, B.ps], ['Screen', L.scr, B.scr], ['Processor', L.cpu, B.cpu], ['Graphics', L.gpu, B.gpu], ['Memory', L.ram, B.ram], ['Weight', L.lb + ' lb', B.lb + ' lb'], ['Battery', L.bat, B.bat]];
+    return '<div class="lp-cmpw"><table class="lp-cmp"><thead><tr><th></th><th>Ben\'s pick</th><th>Alternative</th></tr><tr><th></th><td><b>' + esc(L.n) + '</b></td><td><b>' + esc(B.n) + '</b></td></tr></thead><tbody>' +
+      rows.map(function (r) { return '<tr><th>' + r[0] + '</th><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>'; }).join('') + '</tbody></table></div>';
   }
   function reasons(L) {
     var r = [], b = bud();
@@ -1051,16 +1091,13 @@ function statsHTML(rows, empty) {
       var L = PICK = pick();
       var help = 'index.html?laptop=' + encodeURIComponent(summary()) + '#quote';
       if (!L) return '<div class="lpick"><h2 class="qh">We need a closer look</h2><p class="lp-note">' + esc(NOFIT) + '</p><div class="lp-cta"><a class="btn btn-primary" href="' + help + '">Have Ben find one</a></div><p class="fine"><button type="button" class="link qedit" data-go="0">Change my answers</button></p></div>';
-      var rs = reasons(L);
       return '<div class="lpick"><span class="eyebrow" style="margin:0">Ben\'s pick for you</span><h2 class="qh lp-name">' + esc(L.n) + '</h2><p class="lp-price">' + esc(L.ps) + ' <small>typical price, last seen ' + esc(L.seen) + '. Prices move a lot in 2026; check today\'s price below.</small></p>' +
         (NOFIT ? '<p class="lp-nofit">' + esc(NOFIT) + ' <a class="link" href="' + help + '">Have Ben find one for you</a>.</p>' : '') +
         '<p class="lp-note">' + esc(L.note) + '</p>' +
+        '<h3 class="lp-h">How it fits what you told us</h3>' + fitHTML(L) +
         '<p class="lp-cfg"><b>Get this version:</b> ' + esc(L.cfg) + '.</p>' +
-        (A.extra.length ? '<p class="lp-nofit">We couldn\'t check ' + esc(A.extra.join(', ')) + '. <a class="link" href="' + help + '">Ask Ben</a> to confirm it runs on this laptop.</p>' : '') +
-        (rs.length ? '<ul class="lp-why">' + rs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
-        '<dl class="brief lp-spec">' + [['Processor', L.cpu], ['Graphics', L.gpu], ['Memory', L.ram], ['Screen', L.scr], ['Weight', L.lb + ' lb'], ['Battery', L.bat]].map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') + '</dl>' +
-        (ALT ? '<p class="lp-alt">' + esc(ALT.why) + ' <a class="link" href="' + ALT.L.url + '" target="_blank" rel="noopener">See it</a></p>' : '') +
         priceBtns(L) +
+        (ALT ? '<h3 class="lp-h">' + esc(ALT.why) + '</h3>' + cmpHTML(L, ALT.L) + '<p class="lp-alt">Alternative: <a class="link" href="' + ALT.L.url + '" target="_blank" rel="noopener">Manufacturer website</a></p>' : '<dl class="brief lp-spec">' + [['Processor', L.cpu], ['Graphics', L.gpu], ['Memory', L.ram], ['Screen', L.scr], ['Weight', L.lb + ' lb'], ['Battery', L.bat]].map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') + '</dl>') +
         '<div class="lp-cta"><a class="btn btn-primary" href="sms:+14132394183">Questions? Text Ben</a><a class="btn btn-quiet" href="' + help + '">Not quite right? Have Ben find one</a></div>' +
         '<p class="fine">We don\'t sell laptops or earn anything from this pick. <button type="button" class="link qedit" data-go="0">Change my answers</button></p></div>';
     }
