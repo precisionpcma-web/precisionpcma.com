@@ -364,17 +364,17 @@ function statsHTML(rows, empty) {
   var pads = form.querySelectorAll('.qpads li');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var A = { uses: [], gtier: '', games: [], look: [], apps: '', have: '', notes: '', name: '', phone: '', email: '', bizname: '', style: '', color: '', light: '' };
-  var USES = [['Gaming','game','High frame rates at your resolution','Gaming'],['Streaming','stream','Gaming plus a live stream or recording','Streaming'],['Photo or video editing','video','Premiere, Resolve, Lightroom, Photoshop','Photo and video editing'],['3D, CAD or engineering','cube','Blender, SolidWorks, AutoCAD, Fusion','3D and CAD'],['AI on your own PC','ai','Chat and image AI on your own graphics card','Running AI at home'],['Office or school','school','Browsing, Office, school work, email','Everyday and office']];
+  var USES = [['Gaming','game','High frame rates at your resolution','Gaming'],['Streaming','stream','Gaming plus a live stream or recording','Streaming'],['Photo or video editing','video','Premiere, Resolve, Lightroom, Photoshop','Photo and video editing'],['3D, CAD or engineering','cube','Blender, SolidWorks, AutoCAD, Fusion','3D and CAD'],['AI on your own PC','ai','Local LLMs and image generation (Ollama, Stable Diffusion) on your GPU','Local AI'],['Office or school','school','Browsing, Office, school work, email','Everyday and office']];
   var MAX = { uses: 2 };
-  var GTIER = [['light','Lighter games','Minecraft, Roblox, League of Legends, Valorant'],['online','Big online shooters','Fortnite, Call of Duty, Apex Legends, Battlefield 6'],['heavy','Graphics-heavy single-player','Cyberpunk 2077, Monster Hunter Wilds, Flight Simulator']];
-  var GT = { light: 'lighter games', online: 'big online shooters', heavy: 'graphics-heavy games' };
-  var GW = { 'Minecraft': 'light', 'Roblox': 'light', 'League of Legends': 'light', 'Valorant': 'light', 'Counter-Strike 2': 'light', 'Fortnite': 'online', 'Call of Duty': 'online', 'Apex Legends': 'online', 'Marvel Rivals': 'online', 'Battlefield 6': 'online', 'GTA V': 'online', 'EA Sports FC': 'online', 'Cyberpunk 2077': 'heavy', 'Microsoft Flight Simulator 2024': 'heavy' };
+  var GTIER = [['light','Esports and light games','Valorant, CS2, League of Legends, Minecraft, Roblox'],['online','Modern multiplayer','Fortnite, Call of Duty, Apex Legends, Battlefield 6'],['heavy','Demanding AAA games','Cyberpunk 2077 with ray tracing, Monster Hunter Wilds, Flight Simulator 2024']];
+  var GT = { light: 'esports and light games', online: 'modern multiplayer games', heavy: 'demanding AAA games' };
+  var GW = { 'Minecraft': 'light', 'Roblox': 'light', 'League of Legends': 'light', 'Valorant': 'light', 'Counter-Strike 2': 'light', 'Fortnite': 'online', 'Call of Duty': 'online', 'Apex Legends': 'online', 'Marvel Rivals': 'online', 'Battlefield 6': 'online', 'GTA V': 'light', 'EA Sports FC': 'light', 'Cyberpunk 2077': 'heavy', 'Microsoft Flight Simulator 2024': 'heavy' };
   var TR = { light: 0, online: 1, heavy: 2 };
   var GAMES = ['Fortnite','Valorant','Call of Duty','Counter-Strike 2','Apex Legends','Battlefield 6','Marvel Rivals','Minecraft','Roblox','League of Legends','GTA V','EA Sports FC','Cyberpunk 2077','Microsoft Flight Simulator 2024'];
-  var APPS = { 'Streaming': ['OBS Studio','Twitch or YouTube streaming'], 'Photo or video editing': ['Premiere Pro','DaVinci Resolve','Photoshop','Lightroom','After Effects'], '3D, CAD or engineering': ['Blender','AutoCAD','SolidWorks','Fusion 360','Unreal Engine'], 'AI on your own PC': ['Local AI chat (LM Studio, Ollama)','AI image tools (Stable Diffusion)'], 'Office or school': ['Microsoft Office','Google Docs','QuickBooks','Zoom or Teams'] };
+  var APPS = { 'Streaming': ['OBS Studio','Twitch or YouTube streaming'], 'Photo or video editing': ['Premiere Pro','DaVinci Resolve','Photoshop','Lightroom','After Effects'], '3D, CAD or engineering': ['Blender','AutoCAD','SolidWorks','Fusion','Unreal Engine'], 'AI on your own PC': ['Local AI chat (LM Studio, Ollama)','AI image tools (Stable Diffusion)'], 'Office or school': ['Microsoft Office','Google Docs','QuickBooks','Zoom or Teams'] };
   var RES = [['1080p','1920 × 1080, the most common',16,9,34],['1440p','2560 × 1440, the gaming sweet spot',16,9,42],['4K','3840 × 2160, needs the most graphics power',16,9,50],['Ultrawide','3440 × 1440, extra-wide 21:9',21,9,56],['Multiple monitors','Two or more screens',16,9,30],['Not sure','We\'ll recommend one',16,9,36]];
   var HZ = ['60 Hz','120 to 180 Hz','240 Hz or more','Not sure'];
-  var STYLE = [['Glass showcase','See the parts inside','Glass side panel'],['Clean and solid','Clean and understated','Solid panels'],['Small and compact','Fits on a desk, fewer upgrades later','Small form factor'],['Airflow first','Mesh front, runs cooler and quieter','High airflow'],['No preference','We\'ll choose what fits','No preference']];
+  var STYLE = [['Glass showcase','See the parts inside','Glass side panel'],['Clean and solid','Clean and understated','Solid panels'],['Small and compact','Fits on a desk, fewer upgrades later','Small form factor'],['Airflow first','Mesh front, lower temps at lower fan speeds','High airflow'],['No preference','We\'ll choose what fits','No preference']];
   var COLOR = ['Black', 'White', 'Something else', 'No preference'];
   var LIGHT = ['No lights', 'One color', 'Full RGB', 'No preference'];
   var LOOK = ['Wi-Fi and Bluetooth', 'Extra quiet', 'Front USB-C', 'Lots of storage', 'Room to add parts later'];
@@ -575,17 +575,17 @@ function statsHTML(rows, empty) {
     var sc = b - need(), fill = Math.max(1, Math.min(5, 3 + sc));
     if (gaming()) {
       if (!A.res || !gt()) return { t: 'Gaming build', cap: 'Pick your monitor and your most demanding game, and we\'ll aim the build at them.', fill: fill, warn: false };
-      var res = A.res === 'Multiple monitors' ? 'multi-monitor' : A.res === 'Not sure' ? '1440p' : A.res;
-      var what = gt() === 'heavy' ? 'graphics-heavy games' : gt() === 'online' ? 'big online shooters' : 'your games';
+      var res = A.res === 'Multiple monitors' ? 'multi-monitor' : A.res === 'Not sure' ? '1440p' : A.res === 'Ultrawide' ? 'ultrawide' : A.res;
+      var what = gt() === 'heavy' ? 'demanding AAA games' + (A.res === '4K' ? ', with DLSS or FSR' : '') : gt() === 'online' ? 'modern multiplayer games' : 'your games';
       if (sc >= 2 && !(gt() === 'heavy' && b <= 1)) return { t: 'Max settings', cap: 'Smooth ' + res + ' gaming at max settings in ' + what + (uses('Streaming') ? ', with room to stream.' : '.'), fill: fill, warn: false };
       if (sc >= 1) return { t: 'High settings', cap: 'Smooth ' + res + ' gaming at high settings in ' + what + (uses('Streaming') ? ', with room to stream.' : '.'), fill: fill, warn: false };
       if (sc === 0) return { t: 'Medium to high settings', cap: 'Solid ' + res + ' gaming at medium to high settings in ' + what + '.', fill: fill, warn: false };
       var cause = A.res === '4K' ? '4K' : A.res === 'Ultrawide' ? 'An ultrawide screen' : A.hz === '240 Hz or more' ? '240 Hz' : 'This mix of screen and games';
       return { t: 'Stretch: needs more budget', cap: cause + ' needs more graphics power than this budget usually buys. A lower resolution, upscaling (DLSS or FSR) or a bigger budget would fit better.', fill: fill, warn: true };
     }
-    if (uses('AI on your own PC')) return b >= 4 ? { t: 'Larger local AI models', cap: 'A graphics card with lots of memory for larger models and faster answers.', fill: fill, warn: false } : b >= 2 ? { t: 'Mid-size local AI models', cap: 'Runs mid-size local models well. Bigger ones need more graphics memory.', fill: fill, warn: false } : { t: 'Smaller local AI models', cap: 'Runs smaller local models. Bigger ones need a card with more memory than this budget buys.', fill: fill, warn: b < 1 };
+    if (uses('AI on your own PC')) return b >= 4 ? { t: 'Fast 8B to 14B models', cap: 'Runs 8B to 14B models fast. 30B-class models need 24 GB or more of VRAM.', fill: fill, warn: false } : b >= 2 ? { t: 'Mid-size local AI models', cap: 'Runs mid-size local models well. Bigger ones need more graphics memory.', fill: fill, warn: false } : { t: 'Smaller local AI models', cap: 'Runs smaller local models. Bigger ones need a card with more memory than this budget buys.', fill: fill, warn: b < 1 };
     if (uses('Photo or video editing')) return b >= 2 ? { t: 'Smooth 4K editing', cap: 'Comfortable 4K editing for most footage, with fast exports.', fill: fill, warn: false } : { t: 'Smooth 1080p editing', cap: 'Smooth 1080p editing. 4K works, using lighter preview files on heavier projects.', fill: fill, warn: false };
-    if (uses('3D, CAD or engineering')) return b >= 3 ? { t: 'Heavy 3D and rendering', cap: 'Handles large scenes and long renders without breaking a sweat.', fill: fill, warn: false } : { t: 'Everyday 3D and CAD', cap: 'Smooth modeling and CAD. Big renders take longer at this budget.', fill: fill, warn: false };
+    if (uses('3D, CAD or engineering')) return b >= 3 ? { t: 'Heavy 3D and rendering', cap: 'Plenty of VRAM for big scenes and fast GPU renders in Blender.', fill: fill, warn: false } : { t: 'Everyday 3D and CAD', cap: 'Smooth modeling and CAD. Big renders take longer at this budget.', fill: fill, warn: false };
     return { t: 'Streaming build', cap: 'A strong processor and graphics card to stream smoothly.', fill: fill, warn: false };
   }
   function quiet() {
@@ -613,13 +613,13 @@ function statsHTML(rows, empty) {
   function stats() {
     if (!A.uses.length) return [];
     var b = bud(), has = b >= 0, c = function (n) { return Math.max(1, Math.min(5, Math.round(n))); };
-    var vram = ['8 GB', '8 to 16 GB', '12 to 16 GB', '16 GB', '16 GB or more'];
+    var vram = ['8 GB', '8 to 16 GB', '12 to 16 GB', '16 GB', '16 GB (24 GB or more needs a top-end card)'];
     var S = {
       'Gaming': function () {
-        if (!has || !A.res || !gt()) return [['Frame rate', 0, ''], ['Graphics detail', 0, ''], [gt() === 'heavy' ? 'Ray tracing' : 'Headroom for heavier games', 0, '']];
+        if (!has || !A.res || !gt()) return [['Frame rate', 0, ''], ['Settings', 0, ''], [gt() === 'heavy' ? 'Ray tracing' : 'Headroom for heavier games', 0, '']];
         var sc = b - gneed(), fr = c(3 + sc), V = verdict();
-        var rows = [['Frame rate', fr, ['', 'Low, needs upscaling', 'Playable', 'Smooth', 'Very smooth', 'Very smooth, high refresh'][fr], fr < 2], ['Graphics detail', fr, { 'Max settings': 'Max', 'High settings': 'High', 'Medium to high settings': 'Medium to high' }[V.t] || 'Low to medium', V.warn]];
-        if (gt() === 'heavy') { var rt = c(b); rows.push(['Ray tracing', rt, ['', 'Off', 'Light, with upscaling', 'Good, with upscaling', 'Strong', 'Full'][rt]]); }
+        var rows = [['Frame rate', fr, ['', 'Under 60 fps, needs DLSS or FSR', 'About 60 fps', '60 to 100 fps', '100 to 144 fps', '144 fps or more'][fr], fr < 2], ['Settings', fr, { 'Max settings': 'Max', 'High settings': 'High', 'Medium to high settings': 'Medium to high' }[V.t] || 'Low to medium', V.warn]];
+        if (gt() === 'heavy') { var rt = c(b); rows.push(['Ray tracing', rt, ['', 'Off', 'Light, with DLSS', 'Good, with DLSS', 'Strong', 'Strong, with DLSS'][rt]]); }
         else { var tg = c(1 + b); rows.push(['Headroom for heavier games', tg, ['', 'Limited', 'Some', 'Good', 'Strong', 'Plenty'][tg]]); }
         return rows;
       },
@@ -641,7 +641,7 @@ function statsHTML(rows, empty) {
       'AI on your own PC': function () {
         if (!has) return [['Model size', 0, ''], ['Answer speed', 0, ''], ['Image generation', 0, '']];
         var ms = c(1 + b), sp = c(1.5 + b), im = c(1 + b);
-        return [['Model size', ms, (b >= 4 ? 'Larger models' : b >= 2 ? 'Mid-size models' : 'Smaller models') + ' (' + vram[b] + ')', b < 1], ['Answer speed', sp, ['', 'Slow', 'OK', 'Quick', 'Fast', 'Very fast'][sp]], ['Image generation', im, ['', 'Slow', 'OK', 'Good', 'Fast', 'Very fast'][im]]];
+        return [['Model size', ms, (b >= 4 ? '8B to 14B models, fast' : b >= 2 ? '7B to 8B models' : 'Small models') + ' (' + vram[b] + ')', b < 1], ['Answer speed', sp, ['', 'Slow', 'OK', 'Quick', 'Fast', 'Very fast'][sp]], ['Image generation', im, ['', 'Slow', 'OK', 'Good', 'Fast', 'Very fast'][im]]];
       },
       'Office or school': function () {
         if (!has) return [['Everyday speed', 0, ''], ['Multitasking', 0, ''], ['Storage', 0, '']];
@@ -663,14 +663,14 @@ function statsHTML(rows, empty) {
     var picked = (A.games.join(' ') + ' ' + A.apps).toLowerCase();
     var esports = /(valorant|counter-strike|cs2|fortnite|apex|league|overwatch|rocket league)/.test(picked);
     if (gaming() && gt() === 'heavy' && b >= 0 && b <= 1 && b - need() === 0) n.push('Graphics-heavy games need a stronger graphics card than this budget usually buys. Expect medium settings, with upscaling (DLSS or FSR) to help.');
-    if (gaming() && esports && A.hz === '240 Hz or more') n.push('For competitive games at very high frame rates, the processor matters as much as the graphics card. We\'ll aim for a gaming-focused chip.');
-    if (uses('AI on your own PC')) n.push('For local AI, graphics card memory matters most. 16 GB of it is a good start for most models.');
-    if (uses('Streaming')) n.push('Modern graphics cards have a built-in streaming encoder, so streaming barely slows the PC down.');
+    if (gaming() && esports && A.hz === '240 Hz or more') n.push('At 240 Hz in Valorant, CS2 or Fortnite, the CPU limits frame rate as much as the GPU. We\'ll aim for an X3D chip.');
+    if (uses('AI on your own PC')) n.push('For local AI, VRAM matters most. 16 GB runs most 8B to 14B models well. 30B and up want 24 GB or more.');
+    if (uses('Streaming')) n.push('Modern GPUs have a hardware video encoder (NVENC on GeForce), so streaming in OBS costs only a few percent of frame rate.');
     if (looks('Small case') && !light()) n.push('Small cases run warmer and louder under load and leave fewer upgrades later. We\'ll pick parts that fit.');
-    if (looks('Quiet') && gaming() && gt() === 'heavy') n.push('No gaming PC is silent at full load, but bigger fans and a good case keep it calm.');
+    if (looks('Quiet') && gaming() && gt() === 'heavy') n.push('No gaming PC is silent at full load, but large fans on a gentle curve in a mesh-front case keep it quiet.');
     if (A.have) n.push('We\'ll check that the parts you have are compatible and won\'t hold the new ones back.');
     if (light()) n.push('Built-in graphics are plenty for this. The money goes to a fast SSD and 16 to 32 GB of memory.');
-    if (!light() && n.length < 2 && A.budget && A.budget !== 'Not sure') n.push(b >= 0 && b <= 1 ? 'Memory prices are high this year, so we\'ll start with 16 GB and leave room to add more later.' : 'Memory prices are high this year, so we\'ll balance memory against the graphics card. Most builds at this budget should have 32 GB.');
+    if (!light() && n.length < 2 && A.budget && A.budget !== 'Not sure') n.push(b >= 0 && b <= 1 ? 'Memory prices are high this year, so we\'ll start with 16 GB (2 x 8 GB, dual-channel) and leave slots free to add more.' : 'Memory prices are high this year, so we\'ll balance memory against the graphics card. Most builds at this budget should have 32 GB.');
     return n.slice(0, 2);
   }
   function scene(x, y, w, h) {
@@ -688,6 +688,7 @@ function statsHTML(rows, empty) {
     var on = function (id, v) { var el = $(id); if (el) el.classList.toggle('on', !!v); };
     var b = bud(), tier = b;
     var lt = light(), any = A.uses.length > 0, compact = looks('Small case');
+    document.documentElement.classList.toggle('q-on', any);
     $('ro-for').textContent = any ? useText() : '–';
     $('ro-disp').textContent = A.res ? A.res + (gaming() && A.hz && A.hz !== 'Not sure' ? ' · ' + A.hz : '') : '–';
     var V = verdict(), stretch = V.warn; $('ro-target').textContent = V.t; $('ro-target').classList.toggle('warn', stretch);
@@ -777,12 +778,12 @@ function statsHTML(rows, empty) {
   var A = { uses: [], pri: [], apps: [], extra: [], name: '', phone: '', email: '' };
   var USES = [['Everyday and streaming', 'home', 'Browsing, email, Netflix and YouTube', 'Everyday use'], ['School', 'school', 'Papers, research, online classes', 'School'], ['Work and video calls', 'office', 'Office apps, Zoom or Teams, lots of tabs', 'Work'], ['Photos, video or design', 'video', 'Lightroom, Premiere, Photoshop, Canva', 'Photo, video or design'], ['Gaming', 'game', 'Steam, Fortnite, Minecraft and more', 'Gaming'], ['Coding or tech work', 'ai', 'Writing and running code', 'Programming']];
   var MAX = { uses: 2, pri: 3 };
-  var GTIER = [['light', 'Lighter games', 'Minecraft, Roblox, The Sims, League of Legends'], ['online', 'Big online shooters', 'Fortnite, Valorant, Call of Duty'], ['heavy', 'Graphics-heavy single-player', 'Cyberpunk 2077, Monster Hunter Wilds']];
-  var GT = { light: 'lighter games', online: 'big online shooters', heavy: 'graphics-heavy games' };
+  var GTIER = [['light', 'Esports and light games', 'Valorant, CS2, League of Legends, Minecraft, Roblox, The Sims'], ['online', 'Modern multiplayer', 'Fortnite, Call of Duty, Apex Legends, Battlefield 6'], ['heavy', 'Demanding AAA games', 'Cyberpunk 2077, Monster Hunter Wilds, Flight Simulator 2024']];
+  var GT = { light: 'esports and light games', online: 'modern multiplayer games', heavy: 'demanding AAA games' };
   var WHERE = [['Carried every day', 'School, commute, travel', 'In a bag every day'], ['Moves around the house', 'Couch, kitchen, desk', 'Around the house'], ['Stays on a desk', 'Plugged in most of the time', 'Mostly on a desk']];
   var SIZE = ['Smaller (13 to 14 in)', 'Middle (15 to 16 in)', 'Big (17 to 18 in)', 'Let us pick'];
-  var BAT = ['A few hours', 'Most of a day', 'All day and then some'];
-  var PRI = [['Really nice screen', 'Bright, sharp, accurate color', 'A great screen'], ['Quiet and cool', 'Calm fans, cool on your lap', 'Quiet and cool'], ['Great keyboard', 'Comfortable for long typing', 'A great keyboard'], ['Good webcam and mic', 'Look and sound clear on calls', 'Clear video calls'], ['Plugs for my stuff', 'HDMI, SD card, regular USB', 'Plenty of ports'], ['Touchscreen or pen', 'Tap, draw or fold it back', 'Touchscreen or pen'], ['Lots of tabs and apps open', 'Lots of tabs and apps at once', 'Heavy multitasking'], ['Can upgrade or repair later', 'Add memory or storage later', 'Upgradeable']];
+  var BAT = ['A few hours', 'Most of a day', 'A full day (10+ hours)'];
+  var PRI = [['Really nice screen', 'Bright, sharp, accurate color', 'Display quality'], ['Quiet and cool', 'Calm fans, cool on your lap', 'Quiet and cool'], ['Great keyboard', 'Comfortable for long typing', 'A great keyboard'], ['Good webcam and mic', 'Look and sound clear on calls', 'Clear video calls'], ['Plugs for my stuff', 'HDMI, SD card, regular USB', 'Plenty of ports'], ['Touchscreen or pen', 'Tap, draw or fold it back', 'Touchscreen or pen'], ['Lots of tabs and apps open', 'Lots of tabs and apps at once', 'Heavy multitasking'], ['Can upgrade or repair later', 'Add memory or storage later', 'Upgradeable']];
   var BUD = ['Under $600', '$600 to $900', '$900 to $1,300', '$1,300 to $2,000', '$2,000 or more', 'Not sure'];
 
   /* ---- What it needs to run. g = graphics needed (laptop tiers below), win = Windows only, mac = Mac only,
@@ -828,7 +829,7 @@ function statsHTML(rows, empty) {
   var LAPTOPS = [
     { id: 'omni5', n: 'HP OmniBook 5 14 (Snapdragon)', mk: 'HP', os: 'win', arm: 1, p: 579, ps: 'About $550 to $600', seen: 'Oct 2025', sz: 14, lb: 2.9, bt: 5, g: 1, mem: 16, c: 0, b: 2, s: 1,
       cfg: 'Snapdragon X Plus, 16 GB memory, 512 GB SSD, OLED screen', cpu: 'Qualcomm Snapdragon X Plus', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '14 in OLED, 1920 x 1200', bat: '16.9 hrs on Wi-Fi (Notebookcheck)',
-      url: GS('HP OmniBook 5 14 Snapdragon OLED'), note: 'The best laptop we\'ve found under $600: an OLED screen, 16 GB of memory and all-day battery. Some games and older programs don\'t run on Snapdragon.' },
+      url: GS('HP OmniBook 5 14 Snapdragon OLED'), note: 'The best laptop we\'ve found under $600: a 14-inch OLED, 16 GB of memory and all-day battery. Some games and older programs don\'t run on Snapdragon.' },
     { id: 'neo', n: 'MacBook Neo (512 GB)', mk: 'Apple', os: 'mac', p: 799, ps: 'About $800', seen: 'Jul 2026', sz: 14, lb: 2.7, bt: 4, g: 1, mem: 8, c: 0, b: 3, q: 1,
       cfg: 'The 512 GB version. The 256 GB one fills up fast for $100 less', cpu: 'Apple A18 Pro', gpu: 'Apple built-in graphics', ram: '8 GB memory (can\'t be upgraded), 512 GB SSD', scr: '13 in, 2408 x 1506', bat: '13.5 hrs of web browsing (Tom\'s Guide)',
       url: 'https://www.apple.com/macbook-neo/', note: 'Great for school, browsing and documents, with Apple\'s build quality. 8 GB of memory is the limit, so it\'s not for editing or heavy multitasking, and the keyboard isn\'t backlit.' },
@@ -848,8 +849,8 @@ function statsHTML(rows, empty) {
       cfg: 'Snapdragon X2 Elite, 16 GB memory, 512 GB SSD', cpu: 'Qualcomm Snapdragon X2 Elite', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '14 in OLED, 1920 x 1200', bat: '23.5 hrs of video (Windows Central)',
       url: GS('ASUS Zenbook A14 2026 Snapdragon X2 Elite'), note: 'The longest battery life we recommend, in a 2.2 lb body. Some games and older programs don\'t run on Snapdragon.' },
     { id: 'zs16', n: 'ASUS Zenbook S16 (2026)', mk: 'ASUS', os: 'win', p: 1499, ps: 'About $1,500 on sale (list $1,800)', seen: 'Jun 2026', sz: 16, lb: 3.3, bt: 4, g: 2, mem: 32, c: 1, b: 3, t: 1, s: 1,
-      cfg: 'Ryzen AI 9 465, 32 GB memory, 1 TB SSD', cpu: 'AMD Ryzen AI 9 465', gpu: 'AMD Radeon 890M built-in graphics', ram: '32 GB memory, 1 TB SSD', scr: '16 in OLED touchscreen, 2880 x 1800, 120 Hz', bat: '83 Wh battery',
-      url: 'https://www.asus.com/us/laptops/for-home/zenbook/', note: 'A thin, light 16-inch with a beautiful OLED screen and 32 GB of memory. Ideal for school, work and light photo editing. Not for gaming.' },
+      cfg: 'Ryzen AI 9 465, 32 GB memory, 1 TB SSD', cpu: 'AMD Ryzen AI 9 465', gpu: 'AMD Radeon built-in graphics', ram: '32 GB memory, 1 TB SSD', scr: '16 in OLED touchscreen, 2880 x 1800, 120 Hz', bat: '83 Wh battery',
+      url: 'https://www.asus.com/us/laptops/for-home/zenbook/', note: 'A thin, light 16-inch with a 120 Hz OLED and 32 GB of memory. Ideal for school, work and light photo editing. Not for gaming.' },
     { id: 'surf', n: 'Microsoft Surface Laptop 13.8 (2026)', mk: 'Microsoft', os: 'win', arm: 1, p: 1499, ps: 'About $1,500 on sale (list $1,700)', seen: 'Oct 2026', sz: 14, lb: 2.95, bt: 4, g: 1, mem: 16, c: 0, b: 2, kb: 1, t: 1, s: 1,
       cfg: 'Snapdragon X2 Elite, 16 GB memory, 512 GB SSD', cpu: 'Qualcomm Snapdragon X2 Elite', gpu: 'Built-in graphics', ram: '16 GB memory, 512 GB SSD', scr: '13.8 in touchscreen, 120 Hz', bat: 'Not independently tested yet',
       url: 'https://www.microsoft.com/en-us/surface/devices/surface-laptop', note: 'A great keyboard and touchscreen in a clean, simple design. Some games and older programs don\'t run on Snapdragon.' },
@@ -861,20 +862,20 @@ function statsHTML(rows, empty) {
       url: 'https://www.apple.com/macbook-pro/', note: 'A brighter 120 Hz screen, HDMI and SD card slot, and fans that keep it fast through long video exports.' },
     { id: 'yoga9', n: 'Lenovo Yoga 9i 2-in-1 Aura Edition', mk: 'Lenovo', os: 'win', p: 1999, ps: 'About $2,000 on sale', seen: 'Oct 2026', sz: 14, lb: 2.9, bt: 4, g: 2, mem: 16, c: 1, b: 3, t: 1, pen: 1, s: 1,
       cfg: 'Core Ultra 9, OLED touchscreen', cpu: 'Intel Core Ultra 9 386H', gpu: 'Intel Arc built-in graphics', ram: '16 GB or more, 1 TB SSD', scr: '14 in OLED touchscreen, 2880 x 1800, 120 Hz', bat: '12.8 hrs of web browsing (Tom\'s Guide)',
-      url: GS('Lenovo Yoga 9i 2-in-1 Aura Edition'), note: 'A premium 2-in-1 with a gorgeous OLED screen and pen support.' },
+      url: GS('Lenovo Yoga 9i 2-in-1 Aura Edition'), note: 'A premium 2-in-1 with a 120 Hz OLED and pen support.' },
     { id: 'proart', n: 'ASUS ProArt P16', mk: 'ASUS', os: 'win', cr: 1, p: 2500, ps: 'About $2,500', seen: '2025 launch price', sz: 16, lb: 4.1, bt: 3, g: 5, mem: 32, c: 3, b: 3, t: 1, s: 1, po: 1,
       cfg: 'Ryzen AI 9 HX 370, RTX 5070, 32 GB memory', cpu: 'AMD Ryzen AI 9 HX 370', gpu: 'NVIDIA RTX 5070', ram: '32 GB memory', scr: '16 in OLED touchscreen, 2880 x 1800', bat: '90 Wh battery',
       url: GS('ASUS ProArt P16 H7606 RTX 5070'), note: 'Built for color-accurate photo and video work, with a real graphics card for exports and 3D.' },
     // gaming
     { id: 'loq15', n: 'Lenovo LOQ 15 (RTX 5050)', mk: 'Lenovo', os: 'win', p: 700, ps: 'About $650 to $800', seen: 'Nov 2025 to Jun 2026', sz: 16, lb: 5.1, bt: 1, g: 3, mem: 16, c: 1, b: 2, po: 1, up: 1,
       cfg: 'Core i5-13450HX, RTX 5050, 16 GB memory, 512 GB SSD. Skip the "LOQ Essential": its graphics card runs at much lower power', cpu: 'Intel Core i5-13450HX', gpu: 'NVIDIA RTX 5050 (8 GB)', ram: '16 GB memory (upgradeable), 512 GB SSD', scr: '15.6 in, 1920 x 1080, 144 Hz', bat: 'Short away from the plug, like most gaming laptops',
-      url: GS('Lenovo LOQ 15 RTX 5050 i5-13450HX'), note: 'The best-value way into real laptop gaming. Popular games run smoothly at 1080p, and it\'s easy to upgrade.' },
+      url: GS('Lenovo LOQ 15 RTX 5050 i5-13450HX'), note: 'The best-value way into real laptop gaming. Fortnite, Valorant and Apex run well at 1080p, DLSS covers heavier games, and it\'s easy to upgrade.' },
     { id: 'tuff16', n: 'ASUS TUF Gaming F16 (RTX 5050)', mk: 'ASUS', os: 'win', p: 899, ps: 'About $900 on sale (list $1,300)', seen: 'Apr 2026', sz: 16, lb: 4.9, bt: 1, g: 3, mem: 16, c: 1, b: 2, po: 1, up: 1,
       cfg: 'Core i5-13450HX, RTX 5050, 16 GB memory, 512 GB SSD. Only worth it on sale', cpu: 'Intel Core i5-13450HX', gpu: 'NVIDIA RTX 5050 (8 GB)', ram: '16 GB memory (upgradeable), 512 GB SSD', scr: '16 in, 1920 x 1200, 165 Hz', bat: 'Short away from the plug, like most gaming laptops',
       url: GS('ASUS TUF Gaming F16 RTX 5050 i5-13450HX'), note: 'A tough, simple gaming laptop with a bigger 16-inch screen.' },
     { id: 'leg5', n: 'Lenovo Legion 5i (Gen 10, RTX 5070)', mk: 'Lenovo', os: 'win', p: 1250, ps: 'About $1,200 to $1,300 on sale', seen: 'Mar 2026', sz: 16, lb: 4.2, bt: 1, g: 5, mem: 16, c: 2, b: 3, po: 1, up: 1, s: 1,
-      cfg: 'Model 83F00006US: Core Ultra 7 255HX, RTX 5070 at 115 W, 16 GB, 1 TB, OLED. We can add a second 16 GB memory stick for full speed', cpu: 'Intel Core Ultra 7 255HX', gpu: 'NVIDIA RTX 5070 (8 GB, 115 W)', ram: '16 GB memory (upgradeable), 1 TB SSD', scr: '15.1 in OLED, 2560 x 1600, 165 Hz', bat: 'About 4 to 5 hrs of video (LaptopMedia, PCWorld)',
-      url: GS('Lenovo Legion 5i Gen 10 83F00006US'), note: 'The best gaming value we\'ve found: RTX 5070 power, an OLED screen and solid Legion build quality and cooling.' },
+      cfg: 'Model 83F00006US: Core Ultra 7 255HX, RTX 5070 at 115 W, 16 GB, 1 TB, OLED. It ships with one 16 GB stick (single-channel); we can add a second for dual-channel and 32 GB', cpu: 'Intel Core Ultra 7 255HX', gpu: 'NVIDIA RTX 5070 (8 GB, 115 W)', ram: '16 GB, single stick (upgradeable), 1 TB SSD', scr: '15.1 in OLED, 2560 x 1600, 165 Hz', bat: 'About 4 to 5 hrs of video (LaptopMedia, PCWorld)',
+      url: GS('Lenovo Legion 5i Gen 10 83F00006US'), note: 'The best gaming value we\'ve found: an RTX 5070 at 115 W, a 165 Hz OLED and solid Legion build quality and cooling.' },
     { id: 'leg7', n: 'Lenovo Legion 7i (Gen 10)', mk: 'Lenovo', os: 'win', p: 1400, ps: 'About $1,250 to $1,500', seen: 'Mar 2026', sz: 16, lb: 4.36, bt: 2, g: 4, mem: 32, c: 2, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Core Ultra 7 255HX, RTX 5060 at 115 W, 32 GB memory, 1 TB SSD, OLED', cpu: 'Intel Core Ultra 7 255HX', gpu: 'NVIDIA RTX 5060 (8 GB, 115 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in OLED, 2560 x 1600, 165 Hz', bat: 'Just under 8 hrs of video (TechRadar)',
       url: GS('Lenovo Legion 7i Gen 10 RTX 5060 OLED'), note: 'A slimmer, lighter Legion with an OLED screen, an SD card reader and 32 GB of memory. Good for gaming and editing. Runs hot in its fastest mode.' },
@@ -886,17 +887,31 @@ function statsHTML(rows, empty) {
       url: GS('ASUS ROG Strix G16 Ryzen 9 8940HX RTX 5070 Ti'), note: 'RTX 5070 Ti power with excellent cooling that holds its speed under long gaming sessions. Bulky and a bit plasticky.' },
     { id: 'g14', n: 'ASUS ROG Zephyrus G14 (2025)', mk: 'ASUS', os: 'win', p: 2250, ps: 'Last seen about $2,050 to $2,500', seen: 'Jul 2025', sz: 14, lb: 3.4, bt: 3, g: 6, mem: 32, c: 3, b: 3, s: 1, po: 1,
       cfg: 'The 2025 model (Ryzen AI 9 HX 370, RTX 5070 Ti, 32 GB, 1 TB). The 2026 version costs over $1,000 more for little gain', cpu: 'AMD Ryzen AI 9 HX 370', gpu: 'NVIDIA RTX 5070 Ti (12 GB)', ram: '32 GB memory (can\'t be upgraded), 1 TB SSD', scr: '14 in OLED, 2880 x 1800, 120 Hz', bat: '73 Wh battery',
-      url: GS('ASUS ROG Zephyrus G14 GA403 RTX 5070 Ti 2025'), note: 'Serious gaming power in a small 3.4 lb aluminum body you can carry every day.' },
+      url: GS('ASUS ROG Zephyrus G14 GA403 RTX 5070 Ti 2025'), note: 'An RTX 5070 Ti and a 120 Hz OLED in a 3.4 lb aluminum body you can carry every day.' },
     { id: 'strix16x', n: 'ASUS ROG Strix G16 (Ryzen 9 9955HX3D)', mk: 'ASUS', os: 'win', x3d: 1, p: 2250, ps: 'About $2,250', seen: '2026', sz: 16, lb: 5.2, bt: 1, g: 6, mem: 32, c: 2, b: 2, po: 1, up: 1,
       cfg: 'Ryzen 9 9955HX3D, RTX 5070 Ti at 140 W, 32 GB memory, 1 TB SSD, 240 Hz screen', cpu: 'AMD Ryzen 9 9955HX3D', gpu: 'NVIDIA RTX 5070 Ti (12 GB, 140 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in, 2560 x 1600, 240 Hz', bat: 'About 6 hrs of video (PCWorld)',
-      url: GS('ASUS ROG Strix G16 9955HX3D RTX 5070 Ti'), note: 'The fastest gaming processor in a laptop with a full-power RTX 5070 Ti. Great for high-refresh competitive games.' },
+      url: GS('ASUS ROG Strix G16 9955HX3D RTX 5070 Ti'), note: 'The X3D chip that leads laptop gaming, paired with a full 140 W RTX 5070 Ti. Great for 240 Hz competitive games.' },
     { id: 'pro7', n: 'Lenovo Legion Pro 7i (Gen 10, RTX 5080)', mk: 'Lenovo', os: 'win', p: 2550, ps: 'About $2,450 to $2,650', seen: 'May to Jul 2026', sz: 16, lb: 5.9, bt: 1, g: 7, mem: 32, c: 3, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Model 83F50012US: Core Ultra 9 275HX, RTX 5080 at 175 W, 32 GB memory, 1 TB SSD, 240 Hz OLED', cpu: 'Intel Core Ultra 9 275HX', gpu: 'NVIDIA RTX 5080 (16 GB, 175 W)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '16 in OLED, 2560 x 1600, 240 Hz', bat: '4 hrs 37 min (Tom\'s Hardware)',
-      url: GS('Lenovo Legion Pro 7i Gen 10 83F50012US RTX 5080'), note: 'Desktop-class gaming in a laptop, with a full-power RTX 5080, quiet fans for its class and premium build. Best on a desk.' },
+      url: GS('Lenovo Legion Pro 7i Gen 10 83F50012US RTX 5080'), note: 'Our fastest laptop pick: a full-power 175 W RTX 5080, a 240 Hz OLED, quiet fans for its class and premium build. Best on a desk.' },
     { id: 'scar18', n: 'ASUS ROG Strix SCAR 18 (2026, RTX 5080)', mk: 'ASUS', os: 'win', p: 4200, ps: 'About $4,150 to $4,300', seen: 'Oct 2026', sz: 18, lb: 8.2, bt: 1, g: 7, mem: 32, c: 3, b: 3, po: 1, up: 1, s: 1,
       cfg: 'Core Ultra 9 290HX Plus, RTX 5080, 32 GB memory, 1 TB SSD, 4K mini-LED', cpu: 'Intel Core Ultra 9 290HX Plus', gpu: 'NVIDIA RTX 5080 (16 GB)', ram: '32 GB memory (upgradeable), 1 TB SSD', scr: '18 in mini-LED, 3840 x 2400, 240 Hz', bat: 'Short away from the plug',
-      url: GS('ASUS ROG Strix SCAR 18 2026 RTX 5080'), note: 'A huge 18-inch desktop replacement with a stunning mini-LED screen. Heavy at 8.2 lb, and loud at full power.' }
+      url: GS('ASUS ROG Strix SCAR 18 2026 RTX 5080'), note: 'A huge 18-inch desktop replacement with a 4K 240 Hz mini-LED screen. Heavy at 8.2 lb, and loud at full power.' }
   ];
+  var Q = { omni5: 'HP OmniBook 5 14 Snapdragon X Plus OLED', neo: 'MacBook Neo 512GB', flip14: 'HP OmniBook X Flip 14 Core Ultra 5 226V', xps13: 'Dell XPS 13 2026 16GB', air13: 'MacBook Air 13 M5 16GB 512GB', air15: 'MacBook Air 15 M5 16GB 512GB',
+    a14: 'ASUS Zenbook A14 Snapdragon X2 Elite', zs16: 'ASUS Zenbook S16 Ryzen AI 9 465 32GB', surf: 'Surface Laptop 13.8 Snapdragon X2 Elite', gram17: 'LG Gram 17 Core Ultra 7 256V', mbp14: 'MacBook Pro 14 M5 16GB 1TB',
+    yoga9: 'Lenovo Yoga 9i 2-in-1 Aura Edition', proart: 'ASUS ProArt P16 RTX 5070', loq15: 'Lenovo LOQ 15 RTX 5050 i5-13450HX', tuff16: 'ASUS TUF Gaming F16 RTX 5050', leg5: '83F00006US',
+    leg7: 'Lenovo Legion 7i Gen 10 RTX 5060 OLED', leg5x: 'Lenovo Legion 5i Gen 10 Ultra 9 275HX RTX 5070 32GB', strix16: 'ASUS ROG Strix G16 Ryzen 9 8940HX RTX 5070 Ti', g14: 'ASUS ROG Zephyrus G14 GA403 RTX 5070 Ti',
+    strix16x: 'ASUS ROG Strix G16 9955HX3D RTX 5070 Ti', pro7: '83F50012US', scar18: 'ASUS ROG Strix SCAR 18 2026 RTX 5080' };
+  var DOM = { HP: 'hp.com', Apple: 'apple.com', Dell: 'dell.com', ASUS: 'asus.com', Microsoft: 'microsoft.com', LG: 'lg.com', Lenovo: 'lenovo.com' };
+  function priceBtns(L) {
+    var q = Q[L.id] || L.n, e = encodeURIComponent(q);
+    var maker = /google\.com\/search/.test(L.url) ? GS(q + ' site:' + DOM[L.mk]) : L.url;
+    return '<p class="lp-price-h">Check today\'s price</p><div class="lp-price-btns">' +
+      '<a class="btn btn-quiet" href="https://www.amazon.com/s?k=' + e + '" target="_blank" rel="noopener">Amazon</a>' +
+      '<a class="btn btn-quiet" href="https://www.bestbuy.com/site/searchpage.jsp?st=' + e + '" target="_blank" rel="noopener">Best Buy</a>' +
+      '<a class="btn btn-quiet" href="' + maker + '" target="_blank" rel="noopener">' + esc(DOM[L.mk]) + '</a></div>';
+  }
   var BR = [[0, 600], [600, 900], [900, 1300], [1300, 2000], [2000, 99999]];
   var step = 0, N = 6, PICK = null, ALT = null, NOFIT = '';
 
@@ -928,7 +943,7 @@ function statsHTML(rows, empty) {
     if (A.where === 'Carried every day') s -= Math.max(0, L.lb - 3.6) * 14;
     else if (A.where === 'Moves around the house') s -= Math.max(0, L.lb - 5.5) * 6;
     if (sz) s -= Math.abs(L.sz - sz) / 2 * (A.size && A.size !== 'Let us pick' ? 16 : 10);
-    if (A.bat === 'All day and then some') s += (L.bt >= 4 ? 16 : L.bt <= 2 ? -25 : 0) * bw;
+    if (A.bat === 'A full day (10+ hours)') s += (L.bt >= 4 ? 16 : L.bt <= 2 ? -25 : 0) * bw;
     else if (A.bat === 'Most of a day') s += (L.bt >= 3 ? 6 : L.bt <= 1 ? -15 : 0) * bw;
     if (has('Really nice screen')) s += L.s ? 10 : -4;
     if (has('Quiet and cool')) s += (L.q ? 12 : 0) - (L.g >= 4 ? 8 : 0);
@@ -954,7 +969,7 @@ function statsHTML(rows, empty) {
     if (!alt && rest.length) alt = { L: rest[0].L, why: 'Also a great fit: the ' + rest[0].L.n + '.' };
     ALT = alt;
     // be honest when nothing good fits
-    if (gaming() && b === 0) NOFIT = 'There are no good gaming laptops under $600 right now. This is the closest pick we\'d actually buy.';
+    if (gaming() && b === 0) NOFIT = 'There are no good gaming laptops under $600 right now. The cheapest one worth buying, with a dedicated GPU, starts around $650 to $800. This is the closest pick we\'d actually buy.';
     else if (b >= 0 && L.p > BR[b][1] + 150) NOFIT = 'Nothing we\'d recommend does this well in your budget. This is the closest pick, but it costs more.';
     else if (A.size === 'Big (17 to 18 in)' && L.sz !== 18) NOFIT = 'We don\'t have a 17 or 18-inch laptop we\'d recommend for these answers at this budget, so this is the closest fit.';
     return L;
@@ -967,7 +982,7 @@ function statsHTML(rows, empty) {
     if (hard.length && L.g >= 5) r.push('Ready for ' + hard[0].n + '.');
     if (A.where === 'Carried every day') r.push(L.lb <= 3.5 ? 'Light enough to carry every day at ' + L.lb + ' lb.' : 'At ' + L.lb + ' lb it\'s on the heavy side to carry every day.');
     if (uses('Photos, video or design') && L.s) r.push('A sharp, color-rich screen for editing.');
-    if (A.bat === 'All day and then some' && L.bt >= 4) r.push('Long battery life.');
+    if (A.bat === 'A full day (10+ hours)' && L.bt >= 4) r.push('Long battery life.');
     if (A.bat !== 'A few hours' && L.bt <= 2) r.push('Battery life is short, so keep the charger handy.');
     if (has('Touchscreen or pen')) r.push(L.t ? (L.pen ? 'Touchscreen with pen support.' : 'Has a touchscreen.') : 'No touchscreen on this one.');
     if (has('Can upgrade or repair later') && L.up) r.push('You can add memory and storage later.');
@@ -1037,7 +1052,7 @@ function statsHTML(rows, empty) {
       var help = 'index.html?laptop=' + encodeURIComponent(summary()) + '#quote';
       if (!L) return '<div class="lpick"><h2 class="qh">We need a closer look</h2><p class="lp-note">' + esc(NOFIT) + '</p><div class="lp-cta"><a class="btn btn-primary" href="' + help + '">Have Ben find one</a></div><p class="fine"><button type="button" class="link qedit" data-go="0">Change my answers</button></p></div>';
       var rs = reasons(L);
-      return '<div class="lpick"><span class="eyebrow" style="margin:0">Ben\'s pick for you</span><h2 class="qh lp-name">' + esc(L.n) + '</h2><p class="lp-price">' + esc(L.ps) + ' <small>price last seen ' + esc(L.seen) + '. Laptop prices are moving a lot in 2026, so check before you buy.</small></p>' +
+      return '<div class="lpick"><span class="eyebrow" style="margin:0">Ben\'s pick for you</span><h2 class="qh lp-name">' + esc(L.n) + '</h2><p class="lp-price">' + esc(L.ps) + ' <small>typical price, last seen ' + esc(L.seen) + '. Prices move a lot in 2026; check today\'s price below.</small></p>' +
         (NOFIT ? '<p class="lp-nofit">' + esc(NOFIT) + ' <a class="link" href="' + help + '">Have Ben find one for you</a>.</p>' : '') +
         '<p class="lp-note">' + esc(L.note) + '</p>' +
         '<p class="lp-cfg"><b>Get this version:</b> ' + esc(L.cfg) + '.</p>' +
@@ -1045,7 +1060,8 @@ function statsHTML(rows, empty) {
         (rs.length ? '<ul class="lp-why">' + rs.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '') +
         '<dl class="brief lp-spec">' + [['Processor', L.cpu], ['Graphics', L.gpu], ['Memory', L.ram], ['Screen', L.scr], ['Weight', L.lb + ' lb'], ['Battery', L.bat]].map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') + '</dl>' +
         (ALT ? '<p class="lp-alt">' + esc(ALT.why) + ' <a class="link" href="' + ALT.L.url + '" target="_blank" rel="noopener">See it</a></p>' : '') +
-        '<div class="lp-cta"><a class="btn btn-primary" href="' + L.url + '" target="_blank" rel="noopener">See it on ' + esc(L.mk) + '\'s site</a><a class="btn btn-quiet" href="' + help + '">Not quite right? Have Ben find one</a></div>' +
+        priceBtns(L) +
+        '<div class="lp-cta"><a class="btn btn-primary" href="sms:+14132394183">Questions? Text Ben</a><a class="btn btn-quiet" href="' + help + '">Not quite right? Have Ben find one</a></div>' +
         '<p class="fine">We don\'t sell laptops or earn anything from this pick. <button type="button" class="link qedit" data-go="0">Change my answers</button></p></div>';
     }
   ];
@@ -1143,7 +1159,7 @@ function statsHTML(rows, empty) {
     if (heavyGame() && !mac()) n = 1;
     else if (uses('Photos, video or design') && !mac()) n = 3;
     else n = 4;
-    if (A.bat === 'All day and then some' && !heavyGame() && !uses('Photos, video or design')) n = 5;
+    if (A.bat === 'A full day (10+ hours)' && !heavyGame() && !uses('Photos, video or design')) n = 5;
     if (mac() && !heavyGame()) n = 5;
     if (has('Really nice screen') && n >= 4 && !mac()) n -= 1;
     if (inches() === 18) n = Math.max(1, n - 1);
@@ -1210,30 +1226,30 @@ function statsHTML(rows, empty) {
     if (gaming() && mac()) return heavyGame() ? { cap: 'Most games are made for Windows. A Mac is a weak pick for gaming, so we may suggest a Windows laptop too.', fill: Math.min(fill, 2), warn: true } : { cap: 'Minecraft, Roblox and The Sims run fine on a Mac. Many other games don\'t, so we\'ll check your list.', fill: fill, warn: false };
     if (gaming()) {
       if (b === 0) return { cap: 'There are no good gaming laptops under $600. The cheapest one worth buying, with a real graphics card, starts around $650 to $900.', fill: fill, warn: true };
-      if (b === 1) return { cap: A.gtier === 'heavy' ? 'An entry-level graphics card. Graphics-heavy games run at low to medium settings.' : 'An entry-level graphics card. Popular games run well at 1080p.', fill: fill, warn: A.gtier === 'heavy' };
-      if (b === 2) return { cap: 'A solid gaming laptop. Most games run at high settings at 1080p.', fill: fill, warn: false };
-      if (b === 3) return { cap: 'A strong gaming laptop. High settings, even on a sharper 1440p screen.', fill: fill, warn: false };
-      return { cap: 'A top gaming laptop. High to max settings, even in graphics-heavy games.', fill: fill, warn: false };
+      if (b === 1) return { cap: A.gtier === 'heavy' ? 'An entry-level graphics card. Demanding AAA games run at low to medium settings with DLSS.' : 'An entry-level graphics card. Popular games run well at 1080p.', fill: fill, warn: A.gtier === 'heavy' };
+      if (b === 2) return { cap: 'RTX 5060 to 5070 class. High settings at 1080p in most games.', fill: fill, warn: false };
+      if (b === 3) return { cap: 'RTX 5070 to 5070 Ti class. High settings, even at 1440p.', fill: fill, warn: false };
+      return { cap: 'RTX 5070 Ti to 5080 class. High to max settings, even in demanding AAA games.', fill: fill, warn: false };
     }
     if (uses('Photos, video or design') && b < 2) return { cap: 'Editing works at this budget, but the next range up gets a better screen and more memory.', fill: fill, warn: true };
     if (has('Lots of tabs and apps open') && b === 0) return { cap: 'Heavy multitasking needs 16 GB of memory, which is hard to find under $600 right now.', fill: fill, warn: true };
     var main = A.uses[0];
-    var label = { 'Everyday and streaming': 'A quick, reliable laptop for everyday use and streaming.', 'School': 'A light, dependable laptop for classes and homework.', 'Work and video calls': 'A solid work laptop that handles meetings and lots of tabs.', 'Coding or tech work': 'A fast laptop with plenty of memory for code and tools.', 'Photos, video or design': 'A strong editing laptop with a good, accurate screen.' }[main];
+    var label = { 'Everyday and streaming': 'A quick, reliable laptop for everyday use and video.', 'School': 'A light, dependable laptop for classes and homework.', 'Work and video calls': 'A solid work laptop that handles meetings and lots of tabs.', 'Coding or tech work': 'A fast laptop with plenty of memory for code and tools.', 'Photos, video or design': 'A strong editing laptop with a good, accurate screen.' }[main];
     return { cap: label, fill: fill, warn: false };
   }
   function notes() {
     var n = [], b = bud(), m = mac();
     if (!A.uses.length) return n;
     if (m && has('Touchscreen or pen')) n.push('Macs don\'t have touchscreens. An iPad or a Windows 2-in-1 may fit better.');
-    if (m && A.size === 'Big (17 to 18 in)') n.push('Macs top out at 16 inches. We\'ll suggest the 16-inch MacBook Pro or a Windows option.');
+    if (m && A.size === 'Big (17 to 18 in)') n.push('Macs top out at 16 inches. We\'ll suggest the 15-inch MacBook Air or a Windows option.');
     if (m) n.push('We can suggest Macs, but our setup and repairs are Windows only.');
-    if (!m && armRisk() && A.bat === 'All day and then some') n.push('Some games and older programs don\'t run on the newest long-battery Windows laptops (Snapdragon), so we\'ll check your list first.');
+    if (!m && armRisk() && A.bat === 'A full day (10+ hours)') n.push('Some games and older programs don\'t run on the newest long-battery Windows laptops (Snapdragon), so we\'ll check your list first.');
     if (gaming() && !m && A.where === 'Carried every day' && heavyGame()) n.push('Gaming laptops are heavy, get loud under load and need the charger to play their best.');
-    if (gaming() && has('Quiet and cool') && heavyGame()) n.push('No gaming laptop is truly quiet while gaming, but we\'ll pick ones with calmer fan settings.');
-    if (has('Really nice screen') && A.bat === 'All day and then some' && !m) n.push('Bright OLED screens look amazing but usually cost a couple of hours of battery.');
-    if (gaming() && b === 2) n.push('Two laptops with the same graphics card can perform very differently, so we check how much power each one actually gets.');
+    if (gaming() && has('Quiet and cool') && heavyGame()) n.push('No gaming laptop is truly quiet while gaming, but we\'ll pick ones with a quieter fan profile.');
+    if (has('Really nice screen') && A.bat === 'A full day (10+ hours)' && !m) n.push('OLED has deep blacks and great color, but it draws more power than IPS and costs an hour or two of battery.');
+    if (gaming() && b === 2) n.push('Two laptops with the same graphics card can perform very differently, so we check how much power (TGP, in watts) each one actually gets.');
     if (b >= 0 && b <= 1 && !m) n.push('Many budget laptops ship with 8 GB of memory again this year. We\'ll steer you to 16 GB so it stays quick for years.');
-    if (has('Plugs for my stuff') && inches() === 14) n.push('Thin laptops have fewer plugs, so you may need a small adapter.');
+    if (has('Plugs for my stuff') && inches() === 14) n.push('Thin laptops have fewer ports, so you may need a small USB-C hub.');
     if (uses('Work and video calls') || has('Good webcam and mic')) n.push('We\'ll favor laptops with a 1080p camera and good mics so you look and sound clear on calls.');
     if (has('Can upgrade or repair later') && !m) n.push('Most thin laptops have memory built in. We\'ll pick ones you can still upgrade later.');
     if (n.length < 2) n.push(m ? 'Macs can\'t be upgraded later, so buy the memory and storage you\'ll need now.' : 'Look for 16 GB of memory. On most thin laptops it\'s built in, so it can\'t be added later.');
@@ -1253,6 +1269,7 @@ function statsHTML(rows, empty) {
   function readout() {
     var on = function (id, v) { var el = $(id); if (el) el.classList.toggle('on', !!v); };
     var any = A.uses.length > 0, m = mac(), sz = inches(), rig = heavyGame() && !m;
+    document.documentElement.classList.toggle('q-on', any);
     $('l-for').textContent = any ? useText() : '–';
     $('l-size').textContent = sz ? sz + ' in' + (A.where ? ' · ' + WHERE.filter(function (w) { return w[0] === A.where; })[0][2].toLowerCase() : '') : '–';
     $('l-must').textContent = A.pri.length ? A.pri.map(function (p) { return PRI.filter(function (x) { return x[0] === p; })[0][2]; }).join(', ') : '–';
