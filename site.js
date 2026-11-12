@@ -318,11 +318,6 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
 (function () {
   var form = document.getElementById('request-form');
   if (!form) return;
-  /* Laptop Finder "Have Ben find one" link: index.html?laptop=<their answers>#quote prefills the message */
-  try {
-    var lp = new URLSearchParams(location.search).get('laptop');
-    if (lp) { var m = document.getElementById('r-msg'); if (m && !m.value) m.value = 'Help me find a laptop.\n' + lp.slice(0, 1200).replace(/[<>]/g, ''); }
-  } catch (x) {}
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var v = function (id) { return document.getElementById(id).value.trim(); };
@@ -355,7 +350,7 @@ function statsHTML(rows, empty) {
   }).join('');
 }
 
-/* ---------- custom build quiz (v7.0: simple, email us what we need) ---------- */
+/* ---------- custom build quiz (v6.4.0: simple, email us what we need) ---------- */
 (function () {
   var form = document.getElementById('quiz');
   if (!form) return;
@@ -363,23 +358,20 @@ function statsHTML(rows, empty) {
   var back = document.getElementById('q-back'), next = document.getElementById('q-next'), stepLbl = document.getElementById('q-step');
   var pads = form.querySelectorAll('.qpads li');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MAXPICK = 2;
-  var A = { uses: [], res: [], hz: [], style: [], color: [], light: [], look: [], budget: [], reach: [], apps: '', have: '', notes: '', name: '', phone: '', email: '', bizname: '' };
+  var A = { uses: [], style: [], color: [], light: [], look: [], budget: [], reach: [], apps: '', have: '', notes: '', name: '', phone: '', email: '', bizname: '' };
   var USES = [['Gaming','game','High frame rates at your resolution'],['Streaming','stream','Gaming plus a live stream or recording'],['Photo or video editing','video','Premiere, Resolve, Lightroom, Photoshop'],['3D, CAD or engineering','cube','Blender, SolidWorks, AutoCAD, Fusion'],['AI on your own PC','ai','Local LLMs and image generation on your graphics card'],['Office or school','school','Browsing, Office, school work, email']];
-  var RES = [['1080p','1920 × 1080, the most common',16,9,34],['1440p','2560 × 1440, the gaming sweet spot',16,9,42],['4K','3840 × 2160, needs the most graphics power',16,9,50],['Ultrawide','3440 × 1440, extra-wide 21:9',21,9,56],['Multiple monitors','Two or more screens',16,9,30],['Not sure','We\'ll recommend one',16,9,36]];
-  var HZ = ['60 Hz','120 to 180 Hz','240 Hz or more','Not sure'];
   var STYLE = ['Glass showcase','Clean and solid','Small and compact','Airflow first','No preference'];
   var COLOR = ['Black','White','Something else','No preference'];
   var LIGHT = ['No lights','One color','Full RGB','No preference'];
   var LOOK = ['Wi-Fi and Bluetooth','Extra quiet','Front USB-C','Lots of storage','Room to add parts later'];
   var BUD = ['Under $800','$800 to $1,200','$1,200 to $1,800','$1,800 to $2,500','$2,500 or more','Not sure'];
   var REACH = [['Text','chat'],['Phone call','phone'],['Email','mail']];
-  var step = 0, N = 6;
+  var step = 0, N = 5;
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function ico(n) { return '<span class="ico-tile"><svg class="ico" aria-hidden="true"><use href="#i-' + n + '"/></svg></span>'; }
   function isSel(name, val) { return A[name].indexOf(val) >= 0; }
-  function full(name, sel) { return !sel && A[name].length >= MAXPICK; }
+  function full() { return false; }
   function card(name, val, title, hint, icon, extra) {
     var sel = isSel(name, val), f = full(name, sel);
     return '<label class="qcard' + (sel ? ' sel' : '') + (f ? ' is-full' : '') + '"' + (f ? ' aria-disabled="true"' : '') + '><input type="checkbox" name="' + name + '" value="' + esc(val) + '"' + (sel ? ' checked' : '') + ' />' + (extra || (icon ? ico(icon) : '')) + '<span class="qc-t">' + esc(title) + '</span>' + (hint ? '<span class="qc-h">' + esc(hint) + '</span>' : '') + '</label>';
@@ -387,14 +379,7 @@ function statsHTML(rows, empty) {
   function chips(name, opts) {
     return '<div class="qchips">' + opts.map(function (o) { var s = isSel(name, o), f = full(name, s); return '<label class="' + (s ? 'sel' : '') + (f ? ' is-full' : '') + '"><input type="checkbox" name="' + name + '" value="' + esc(o) + '"' + (s ? ' checked' : '') + ' /><span>' + esc(o) + '</span></label>'; }).join('') + '</div>';
   }
-  function mon(w, h, sz, multi) {
-    var W = sz, H = Math.round(sz * h / w), x = (60 - W) / 2, y = (40 - H) / 2;
-    var r = '<rect x="' + x + '" y="' + y + '" width="' + W + '" height="' + H + '" rx="2"/>';
-    if (multi) r = '<rect x="4" y="10" width="25" height="15" rx="2"/><rect x="31" y="10" width="25" height="15" rx="2"/>';
-    return '<span class="mon"><svg viewBox="0 0 60 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75">' + r + '<path d="M26 36h8" stroke-linecap="round"/></svg></span>';
-  }
-  function gaming() { return isSel('uses', 'Gaming') || isSel('uses', 'Streaming'); }
-  function pickNote() { return '<p class="qp">Pick up to ' + MAXPICK + '.</p>'; }
+  function pickNote() { return '<p class="qp">Pick as many as apply.</p>'; }
   function list(a) { return a.join(', '); }
 
   var screens = [
@@ -402,16 +387,11 @@ function statsHTML(rows, empty) {
       return '<h2 class="qh" id="qh-uses">What\'s this PC for?</h2>' + pickNote() + '<div class="qcards" role="group" aria-labelledby="qh-uses">' + USES.map(function (u) { return card('uses', u[0], u[0], u[2], u[1]); }).join('') + '</div>';
     },
     function () {
-      var h = '<h2 class="qh">What monitor will it run?</h2><p class="qp">Pick up to ' + MAXPICK + '. No monitor yet? Pick the one you want, or "Not sure".</p><div class="qcards">' + RES.map(function (r) { return card('res', r[0], r[0], r[1], null, mon(r[2], r[3], r[4], r[0] === 'Multiple monitors')); }).join('') + '</div>';
-      if (gaming()) h += '<h3 class="qsub">Refresh rate <small>(the Hz number on the box or in Windows display settings)</small></h3>' + chips('hz', HZ);
-      return h;
+      return '<h2 class="qh">What programs and games will it run?</h2><p class="qp">Type what you use most, separated by commas. Work software counts too: Adobe apps, finance programs, Teams, anything.</p>' +
+        '<div class="field"><label for="q-apps">Programs and games</label><textarea id="q-apps" rows="5" placeholder="For example: Photoshop, Premiere Pro, QuickBooks, Microsoft Teams, Excel, Fortnite">' + esc(A.apps) + '</textarea></div>';
     },
     function () {
-      return '<h2 class="qh">Which games and programs will it run?</h2><p class="qp">Type them in, separated by commas. Just the ones you care about most.</p>' +
-        '<div class="field"><label for="q-apps">Games and programs</label><textarea id="q-apps" rows="4" placeholder="' + esc(gaming() ? 'For example: Fortnite, Elden Ring, Discord, OBS' : 'For example: Excel, Chrome with lots of tabs, Photoshop') + '">' + esc(A.apps) + '</textarea></div>';
-    },
-    function () {
-      return '<h2 class="qh">Case and features</h2><p class="qp">All optional. Pick up to ' + MAXPICK + ' in each group, or skip.</p>' +
+      return '<h2 class="qh">Case and features</h2><p class="qp">All optional. Pick as many as apply in each group, or skip.</p>' +
         '<h3 class="qsub" style="margin-top:6px">Case style</h3>' + chips('style', STYLE) +
         '<h3 class="qsub">Color</h3>' + chips('color', COLOR) +
         '<h3 class="qsub">Lighting</h3>' + chips('light', LIGHT) +
@@ -419,17 +399,17 @@ function statsHTML(rows, empty) {
         '<div class="field" style="margin-top:20px"><label for="q-have">What are you using now? <small>(optional)</small></label><input id="q-have" value="' + esc(A.have) + '" placeholder="For example: a 6-year-old Dell, or parts to reuse like an RTX 3080 or a 2 TB SSD" /></div>';
     },
     function () {
-      return '<h2 class="qh">What\'s your parts budget?</h2><p class="qp">Pick up to ' + MAXPICK + '. Parts only. Build labor is listed separately on your build sheet.</p>' + chips('budget', BUD) +
+      return '<h2 class="qh">What\'s your parts budget?</h2><p class="qp">Pick the range or ranges that fit. Parts only. Build labor is listed separately on your build sheet.</p>' + chips('budget', BUD) +
         '<div class="field" style="margin-top:20px"><label for="q-notes">Anything else? <small>(optional)</small></label><textarea id="q-notes" placeholder="A deadline, a case you like, how many years you want it to last">' + esc(A.notes) + '</textarea></div>';
     },
     function () {
-      var rows = [['Use', list(A.uses), 0], ['Screen', list(A.res) + (A.hz.length ? ' · ' + list(A.hz) : ''), 1], ['Games and programs', A.apps, 2], ['Case and features', lookText() || 'No preference', 3], ['Parts budget', list(A.budget), 4]];
-      if (A.have) rows.push(['Using now', A.have, 3]);
+      var rows = [['Use', list(A.uses), 0], ['Programs and games', A.apps, 1], ['Case and features', lookText() || 'No preference', 2], ['Parts budget', list(A.budget), 3]];
+      if (A.have) rows.push(['Using now', A.have, 2]);
       return '<h2 class="qh">Here\'s what you told us</h2><dl class="brief">' + rows.map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1] || '–') + '</dd><button type="button" class="link qedit" data-go="' + r[2] + '">Edit</button></div>'; }).join('') + '</dl>' +
         '<h3 class="qsub">Where should we send your build sheet?</h3>' +
         '<div class="row"><div class="field"><label for="q-name">Name</label><input id="q-name" autocomplete="name" value="' + esc(A.name) + '" /></div><div class="field"><label for="q-bizname">Business name <small>(only if it\'s for a business)</small></label><input id="q-bizname" autocomplete="organization" value="' + esc(A.bizname) + '" /></div></div>' +
         '<div class="row"><div class="field"><label for="q-phone">Phone</label><input id="q-phone" type="tel" autocomplete="tel" placeholder="(413) 555-0123" value="' + esc(A.phone) + '" /></div><div class="field"><label for="q-email">Email</label><input id="q-email" type="email" autocomplete="email" placeholder="you@example.com" value="' + esc(A.email) + '" /></div></div>' +
-        '<h3 class="qsub">Best way to reach you <small>(pick up to ' + MAXPICK + ')</small></h3><div class="qcards three">' + REACH.map(function (r) { return card('reach', r[0], r[0], '', r[1]); }).join('') + '</div>' +
+        '<h3 class="qsub">Best way to reach you <small>(pick as many as you like)</small></h3><div class="qcards three">' + REACH.map(function (r) { return card('reach', r[0], r[0], '', r[1]); }).join('') + '</div>' +
         '<p class="fine">Free, no obligation. Nothing is ordered until you approve your build sheet.</p>';
     }
   ];
@@ -443,10 +423,9 @@ function statsHTML(rows, empty) {
   }
   function check() {
     if (step === 0 && !A.uses.length) return 'Pick what this PC is for.';
-    if (step === 1 && !A.res.length) return 'Pick your monitor, or "Not sure".';
-    if (step === 2 && !A.apps) return 'Type a few games or programs you use.';
-    if (step === 4 && !A.budget.length) return 'Choose a budget range, or "Not sure".';
-    if (step === 5) {
+    if (step === 1 && !A.apps) return 'Type a few programs or games you use.';
+    if (step === 3 && !A.budget.length) return 'Choose a budget range, or "Not sure".';
+    if (step === 4) {
       if (!A.name) return 'Add your name.';
       if (A.phone.replace(/\D/g, '').length < 10) return 'Enter a 10-digit phone number, including area code.';
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(A.email)) return 'Enter a valid email so we can send your build sheet.';
@@ -475,13 +454,11 @@ function statsHTML(rows, empty) {
     var t = e.target; if (t.type !== 'checkbox' || !A[t.name]) return;
     var a = A[t.name], i = a.indexOf(t.value);
     if (t.checked && i < 0) {
-      if (a.length >= MAXPICK) { t.checked = false; return; }
       a.push(t.value);
     }
     if (!t.checked && i >= 0) a.splice(i, 1);
     t.parentNode.classList.toggle('sel', t.checked);
     syncLimit(t.name);
-    if (t.name === 'uses' && !gaming()) A.hz = [];
     err.style.display = 'none';
   });
   stage.addEventListener('click', function (e) { var b = e.target.closest('.qedit'); if (b) go(+b.dataset.go); });
@@ -495,7 +472,7 @@ function statsHTML(rows, empty) {
     next.disabled = true; next.textContent = 'Sending…';
     try {
       await ppcSend({ subject: 'New custom build request from ' + A.name + (A.bizname ? ' (' + A.bizname + ')' : ''), name: A.name, phone: A.phone, email: A.email, preferred_contact: list(A.reach),
-        business_name: A.bizname || '(not a business)', uses: list(A.uses), games_and_programs: A.apps, monitor: list(A.res), refresh_rate: A.hz.length ? list(A.hz) : 'Not given',
+        business_name: A.bizname || '(not a business)', uses: list(A.uses), programs_and_games: A.apps,
         case_and_features: lookText() || 'No preference', parts_budget: list(A.budget), parts_they_have: A.have || 'None', notes: A.notes || '(none)' });
       form.style.display = 'none';
       document.getElementById('q-sent').style.display = 'block';

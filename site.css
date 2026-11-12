@@ -797,6 +797,6 @@ body{background:radial-gradient(900px 700px at -10% 40%,rgba(90,110,150,.08),tra
 .lp-cmp td:nth-child(2){background:rgba(255,88,24,.06)}
 .lp-cmp tr:last-child th,.lp-cmp tr:last-child td{border-bottom:0}
 
-/* v7.0: simple build quiz, no live readout */
+/* v6.4.0: simple build quiz, no live readout */
 .quiz-grid{grid-template-columns:minmax(0,1fr)!important;max-width:780px;margin-left:auto;margin-right:auto}
 .qchips label.is-full{opacity:.45}
