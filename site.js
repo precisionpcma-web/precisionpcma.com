@@ -85,7 +85,7 @@ async function ppcSend(payload) {
   var data = await res.json();
   if (!data.success) throw new Error(data.message || 'failed');
 }
-var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or call or text (413) 239-4183.';
+var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or email precisionpcma@gmail.com.';
 
 /* ---------- service request form (home) ---------- */
 (function () {
