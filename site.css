@@ -718,8 +718,8 @@ body{background:radial-gradient(1100px 700px at 85% -10%,rgba(255,88,24,.10),tra
 .group.pop,#pickup.pop{animation:popin .4s var(--ease) both}
 @keyframes popin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 /* v6.3 page-wide cursor glow (sits behind content, never over text) */
-.cursor-glow{position:fixed;left:0;top:0;width:600px;height:600px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s,transform .12s linear;
-  background:radial-gradient(circle,rgba(255,88,24,.16) 0%,rgba(255,88,24,.07) 35%,transparent 68%)}
+.cursor-glow{position:fixed;left:0;top:0;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s,transform .12s linear;
+  background:radial-gradient(circle,rgba(255,88,24,.10) 0%,rgba(255,88,24,.04) 35%,transparent 68%)}
 .jhint{padding-block:48px 72px;color:var(--text-3);font-size:15px}
 .jhint[hidden]{display:none}
 /* v6.0.1 no fixed orange glows; the cursor glow is the only one */
@@ -803,3 +803,146 @@ body{background:radial-gradient(900px 700px at -10% 40%,rgba(90,110,150,.08),tra
 
 /* v7.2.0: 4 payment methods as 2x2 */
 @media (min-width:641px){.facts.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* v7.4.0 art: animated renders + soft-render illustrations */
+.cine-stage.photo{animation:none;transform:none;width:124%;margin-left:6%}
+.gpu-r,.pc-r{position:relative}
+.gpu-r{aspect-ratio:1376/768;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 40% 55%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 70% 70% at 40% 55%,#000 62%,transparent 100%)}
+.gpu-r>img,.pc-r>img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gpu-r .rf{position:absolute;width:14.535%;aspect-ratio:1;border-radius:50%;background:url(gpu-render.webp) no-repeat;background-size:688% 384%;transform:translate(-50%,-50%)}
+.pc-r{aspect-ratio:1}
+.pc-r .pf{position:absolute;z-index:1;width:13.7%;aspect-ratio:1;border-radius:50%;background:url(pc-render.webp) no-repeat;background-size:729.9% 729.9%;transform:translate(-50%,-50%)}
+.pc-r .pf1{left:67.09%;top:33.69%;width:14.06%;background:url(pc-fan1.webp) center/100% 100% no-repeat}
+.pc-r .pf2{left:67.09%;top:49.81%;background-position:69.8% 49.77%}
+.pc-r .pf3{left:67.09%;top:65.82%;background-position:69.8% 68.33%}
+.pc-r .pc-hose{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
+.pc-r .pc-floor{position:absolute;left:20%;right:20%;bottom:7%;height:3%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,88,24,.6),transparent);filter:blur(6px)}
+.pc-r .pc-light{position:absolute;left:18%;top:18%;width:62%;height:66%;z-index:2;border-radius:6px;background:radial-gradient(ellipse at 45% 55%,rgba(255,88,24,.38),rgba(255,88,24,.08) 55%,transparent 80%);mix-blend-mode:screen;opacity:0;transition:opacity .5s}
+.pc-r .pc-panel{position:absolute;left:17.5%;top:17%;right:19.8%;bottom:13.4%;z-index:3;border-radius:4px;background:linear-gradient(135deg,#2a2b30,#17181b 60%,#121316);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);opacity:0;transition:opacity .5s}
+.pc-r.pv{transition:transform .5s cubic-bezier(.2,.7,.2,1);transform-origin:50% 92%}
+.pc-r.pv[data-light=one] .pc-light{opacity:1}
+.pc-r.pv[data-light=rgb] .pc-light{opacity:1}
+.pc-r.pv[data-style=solid] .pc-panel{opacity:.97}
+.pc-r.pv[data-style=solid] .pc-light{opacity:0}
+.pc-r.pv[data-style=compact]{transform:scale(.8)}
+@media (prefers-reduced-motion:no-preference){
+  .gpu-r .rf,.pc-r .pf{animation:rspin 1.4s linear infinite}
+  .gpu-r .rf:nth-of-type(2){animation-duration:1.3s}.gpu-r .rf:nth-of-type(3){animation-duration:1.5s}
+  .pc-r.pv[data-style=airflow] .pf{animation-duration:.75s}
+  .pc-r .pc-floor{animation:breathe 4s ease-in-out infinite}
+  .pc-r.pv[data-light=rgb] .pc-light{animation:rgb 6s linear infinite}
+  .r-repair .rr-scan{animation:rrscan 6s ease-in-out infinite}
+  .r-repair .rr-ring{animation:rrring 6s ease-in-out infinite}
+  .r-repair .rr-check{animation:rrcheck 6s ease-in-out infinite}
+  .r-speed .rs-needle{animation:rsneedle 6s cubic-bezier(.3,.1,.2,1) infinite}
+  .r-speed .rs-sweep{animation:rssweep 6s ease-in-out infinite}
+  .r-heat .rh-cooler{animation:rhcool 8s cubic-bezier(.6,0,.3,1) infinite}
+  .r-heat .rh-glow{animation:rhglow 8s ease-in-out infinite}
+  .r-office .ro-bar{transform-box:fill-box;transform-origin:bottom;animation:robar 3.2s ease-in-out infinite alternate}
+  .r-office .ro-line{animation:roline 6s ease-in-out infinite}
+  .r-office .ro-led{animation:roled 2s steps(2) infinite}
+  .r-office .ro-pwr{animation:breathe 3s ease-in-out infinite}
+}
+.r-speed .rs-needle{transform:rotate(55deg)}
+.r-repair .rr-ring{stroke-dashoffset:0}.r-repair .rr-check{stroke-dashoffset:0}
+.r-heat .rh-cooler{transform:translateY(50px)}.r-heat .rh-glow{opacity:.2}
+@keyframes rspin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes breathe{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes rgb{to{filter:hue-rotate(360deg)}}
+@keyframes rrscan{0%{transform:translateY(0);opacity:1}45%{transform:translateY(130px);opacity:1}50%,100%{transform:translateY(130px);opacity:0}}
+@keyframes rrring{0%,5%{stroke-dashoffset:100}45%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@keyframes rrcheck{0%,48%{stroke-dashoffset:100}58%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@keyframes rsneedle{0%{transform:rotate(-82deg)}45%{transform:rotate(60deg)}52%{transform:rotate(52deg)}58%,85%{transform:rotate(56deg)}100%{transform:rotate(-82deg)}}
+@keyframes rssweep{0%,40%{transform:translateX(0);opacity:0}45%{opacity:1}70%{transform:translateX(120px);opacity:0}100%{opacity:0}}
+@keyframes rhcool{0%,15%{transform:translateY(-6px)}40%,75%{transform:translateY(50px)}100%{transform:translateY(-6px)}}
+@keyframes rhglow{0%,30%{opacity:1}55%,75%{opacity:.18}100%{opacity:1}}
+@keyframes robar{from{transform:scaleY(.55)}to{transform:scaleY(1)}}
+@keyframes roline{0%{stroke-dashoffset:100}50%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}
+@keyframes roled{50%{opacity:.25}}
+.rnd{width:100%;height:auto;display:block}
+.group-art .rnd,.group-art .pc-r{border-radius:14px}
+.group-art .pc-r.in-svc{max-width:300px}
+.die-cap b{font-family:inherit;letter-spacing:0;text-transform:none;font-size:14px;font-weight:600}
+.die-cap{min-height:0}
+#hot .group-art{display:block;max-width:320px}
+.quiz-grid{grid-template-columns:minmax(0,1fr) 340px!important;max-width:1140px}
+.pv-card{position:sticky;top:96px;background:#0e0f12;border:1px solid rgba(239,233,225,.08);border-radius:18px;padding:14px 14px 18px;overflow:hidden}
+.pv-cap{margin:4px 4px 0;font-size:14px;color:var(--text-3)}
+.pv-cap b{display:block;color:var(--text);font-size:15px;margin-bottom:2px}
+@media (max-width:900px){.quiz-grid{grid-template-columns:1fr!important}.pv-card{position:relative;top:0;order:-1;max-width:360px;margin:0 auto;width:100%}}
+.pc-r{-webkit-mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 74%,transparent 100%);mask-image:radial-gradient(ellipse 62% 62% at 50% 50%,#000 74%,transparent 100%)}
+.pick-head{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:center}
+.pick-head .call-art{max-width:340px}
+@media (max-width:760px){.pick-head{grid-template-columns:1fr}.pick-head .call-art{max-width:300px}}
+@media (prefers-reduced-motion:no-preference){
+  .r-call .rc-dash{animation:rcdash 1.2s linear infinite}
+  .r-call .rc-car{animation:rccar 2.4s ease-in-out infinite}
+  .r-call .rc-wheel>*{transform-box:fill-box;transform-origin:center}
+  .r-call .rc-wheel path{animation:rcspin .6s linear infinite}
+  .r-call .rc-pin{animation:rcpin 2.4s ease-in-out infinite}
+  .r-call .rc-card{animation:rccard 4s cubic-bezier(.5,0,.3,1) infinite}
+  .r-call .rc-waves{animation:rcwave 4s ease-out infinite}
+  .r-call .rc-ok{animation:rcok 4s ease-out infinite}
+}
+.r-call .rc-waves{opacity:.9}
+@keyframes rcdash{to{stroke-dashoffset:-30}}
+@keyframes rccar{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes rcspin{to{transform:rotate(360deg)}}
+@keyframes rcpin{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes rccard{0%,15%{transform:translate(14px,-22px)}35%,60%{transform:translate(0,14px)}85%,100%{transform:translate(14px,-22px)}}
+@keyframes rcwave{0%,30%{opacity:0}40%{opacity:1}65%,100%{opacity:0}}
+@keyframes rcok{0%,40%{stroke-dashoffset:100}55%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+.group-head{align-items:start}
+.group-head>div:last-child{padding-top:96px}
+@media (max-width:900px){.group-head>div:last-child{padding-top:0}}
+.cine-stage.drawn{animation:none;transform:none}
+.gd{width:100%;height:auto;display:block;overflow:visible}
+.gd .gd-fan{transform-box:view-box}
+@media (prefers-reduced-motion:no-preference){.gd .gd-fan{animation:gdspin 1.3s linear infinite}.gd .gd-strip{animation:breathe 4s ease-in-out infinite}.cine-stage.drawn .gd{animation:gdfloat 7s ease-in-out infinite}}
+@keyframes gdspin{to{transform:rotate(360deg)}}
+@keyframes gdfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+/* one art style: orange parts glow softly, like the PC render's hubs and accents */
+.rnd [fill="#ff5818"],.rnd [stroke="#ff5818"],.gd [fill="#ff5818"],.gd .og,.gd .gd-strip,.pc-d [fill="#ff5818"],.pc-d [stroke="#ff5818"]{filter:drop-shadow(0 0 5px rgba(255,88,24,.55))}
+/* custom PC drawn in code (replaces the photo render) */
+.pc-d{position:relative;transition:transform .5s cubic-bezier(.2,.7,.2,1);transform-origin:50% 95%}
+.pc-d svg{width:100%;height:auto;display:block}
+.pc-d .pd-fan{transform-box:view-box}
+.pc-d .pd-light{mix-blend-mode:screen;opacity:0;transition:opacity .5s}
+.pc-d .pd-panel{opacity:0;transition:opacity .5s}
+.pc-d.in-svc .pd-light,.pc-d[data-light=one] .pd-light,.pc-d[data-light=rgb] .pd-light{opacity:1}
+.pc-d.pv[data-light=none] .pd-light{opacity:0}
+.pc-d[data-style=solid] .pd-panel{opacity:1}
+.pc-d[data-style=compact]{transform:scale(.8)}
+.group-art .pc-d.in-svc{max-width:320px}
+@media (prefers-reduced-motion:no-preference){.pc-d .pd-fan{animation:gdspin 1.2s linear infinite}.pc-d[data-style=airflow] .pd-fan{animation-duration:.6s!important}.pc-d[data-light=rgb] .pd-light{animation:rgb 6s linear infinite}}
+.r-heat .rh-fan{transform-box:view-box}
+.r-heat .rh-waves{opacity:.0}
+@media (prefers-reduced-motion:no-preference){
+  .r-heat .rh-fan{animation:gdspin 1.1s linear infinite}
+  .r-heat .rh-glow{animation:rhglow2 6s ease-in-out infinite}
+  .r-heat .rh-waves{animation:rhwave 6s ease-in-out infinite}
+}
+.r-heat .rh-glow{opacity:.35}
+@keyframes rhglow2{0%,20%{opacity:1}60%,85%{opacity:.25}100%{opacity:1}}
+@keyframes rhwave{0%,15%{opacity:.9;transform:translateY(0)}45%{opacity:0;transform:translateY(-18px)}100%{opacity:0;transform:translateY(-18px)}}
+.pc-d .pd-ring{opacity:.4}
+.pc-d[data-light=one] .pd-ring,.pc-d[data-light=rgb] .pd-ring,.pc-d.in-svc .pd-ring{opacity:1}
+.pc-d.pv[data-light=none] .pd-ring{opacity:.15}
+/* custom PC: front view (spinning fans) <-> side view (the build) */
+.pc-d .v-front,.pc-d .v-side{transition:opacity .6s ease}
+.pc-d[data-view=front] .v-side{opacity:0}
+.pc-d[data-view=side] .v-front{opacity:0}
+.pc-d .pd-ring{opacity:.35}
+.pc-d[data-light=one] .pd-ring,.pc-d[data-light=rgb] .pd-ring,.pc-d.in-svc .pd-ring{opacity:1}
+.pc-d.pv[data-light=none] .pd-ring{opacity:.12}
+.pc-d[data-light=rgb] .pd-ring{animation:rgb 6s linear infinite}
+@media (prefers-reduced-motion:no-preference){
+  .pc-d.in-svc .v-front{animation:pcvA 12s ease-in-out infinite}
+  .pc-d.in-svc .v-side{animation:pcvB 12s ease-in-out infinite}
+}
+@keyframes pcvA{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes pcvB{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+/* builds header: the PC, front view, fans spinning (the quiz has no live preview) */
+.quiz-grid{grid-template-columns:minmax(0,1fr)!important;max-width:780px}
+.page-hero.has-art .rig-wrap .pc-d.hdr{width:260px}
+.page-hero.has-art .wrap{grid-template-columns:minmax(0,1fr) 260px}
+@media (max-width:640px){.page-hero.has-art .rig-wrap{display:none}}
