@@ -226,6 +226,13 @@ var PPC_FAIL = 'That didn\'t go through. Check your connection and try again, or
     });
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cur) open(null, null, false); });
+  /* in-page links to a tab section (like "see the towns") open that tab */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a || bar.contains(a)) return;
+    var chip = links.filter(function (l) { return l.getAttribute('href') === a.getAttribute('href'); })[0]; if (!chip) return;
+    e.preventDefault(); var t = document.querySelector(chip.getAttribute('href'));
+    open(t, chip, true); t.scrollIntoView({ block: 'start', behavior: reduceM ? 'auto' : 'smooth' });
+  });
 })();
 
 /* ---------- FAQ search ---------- */
@@ -358,12 +365,15 @@ function statsHTML(rows, empty) {
   var back = document.getElementById('q-back'), next = document.getElementById('q-next'), stepLbl = document.getElementById('q-step');
   var pads = form.querySelectorAll('.qpads li');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var A = { uses: [], style: [], color: [], light: [], look: [], budget: [], reach: [], apps: '', have: '', notes: '', name: '', phone: '', email: '', bizname: '' };
+  var A = { uses: [], prio: [], size: [], color: [], light: [], look: [], budget: [], win: [], reach: [], apps: '', have: '', notes: '', name: '', phone: '', email: '', bizname: '' };
   var USES = [['Gaming','game','High frame rates at your resolution'],['Streaming','stream','Gaming plus a live stream or recording'],['Photo or video editing','video','Premiere, Resolve, Lightroom, Photoshop'],['3D, CAD or engineering','cube','Blender, SolidWorks, AutoCAD, Fusion'],['AI on your own PC','ai','Local LLMs and image generation on your graphics card'],['Office or school','school','Browsing, Office, school work, email']];
-  var STYLE = ['Glass showcase','Clean and solid','Small and compact','Airflow first','No preference'];
-  var COLOR = ['Black','White','Something else','No preference'];
+  var PRIO = ['Best temps and airflow','Looks come first','No preference'];
+  var SIZE = ['Full size','Compact','No preference'];
+  var COLOR = [['Black','#111'],['White','#f2f2f2'],['Gray','#8a8d93'],['Pink','#f4a7c3'],['Blue','#3d7bf0'],['Green','#3fae6a'],['Red','#d93a3a'],['Purple','#8b5cf6'],['Other',''],['No preference','']];
   var LIGHT = ['No lights','One color','Full RGB','No preference'];
-  var LOOK = ['Wi-Fi and Bluetooth','Extra quiet','Front USB-C','Lots of storage','Room to add parts later'];
+  var LOOK = ['Front USB-C','Wi-Fi and Bluetooth','Lots of storage','Room to upgrade later'];
+  var WIN = ['I have one','I need one','Not sure'];
+  var SINGLE = { prio: 1, size: 1, win: 1 };
   var BUD = ['Under $800','$800 to $1,200','$1,200 to $1,800','$1,800 to $2,500','$2,500 or more','Not sure'];
   var REACH = [['Text','chat'],['Phone call','phone'],['Email','mail']];
   var step = 0, N = 5;
@@ -376,8 +386,8 @@ function statsHTML(rows, empty) {
     var sel = isSel(name, val), f = full(name, sel);
     return '<label class="qcard' + (sel ? ' sel' : '') + (f ? ' is-full' : '') + '"' + (f ? ' aria-disabled="true"' : '') + '><input type="checkbox" name="' + name + '" value="' + esc(val) + '"' + (sel ? ' checked' : '') + ' />' + (extra || (icon ? ico(icon) : '')) + '<span class="qc-t">' + esc(title) + '</span>' + (hint ? '<span class="qc-h">' + esc(hint) + '</span>' : '') + '</label>';
   }
-  function chips(name, opts) {
-    return '<div class="qchips">' + opts.map(function (o) { var s = isSel(name, o), f = full(name, s); return '<label class="' + (s ? 'sel' : '') + (f ? ' is-full' : '') + '"><input type="checkbox" name="' + name + '" value="' + esc(o) + '"' + (s ? ' checked' : '') + ' /><span>' + esc(o) + '</span></label>'; }).join('') + '</div>';
+  function chips(name, opts, lbl) {
+    return '<div class="qchips" role="group"' + (lbl ? ' aria-label="' + esc(lbl) + '"' : '') + '>' + opts.map(function (o) { var v = Array.isArray(o) ? o[0] : o, sw = Array.isArray(o) && o[1] ? '<i class="sw" style="background:' + o[1] + '"></i>' : '', s = isSel(name, v), f = full(name, s); return '<label class="' + (s ? 'sel' : '') + (f ? ' is-full' : '') + '"><input type="checkbox" name="' + name + '" value="' + esc(v) + '"' + (s ? ' checked' : '') + ' />' + sw + '<span>' + esc(v) + '</span></label>'; }).join('') + '</div>';
   }
   function pickNote() { return '<p class="qp">Pick as many as apply.</p>'; }
   function list(a) { return a.join(', '); }
@@ -391,30 +401,33 @@ function statsHTML(rows, empty) {
         '<div class="field"><label for="q-apps">Programs and games</label><textarea id="q-apps" rows="5" placeholder="For example: Photoshop, Premiere Pro, QuickBooks, Microsoft Teams, Excel, Fortnite">' + esc(A.apps) + '</textarea></div>';
     },
     function () {
-      return '<h2 class="qh">Case and features</h2><p class="qp">All optional. Pick as many as apply in each group, or skip.</p>' +
-        '<h3 class="qsub" style="margin-top:6px">Case style</h3>' + chips('style', STYLE) +
-        '<h3 class="qsub">Color</h3>' + chips('color', COLOR) +
-        '<h3 class="qsub">Lighting</h3>' + chips('light', LIGHT) +
-        '<h3 class="qsub">Extras</h3>' + chips('look', LOOK) +
+      return '<h2 class="qh">Look and features</h2><p class="qp">All optional. Skip anything you don\'t care about.</p>' +
+        '<h3 class="qsub" style="margin-top:6px">Cooling or looks?</h3>' + chips('prio', PRIO, 'Cooling or looks') +
+        '<h3 class="qsub">Case size</h3>' + chips('size', SIZE, 'Case size') +
+        '<h3 class="qsub">Color <small>(pick any)</small></h3>' + chips('color', COLOR, 'Color') +
+        '<h3 class="qsub">Lighting</h3>' + chips('light', LIGHT, 'Lighting') +
+        '<h3 class="qsub">Extras <small>(pick any)</small></h3>' + chips('look', LOOK, 'Extras') +
         '<div class="field" style="margin-top:20px"><label for="q-have">What are you using now? <small>(optional)</small></label><input id="q-have" value="' + esc(A.have) + '" placeholder="For example: a 6-year-old Dell, or parts to reuse like an RTX 3080 or a 2 TB SSD" /></div>';
     },
     function () {
-      return '<h2 class="qh">What\'s your parts budget?</h2><p class="qp">Pick the range or ranges that fit. Parts only. Build labor is listed separately on your build sheet.</p>' + chips('budget', BUD) +
+      return '<h2 class="qh">What\'s your parts budget?</h2><p class="qp">Pick the range or ranges that fit. Parts only. Build labor is listed separately on your build sheet.</p>' + chips('budget', BUD, 'Parts budget') +
+        '<h3 class="qsub">Windows license</h3>' + chips('win', WIN, 'Windows license') +
         '<div class="field" style="margin-top:20px"><label for="q-notes">Anything else? <small>(optional)</small></label><textarea id="q-notes" placeholder="A deadline, a case you like, how many years you want it to last">' + esc(A.notes) + '</textarea></div>';
     },
     function () {
       var rows = [['Use', list(A.uses), 0], ['Programs and games', A.apps, 1], ['Case and features', lookText() || 'No preference', 2], ['Parts budget', list(A.budget), 3]];
+      if (A.win.length) rows.push(['Windows license', A.win[0], 3]);
       if (A.have) rows.push(['Using now', A.have, 2]);
       return '<h2 class="qh">Here\'s what you told us</h2><dl class="brief">' + rows.map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + esc(r[1] || '–') + '</dd><button type="button" class="link qedit" data-go="' + r[2] + '">Edit</button></div>'; }).join('') + '</dl>' +
         '<h3 class="qsub">Where should we send your build sheet?</h3>' +
         '<div class="row"><div class="field"><label for="q-name">Name</label><input id="q-name" autocomplete="name" value="' + esc(A.name) + '" /></div><div class="field"><label for="q-bizname">Business name <small>(only if it\'s for a business)</small></label><input id="q-bizname" autocomplete="organization" value="' + esc(A.bizname) + '" /></div></div>' +
-        '<div class="row"><div class="field"><label for="q-phone">Phone</label><input id="q-phone" type="tel" autocomplete="tel" placeholder="(413) 555-0123" value="' + esc(A.phone) + '" /></div><div class="field"><label for="q-email">Email</label><input id="q-email" type="email" autocomplete="email" placeholder="you@example.com" value="' + esc(A.email) + '" /></div></div>' +
+        '<div class="row"><div class="field"><label for="q-phone">Phone</label><input id="q-phone" type="tel" autocomplete="tel" value="' + esc(A.phone) + '" /></div><div class="field"><label for="q-email">Email</label><input id="q-email" type="email" autocomplete="email" placeholder="you@example.com" value="' + esc(A.email) + '" /></div></div>' +
         '<h3 class="qsub">Best way to reach you <small>(pick as many as you like)</small></h3><div class="qcards three">' + REACH.map(function (r) { return card('reach', r[0], r[0], '', r[1]); }).join('') + '</div>' +
         '<p class="fine">Free, no obligation. Nothing is ordered until you approve your build sheet.</p>';
     }
   ];
   function lookText() {
-    var p = [].concat(A.style, A.color.map(function (c) { return c === 'Something else' ? 'custom color' : c.toLowerCase(); }), A.light.map(function (l) { return l === 'No lights' ? 'no lights' : l === 'One color' ? 'one-color lighting' : l === 'Full RGB' ? 'full RGB' : l; }), A.look);
+    var p = [].concat(A.prio, A.size.map(function (z) { return z === 'No preference' ? z : z.toLowerCase() + ' case'; }), A.color.map(function (c) { return c === 'Other' ? 'other color (see notes)' : c === 'No preference' ? c : c.toLowerCase(); }), A.light.map(function (l) { return l === 'No lights' ? 'no lights' : l === 'One color' ? 'one-color lighting' : l === 'Full RGB' ? 'full RGB' : l; }), A.look);
     p = p.filter(function (x) { return x && x !== 'No preference'; });
     return p.length ? p.join(', ').replace(/^./, function (c) { return c.toUpperCase(); }) : '';
   }
@@ -455,6 +468,13 @@ function statsHTML(rows, empty) {
     var a = A[t.name], i = a.indexOf(t.value);
     if (t.checked && i < 0) {
       a.push(t.value);
+      var ex = function (v) { return v === 'No preference' || v === 'Not sure'; };
+      stage.querySelectorAll('input[name="' + t.name + '"]').forEach(function (o) {
+        if (o !== t && o.checked && (SINGLE[t.name] || ex(t.value) || ex(o.value))) {
+          o.checked = false; o.parentNode.classList.remove('sel');
+          var k = a.indexOf(o.value); if (k >= 0) a.splice(k, 1);
+        }
+      });
     }
     if (!t.checked && i >= 0) a.splice(i, 1);
     t.parentNode.classList.toggle('sel', t.checked);
@@ -473,7 +493,7 @@ function statsHTML(rows, empty) {
     try {
       await ppcSend({ subject: 'New custom build request from ' + A.name + (A.bizname ? ' (' + A.bizname + ')' : ''), name: A.name, phone: A.phone, email: A.email, preferred_contact: list(A.reach),
         business_name: A.bizname || '(not a business)', uses: list(A.uses), programs_and_games: A.apps,
-        case_and_features: lookText() || 'No preference', parts_budget: list(A.budget), parts_they_have: A.have || 'None', notes: A.notes || '(none)' });
+        case_and_features: lookText() || 'No preference', parts_budget: list(A.budget), windows_license: A.win[0] || 'Not answered', parts_they_have: A.have || 'None', notes: A.notes || '(none)' });
       form.style.display = 'none';
       document.getElementById('q-sent').style.display = 'block';
       document.getElementById('q-sent-title').focus();
@@ -490,7 +510,7 @@ function statsHTML(rows, empty) {
   var cap = document.getElementById('die-cap'), lead = document.getElementById('die-lead'), dot = document.getElementById('die-dot'), t1 = document.getElementById('die-t1'), t2 = document.getElementById('die-t2');
   /* [x, y of the part, label line 1, line 2, side] */
   var F = [
-    [300, 236, 'THERMAL INTERFACE', 'PASTE ON A DESKTOP CPU', 'r', 'Thermal interface', 'Thermal paste carries heat from a desktop processor to its cooler. For graphics cards and laptops, we use a long-lasting thermal pad instead.'],
+    [300, 236, 'THERMAL INTERFACE', 'PASTE ON A DESKTOP CPU', 'r', 'Thermal interface', 'Thermal paste carries heat from a desktop processor to its cooler. On laptops, we use a long-lasting thermal pad instead.'],
     [268, 252, 'HOT SPOT', 'HEAT BUILDS UP HERE', 'r', 'Hot spot', 'Where heat builds up first, and where throttling starts'],
     [330, 162, 'HEAT SPREADER', 'MOVES HEAT TO COOLER', 'r', 'Heat spreader', 'The metal lid that carries heat up to the cooler'],
     [132, 132, 'PIN 1 MARKER', 'LINES THE CHIP UP IN ITS SOCKET', 'l', 'Pin 1 marker', 'Lines the chip up the right way in its socket'],
